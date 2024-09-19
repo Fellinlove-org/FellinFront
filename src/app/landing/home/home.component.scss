@@ -1,0 +1,629 @@
+
+/* Home Styles */
+.home {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background-image: url('../../../assets/images/Home.png');
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	align-items: center;
+}
+
+.overlay {
+	position: absolute;
+	top: 25%;
+	left: 29px;
+	width: 40%;
+	height: 50%;
+	background-color: rgba(179, 179, 179, 0.24);
+	z-index: 1;
+}
+
+.home-titulo {
+	font-family: 'Yeseva One', sans-serif;
+	font-size: 60px;
+	color: white;
+	z-index: 2;
+	text-align: left;
+	margin: 90px;
+	padding: 0 20px; /* Asegura que el texto esté dentro de los márgenes */
+	box-sizing: border-box;
+	max-width: 400px;
+}
+
+/* -------------------------------- Sección Nosotros ---------------------------------*/
+.nosotros-overlay {
+	width: 95vw;
+	height: 95vh;
+	position: relative;
+	top: 80px;
+	margin: 0 auto;
+	transform: scale(1);
+	transform-origin: top left;
+}
+
+.imagen-huellas {
+	transform: rotate(-63.5deg);
+	width: 29vw;
+	height: 100vh;
+	position: absolute;
+	left: 52vw;
+	top: 0vh;
+	background-image: url('../../../assets/images/Huellas.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.rectangulo-nosotros {
+	background-color: rgba(253, 213, 162, 0.6);
+	width: 99vw;
+	height: 95vh;
+	position: absolute;
+	left: 0;
+	top: 0;
+	border-radius: 3vw;
+	overflow: hidden;
+}
+
+.elipse-imagen-nosotros {
+	width: 40vw;
+	height: 40vw;
+	position: absolute;
+	left: 55vw;
+	top: 2.5vh;
+	background-image: url('../../../assets/images/Nosotros.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 50%;
+}
+
+.bienvenidos-a-fellinlove-veterinaria {
+	color: rgba(151, 127, 99, 1);
+	width: 40vw;
+	position: absolute;
+	left: 3.5vw;
+	top: 20vh;
+	font-family: 'Yeseva One', sans-serif;
+	text-align: left;
+	font-size: 2vw;
+	line-height: 1.5;
+}
+
+.clinica-veterinaria {
+	color: rgb(112, 98, 82);
+	width: auto;
+	position: absolute;
+	left: 3.5vw;
+	top: 7.5vh;
+	font-family: 'Yeseva One', sans-serif;
+	text-align: left;
+	font-size: 3vw;
+}
+
+.contactanos-btn {
+	display: block;
+	width: 24vw;
+	height: 4vh;
+	position: absolute;
+	left: 3.5vw;
+	top: 82vh;
+	border-radius: 2vw;
+	box-shadow: 0px 0.2vw 0.2vw rgba(0, 0, 0, 0.52);
+	background-color: rgba(152, 128, 97, 1);
+	color: #ffffff;
+	font-family: 'Work Sans', sans-serif;
+	font-size: 2vw;
+	text-align: center;
+	text-decoration: none;
+	line-height: 4vh;
+}
+
+/* -------------------------------- Sección Servicios ---------------------------------*/
+.servicios {
+    width: 100%;
+    position: relative;
+    margin: 0 auto; /* Centra horizontalmente */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Asegura que ocupe toda la altura de la ventana */
+}
+
+.rectangle-13 {
+    width: 100%; /* Ajusta el tamaño según tu diseño */
+    height: 300px; /* Ajusta la altura según tu diseño */
+    background-size: cover; /* O usa contain según lo que prefieras */
+    background-position: center; /* Centra la imagen en el contenedor */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+}
+
+.title {
+    color: rgb(255, 255, 255);
+    width: 100%;
+    text-align: center;
+    font-family: 'Yeseva One', sans-serif;
+    font-size: 80px;
+    position: absolute;
+    top: 60px;
+    left: 0;
+}
+
+
+.descripcion-servicios {
+    color: rgba(151, 127, 99, 1);
+    text-align: center;
+    font-family: 'Yeseva One', sans-serif;
+    font-size: 40px;
+    margin: 0;
+    padding: 0 20px; /* Agrega un poco de padding si es necesario */
+    max-width: 90%; /* Limita el ancho máximo para pantallas grandes */
+}
+
+.titulo-servicios {
+    background-color: rgba(128, 196, 249, 1);
+    width: 556px;
+    height: 186px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 60px;
+    margin: 20px auto; /* Agrega espacio alrededor del botón */
+    text-decoration: none;
+    font-family: 'Yeseva One', sans-serif;
+    font-size: 80px;
+    color: white;
+    text-align: center;
+}
+
+
+
+/* -------------------------------- Sección Mision ---------------------------------*/
+/* Sección "Nuestra misión" */
+.nuestra-mision {
+    text-align: center;
+    font-size: 1.5em;
+    color: #2c2c2c;
+    padding: 50px 0;
+}
+
+.mision-titulo {
+    font-size: 2em;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+}
+
+.mision-subtitulo {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 60px;
+}
+
+/* Estilo del slider */
+.slider-container {
+    width: 80%;
+    max-width: 1250px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background: #FDE5C9;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.slide-image {
+    width: 80%;
+    height: auto;
+    border-radius: 15px 15px 0 0;
+    object-fit: cover;
+	margin-top: 5%;
+}
+
+.slide-content {
+    padding: 20px;
+}
+
+.slide-title {
+    font-size: 1.8em;
+    color: #4a4a4a;
+    margin-bottom: 10px;
+}
+
+.slide-text {
+    font-size: 1em;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Botones de navegación */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 1.5em;
+    border-radius: 50%;
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+/* -------------------------------- Sección Servicios ---------------------------------*/
+.services {
+    background: 
+        radial-gradient(circle at top left, #FEE6C7, transparent 20%) 0 0,
+        radial-gradient(circle at top right, #80C4F9, transparent 20%) 100% 0,
+        radial-gradient(circle at bottom right, #FEE6C7, transparent 20%) 100% 100%,
+        radial-gradient(circle at bottom left, #80C4F9, transparent 20%) 0 100%,
+        radial-gradient(circle at center, #ee8e62, transparent 40%) 50% 50%;
+    
+    padding: 50px 0;
+}
+
+.services {
+    text-align: center;
+    padding: 70px 50px;
+    background-color: #fff;
+}
+.services {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+}
+
+.services h2 {
+    font-size: 2.9em;
+    color: #4a148c;
+    margin-bottom: 20px;
+}
+
+.services p {
+	font-size: 1.6em;
+    color: #4a148c;
+	
+}
+
+.service-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.service {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.service img {
+    width: 60px;
+    height: 60px;
+}
+
+.service h3 {
+    font-size: 1.5em;
+    color: #4a148c;
+    margin: 10px 0;
+}
+
+.service a {
+    display: block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4a148c;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.service a:hover {
+    background-color: #7b1fa2;
+}
+@media (max-width: 768px) {
+	.servicess {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.services {
+		margin: 10px 0;
+	}
+}
+@media screen and (max-width: 768px) {
+    .services {
+        grid-template-columns: 1fr;
+    }
+}
+/* |||||||||||||||||||||||||||||||||||||||||||||||Sección hasta aqui|||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+.sedes{
+	background-color:rgba(253, 213, 162, 0.6);
+	text-align: center;
+	font-size: 25px;
+	
+  }
+  
+  .accordion {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	gap: 40px; /* Espacio entre los elementos */
+	height: 400px;
+	transition: 0.3s;
+  }
+  
+  .accordion li {
+	position: relative;
+	overflow: hidden;
+	flex: 0 0 350px; /* Ancho del acordeón en el estado normal */
+	border-radius: 50px;
+	opacity: 0.75;
+	cursor: pointer;
+	transition: transform 0.3s, opacity 0.3s; /* Agrega transición para el hover */
+  }
+  
+  .accordion li:hover {
+	transform: scale(1.2); /* Escalar el elemento en lugar de cambiar el tamaño flex */
+	z-index: 10;
+	opacity: 1;
+  }
+  
+  .accordion li img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	filter: grayscale(0.5);
+  }
+  
+  .accordion h2 {
+	font-weight: 400;
+	font-size: 30px; /* Tamaño de fuente ajustado */
+	line-height: 55px;
+	border-bottom: 2px solid #fff;
+	margin-bottom: 15px;
+	white-space: nowrap;
+	color: #fff; /* Color del texto en el título del acordeón */
+  }
+  
+  .accordion li .content {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1;
+	color: #fff; /* Color del texto en el contenido del acordeón */
+	padding: 20px; /* Ajusta el relleno */
+	background: #02022e;
+	background: linear-gradient(
+	  0deg,
+	  rgb(0 0 0 / 70%) 10%,
+	  rgb(255 255 255 / 0%) 100%
+	);
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s, visibility 0.3s; /* Asegura una transición suave */
+  }
+  
+  .accordion li .content span {
+	position: absolute;
+	z-index: 3;
+	left: 50%;
+	bottom: 60px;
+	transform: translate(-50%, 0);
+	visibility: hidden;
+	opacity: 0;
+	color: #fff; /* Color del texto en el span dentro del contenido del acordeón */
+	transition: opacity 0.3s, visibility 0.3s; /* Asegura una transición suave */
+  }
+  
+  .accordion li:hover .content {
+	opacity: 1;
+	visibility: visible;
+  }
+  
+  .accordion li:hover span {
+	transform: translate(-50%, 0);
+	opacity: 1;
+	visibility: visible;
+  }
+  
+  
+  .botones {
+	margin-left: 10px;
+  }
+  
+  
+  .accordion-container {
+	width: 100%;
+  }
+  
+  .accordion-item {
+	margin-bottom: 10px;
+  }
+  
+  .accordion-button {
+	background-color: #133840;
+	color: #ccc;
+	cursor: pointer;
+	padding: 18px;
+	width: 100%;
+	text-align: left;
+	border: none;
+	outline: none;
+	transition: background-color 0.4s;
+  }
+  
+  .accordion-button.active, .accordion-button:hover {
+	background-color: #5F735A;
+  }
+  
+  .accordion-panel {
+	font-size: 20px;
+	padding: 0 18px;
+	background-color: white;
+	display: none;
+	overflow: hidden;
+  }
+
+
+  .link_mascota {
+	background-color: gray;
+	color: white;
+	padding: 10px;
+	margin-left:20px;
+	border-radius: 5px;
+	font-size: x-large;
+	text-decoration: none;
+	text-align: center;
+  }
+
+  .boton_enviar {
+	position: relative;
+	background-color: #FABB5C;
+	color: white;
+	padding: 10px;
+	border-radius: 5px;
+	font-size: large;
+	text-decoration: none;
+	text-align: center;
+  }
+
+  .forma_mascotas {
+	justify-content: center;
+	padding: 20px;
+	border: purple 2px dotted;
+	margin-top: 150px;
+	margin-left: 300px;
+	margin-right: 300px;
+  }
+
+  /* options de las imagenes*/
+  .options-link .option-icon {
+    border: 3px solid transparent; /* Borde inicial transparente */
+    border-radius: 6px; /* Bordes redondeados */
+    transition: border-color 0.3s ease, filter 0.3s ease; /* Transiciones suaves */
+}
+
+.options-link .option-icon:hover {
+    border-color: #007bff; /* Color del borde al pasar el ratón */
+    filter: brightness(100%); /* Cambio de color al pasar el ratón (opcional) */
+}
+/*Poner lo dde la carta aca lo de todo lo de las mascotas de cada una*/
+.card {
+    background-color: #f9d4a0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    padding: 20px;
+    width: 600px;
+    max-width: 100%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container img {
+    border-radius: 10px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.info-container {
+    flex: 2;
+    margin-left: 20px;
+    color: #703b09;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.info-container p {
+    margin: 5px 0;
+}
+
+.owner-info {
+    float: right;
+}
+
+
+/*Cambio en los botones de las mascotas */
+
+.button-container {
+    display: flex; /* Alinea los botones a la derecha; usa 'center' o 'flex-start' para centrar o alinear a la izquierda */
+	margin-left: 80%;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+/* Estilos para los botones */
+.ButtonVA {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #80C4F9;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ButtonVA:hover {
+    background-color: #68B0E9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.ButtonVA:active {
+    background-color: #5DA8E0;
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+

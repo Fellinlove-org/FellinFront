@@ -1,0 +1,66 @@
+.menu {
+	background-color: rgba(128, 196, 249, 1);
+	height: 98px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 20px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 999;
+    ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        height: 100%; /* Asegura que la altura de los elementos se ajuste */
+        align-items: center; /* Alinea verticalmente los elementos del menú */
+    }
+}
+
+
+
+.logo-container {
+	display: flex;
+	align-items: center;
+    .logo {
+        width: 110px;
+        height: 140px;
+        background-image: url('../../../assets/images/logo_definitivo_1.png');
+        background-size: cover;
+    }
+    .logo-text {
+        font-family: 'Yeseva One', sans-serif;
+        font-size: 24px;
+        color: white;
+        margin-left: 10px;
+    }
+}
+
+
+
+
+.menu-item {
+	font-size: 18px;
+	color: white;
+	text-decoration: none;
+	margin: 0 15px;
+	display: flex;
+	align-items: center; /* Alinea verticalmente */
+}
+
+.menu-item:hover {
+	text-decoration: underline; /* Opcional: agrega un subrayado al pasar el mouse */
+}
+
+.iniciar-sesion {
+	background-color: rgba(124, 153, 180, 1);
+	padding: 5px 20px;
+	border-radius: 20px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.521);
+	font-size: 18px; /* Asegura que el texto se alinee correctamente */
+	display: flex;
+	align-items: center;
+}
