@@ -1,8 +1,11 @@
+
+<br><br><br><br><br>
+
 <div class="container">
-    <div class="form-container" (ngSubmit)="addMascota()">
+    <div class="form-container">
         <h2 class="form-title">Agregar mascota</h2>
 
-          <form class="forma-mascota">
+          <form class="forma-mascota" (ngSubmit)="addMascota()">
             <label for="nombre">✜ Nombre</label>
             <input  type="text" id="nombre" class="form-control" name=" nombre" [(ngModel)] = "formMascota.nombre" >
         
@@ -21,8 +24,9 @@
             <label for="foto">✜ Foto</label>
             <input type="text" id="foto" class="form-control" name=" fotos" [(ngModel)]= "formMascota.foto">
 
-            <button type="submit" class="btn btn-submit" [routerLink]="['/MascotaTabla']">Enviar</button>
+            <button type="submit" class="btn btn-submit" >Enviar</button>
           </form>
     </div>
+    <a class="btn btn-primary" [routerLink]="['/MascotaTabla']"> Tabla</a>
 </div>
 

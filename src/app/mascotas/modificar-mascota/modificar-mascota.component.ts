@@ -42,11 +42,9 @@ export class ModificarMascotaComponent {
   }
 
   modificarMascota() {
-    // Actualizar los datos de la mascota en el servicio
-    this.mascotaService.updateMascota(this.formMascota);
 
-    // Redirigir a la lista de mascotas
-    this.router.navigate(['/mascotas']);
+    this.mascotaService.updateMascota(this.formMascota);
+    this.router.navigate(['/MascotaTabla']);
   }
 }
 
