@@ -1,0 +1,35 @@
+<br><br><br><br><br>
+<br><br><br><br><br>
+
+
+<div class="container">
+    <div class="form-container">
+        <h2 class="form-title">Información de la mascota</h2>
+        <div class="datos-mascota">
+            <img src="{{Mascota.foto}}" 
+            style="width: 100px; height: 100px;" 
+            alt="mascota"
+            class="imagen-mascota">
+
+            <div class="tabla-mascota">
+                
+                <span class="titulo-atributo">✜ Nombre</span><br>
+                <span class="atributo" >{{Mascota.nombre}}</span><br><br>
+        
+                <span class="titulo-atributo">✜ Raza</span><br>
+                <span class="atributo">{{Mascota.raza}}</span><br><br>
+
+                <span class="titulo-atributo">✜ Edad</span><br>
+                <span class="atributo">{{Mascota.edad}}</span><br><br>
+
+                <span class="titulo-atributo">✜ Peso</span><br>
+                <span class="atributo">{{Mascota.peso}}</span><br><br>
+
+                <span class="titulo-atributo">✜ Enfermedad</span><br>
+                <span class="atributo">{{Mascota.enfermedad}}</span><br><br>
+            </div>
+        </div>
+    </div>
+</div>
+<button (click) ="siguiente()" class="btn btn-primary"> Siguiente</button>
+<a class="btn btn-primary" [routerLink]="['/MascotaTabla']"> Tabla</a>
