@@ -1,0 +1,44 @@
+.button-container {
+    display: flex; /* Alinea los botones a la derecha; usa 'center' o 'flex-start' para centrar o alinear a la izquierda */
+    margin-left: 80%;
+    gap: 10px;
+    margin-bottom: 15px;
+
+    .ButtonVA {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #80C4F9;
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        border: none;
+        border-radius: 25px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        &:hover {
+            background-color: #68B0E9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        &:active {
+            background-color: #5DA8E0;
+            transform: translateY(0);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    }
+}
+.options-link {
+    .option-icon {
+        border: 3px solid transparent; /* Borde inicial transparente */
+        border-radius: 6px; /* Bordes redondeados */
+        transition: border-color 0.3s ease, filter 0.3s ease; /* Transiciones suaves */
+
+        &:hover {
+            border-color: #007bff; /* Color del borde al pasar el ratón */
+            filter: brightness(100%); /* Cambio de color al pasar el ratón (opcional) */
+        }
+    }
+}
