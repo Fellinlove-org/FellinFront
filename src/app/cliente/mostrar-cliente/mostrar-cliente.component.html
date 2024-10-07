@@ -1,0 +1,32 @@
+<br><br><br><br><br>
+<br><br><br><br><br>
+
+
+<div class="container">
+    <div class="form-container">
+        <h2 class="form-title">Información del cliente</h2>
+        <div class="datos-cliente">
+            <img src="{{Cliente.foto}}" 
+            style="width: 100px; height: 100px;" 
+            alt="cliente"
+            class="imagen-cliente">
+
+            <div class="tabla-cliente">
+                
+                <span class="titulo-atributo">✜ Nombre</span><br>
+                <span class="atributo" >{{Cliente.nombre}}</span><br><br>
+        
+                <span class="titulo-atributo">✜ Cedula</span><br>
+                <span class="atributo" >{{Cliente.cedula}}</span><br><br>
+
+                <span class="titulo-atributo">✜ Correo</span><br>
+                <span class="atributo" >{{Cliente.correo}}</span><br><br>
+
+                <span class="titulo-atributo">✜ Celular</span><br>
+                <span class="atributo" >{{Cliente.celular}}</span><br><br>
+            </div>
+        </div>
+    </div>
+</div>
+<button (click) ="siguiente()" class="btn btn-primary"> Siguiente</button>
+<a class="btn btn-primary" [routerLink]="['/ClienteTabla']"> Tabla</a>

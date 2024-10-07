@@ -1,5 +1,4 @@
-
-export interface Cliente {
+export interface cliente {
     id: number;
     cedula: string;
     nombre: string;

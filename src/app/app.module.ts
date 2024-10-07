@@ -19,6 +19,9 @@ import { NuevaMascotaComponent } from './mascotas/nueva-mascota/nueva-mascota.co
 import { FormsModule } from '@angular/forms';
 import { EmoticonPipe } from './pipes/emoticon.pipe';
 import { ModificarMascotaComponent } from './mascotas/modificar-mascota/modificar-mascota.component';
+import { ModificarClienteComponent } from './cliente/modificar-cliente/modificar-cliente.component';
+import { MostrarClienteComponent } from './cliente/mostrar-cliente/mostrar-cliente.component';
+import {NuevoClienteComponent} from './cliente/nuevo-cliente/nuevo-cliente.component';
 
 
 @NgModule({
@@ -31,13 +34,16 @@ import { ModificarMascotaComponent } from './mascotas/modificar-mascota/modifica
     ClienteTableComponent,
     DrogaTableComponent,
     TratamientoTableComponent,
-    VeterinarioTableComponent
+    VeterinarioTableComponent,
 
     MascotasTableComponent,
     MostrarMascotaComponent,
     NuevaMascotaComponent,
     EmoticonPipe,
-    ModificarMascotaComponent
+    ModificarMascotaComponent,
+    ModificarClienteComponent,
+    MostrarClienteComponent,
+    NuevoClienteComponent
 
   ],
   imports: [

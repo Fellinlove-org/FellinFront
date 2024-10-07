@@ -1,0 +1,125 @@
+.form-container {
+    background-color: #5383c1; /* Color de fondo */
+    padding: 20px;
+    border-radius: 10px;
+    width: 75%; /* Ancho del formulario */
+    margin-left: 25%;
+    transform: translateX(-20%);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border: 2px solid #ffffff; /* Borde blanco */
+    margin-top: -10%;
+    margin-bottom: 7%;
+
+    .form-title {
+        text-align: center;
+        color: white;
+        margin-bottom: 20px;
+        font-size: 28px; /* Tamaño de fuente más grande */
+        font-weight: bold; /* Hacerlo en negrita */
+    }
+
+    label {
+        color: white;
+        margin-top: 10px;
+        font-weight: bold; /* Etiquetas en negrita */
+    }
+
+    .form-control {
+        margin-bottom: 15px; /* Espaciado entre campos aumentado */
+        border-radius: 8px; /* Bordes redondeados */
+        border: 2px solid #ffffff; /* Bordes blancos */
+    }
+
+    .form-group {
+        display: flex;
+        justify-content: space-between;
+
+        .form-control {
+            width: 48%;
+        }
+    }
+
+    .btn-submit {
+        width: 100%;
+        background-color: #1c7430; /* Verde más oscuro */
+        color: white;
+        font-weight: bold; /* Botón en negrita */
+        border-radius: 8px; /* Bordes redondeados */
+        border: none;
+
+        &:hover {
+            background-color: #145822; /* Color del botón en hover */
+        }
+    }
+
+    .gato-imagen {
+        left: 10%;
+        top: 0%;
+        transform: translateY(100%);
+        max-height: 300px;
+    }
+}
+.datos-cliente {
+    display: flex;
+    justify-content: space-around;
+
+    .imagen-cliente {
+        height: 50%;
+        padding: 40px;
+    }
+
+    .forma-cliente {
+        width: 100%;
+    }
+
+    .tabla-cliente {
+        width: 100%;
+    }
+
+    .titulo-atributo {
+        color: white;
+        font-weight: bold;
+    }
+
+    .atributo {
+        background-color: white;
+        padding: 10px;
+        display: inline-block; /* Para respetar el ancho y alto fijo */
+        width: 100%;
+        border-radius: 10px;
+    }
+}
+
+/* Estilos para los botones */
+.button-container {
+    display: flex; /* Alinea los botones a la derecha; usa 'center' o 'flex-start' para centrar o alinear a la izquierda */
+    margin-left: 80%;
+    gap: 10px;
+    margin-bottom: 15px;
+
+    .ButtonVA {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #80C4F9;
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        border: none;
+        border-radius: 25px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        &:hover {
+            background-color: #68B0E9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        &:active {
+            background-color: #5DA8E0;
+            transform: translateY(0);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    }
+}

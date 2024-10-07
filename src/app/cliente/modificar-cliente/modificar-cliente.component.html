@@ -1,0 +1,31 @@
+<br><br><br><br><br>
+
+<div class="container">
+    <div class="form-container">
+        <h2 class="form-title">Modificar cliente</h2>
+        <div class="datos-cliente">
+            <img th:src="${cliente.foto}" alt="foto del cliente" class="imagen-cliente">
+
+            <form class="forma-cliente" (ngSubmit)="modificarCliente()">
+                <label for="nombre">✜ Nombre</label>
+                <input  type="text" id="nombre" class="form-control" name=" nombre" [(ngModel)] = "formCliente.nombre" >
+
+                <label for="cedula">✜ Cedula</label>
+                <input  type="text" id="cedula" class="form-control" name=" cedula" [(ngModel)] = "formCliente.cedula" >
+
+                <label for="correo">✜ Correo</label>
+                <input  type="text" id="correo" class="form-control" name=" correo" [(ngModel)] = "formCliente.correo" >
+            
+                <label for="celular">✜ Celular</label>
+                <input  type="text" id="celular" class="form-control" name=" celular" [(ngModel)] = "formCliente.celular" >
+                    
+                <label for="foto">✜ Foto</label>
+                <input type="text" id="foto" class="form-control" name=" foto" [(ngModel)]= "formCliente.foto">
+    
+                <button type="submit" class="btn btn-submit">Enviar</button>
+              </form>
+        </div>
+    </div>
+</div>
+
+<a class="ButtonVA" th:href="@{/clientes/all}" th:text="Volver"></a><br><br>
