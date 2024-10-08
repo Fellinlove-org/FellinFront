@@ -34,17 +34,17 @@ export class ModificarMascotaComponent {
     const id = +this.route.snapshot.paramMap.get('id')!;
     
     // Cargar los datos de la mascota en el formulario
-    const mascota = this.mascotaService.findById(id);
-    if (mascota) {
+    //const mascota = this.mascotaService.findById(id);
+    //if (mascota) {
       // Asignamos todos los valores de la mascota seleccionada al formulario
-      this.formMascota = { ...mascota };
-    }
+      //this.formMascota = { ...mascota };
+    //}
   }
 
   modificarMascota() {
 
     this.mascotaService.updateMascota(this.formMascota);
-    this.router.navigate(['/MascotaTabla']);
+    this.router.navigate(['/mascotas/all']);
   }
 }
 

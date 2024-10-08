@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './landing/header/header.component';
 import { FooterComponent } from './landing/footer/footer.component';
 import { HomeComponent } from './landing/home/home.component';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AdminTableComponent } from './admin/admin-table/admin-table.component';
 import { ClienteTableComponent } from './cliente/cliente-table/cliente-table.component';
@@ -22,6 +23,7 @@ import { ModificarMascotaComponent } from './mascotas/modificar-mascota/modifica
 import { ModificarClienteComponent } from './cliente/modificar-cliente/modificar-cliente.component';
 import { MostrarClienteComponent } from './cliente/mostrar-cliente/mostrar-cliente.component';
 import {NuevoClienteComponent} from './cliente/nuevo-cliente/nuevo-cliente.component';
+import { LoginComponent } from './landing/login/login.component';
 
 
 @NgModule({
@@ -43,13 +45,15 @@ import {NuevoClienteComponent} from './cliente/nuevo-cliente/nuevo-cliente.compo
     ModificarMascotaComponent,
     ModificarClienteComponent,
     MostrarClienteComponent,
-    NuevoClienteComponent
+    NuevoClienteComponent,
+    LoginComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

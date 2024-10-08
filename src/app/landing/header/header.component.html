@@ -5,9 +5,14 @@
       <div class="logo-text">Fellinlove</div>
     </div>
     <ul>
-      <li><a href="#home" class="menu-item inicio">INICIO</a></li>
       <li><a href="#nosotros" class="menu-item nosotros">NOSOTROS</a></li>
       <li><a href="#servicios" class="menu-item servicio">SERVICIOS</a></li>
-      <li><a href="" class="menu-item iniciar-sesion">INICIAR SESIÓN</a></li>
+      <ng-container *ngIf="nombre_usuario">
+        <li><a routerLink="/mascotas/all" class="menu-item servicio">MIS MASCOTAS</a></li>
+        <li><a href="#home" class="menu-item iniciar-sesion">{{nombre_usuario}}</a></li>
+      </ng-container>
+      <ng-container *ngIf="!nombre_usuario">
+        <li><a [routerLink]="['/login']" class="menu-item iniciar-sesion">INICIAR SESIÓN</a></li>
+      </ng-container>
     </ul>
 </nav>

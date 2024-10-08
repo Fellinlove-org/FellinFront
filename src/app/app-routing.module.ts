@@ -8,20 +8,25 @@ import { ModificarMascotaComponent } from './mascotas/modificar-mascota/modifica
 import { MostrarClienteComponent } from './cliente/mostrar-cliente/mostrar-cliente.component';
 import { ClienteTableComponent } from './cliente/cliente-table/cliente-table.component';
 import { ModificarClienteComponent } from './cliente/modificar-cliente/modificar-cliente.component';
+import { LoginComponent } from './landing/login/login.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent }, // Ruta para el inicio
-  {path: 'MascotaTabla',component: MascotasTableComponent},
-  {path: 'Mascota/find/:id',component: MostrarMascotaComponent },
-  {path: "NuevaMascota", component: NuevaMascotaComponent},
-  {path: 'Mascota/update/:id', component: ModificarMascotaComponent},
-  {path: 'ClienteTabla', component: ClienteTableComponent},
-  {path: 'Cliente/update/:id', component: ModificarClienteComponent},
-  {path: 'Cliente/find/:id', component: MostrarClienteComponent}
+  { path: '', component: HomeComponent },// Ruta para el inicio
+  {path: 'login', component: LoginComponent}, 
+  {path: 'mascotas/all',component: MascotasTableComponent},
+  {path: 'mascota/find/:id',component: MostrarMascotaComponent },
+  {path: "mascota/add", component: NuevaMascotaComponent},
+  {path: 'mascota/update/:id', component: ModificarMascotaComponent},
+  {path: 'clientes/all', component: ClienteTableComponent},
+  {path: 'clientes/update/:id', component: ModificarClienteComponent},
+  {path: 'cliente/find/:id', component: MostrarClienteComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+
+
+}

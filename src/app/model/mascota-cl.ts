@@ -18,4 +18,6 @@ export class MascotaCL {
     this.enfermedad=enfermedad
     this.foto=foto
    }
+
+   
 }

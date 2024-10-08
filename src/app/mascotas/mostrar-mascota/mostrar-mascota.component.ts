@@ -20,7 +20,7 @@ export class MostrarMascotaComponent {
   ngOnInit(): void {
     console.log("ngOnInit de detail")
     this.route.paramMap.subscribe(params =>{const id= Number(params.get('id'));
-    this.Mascota = this.mascotaService.findById(id)!;
+    //this.Mascota = this.mascotaService.findById(id)!;
     })
   }
 
@@ -29,7 +29,7 @@ export class MostrarMascotaComponent {
   }
 
   siguiente():void{
-    let nextID = this.Mascota.id+1
-    this.router.navigate(['/Mascota/find' , nextID])
+    //let nextID = this.Mascota.id+1
+    //this.router.navigate(['/mascota/find' , nextID])
   }
 }
