@@ -2,6 +2,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { mascota } from '../mascotas';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MascotaService } from 'src/app/service/mascota.service';
+import { DataService } from 'src/app/service/dataService.cl';
+import { cliente } from 'src/app/cliente/cliente';
+import { HttpClient } from '@angular/common/http';
+import { mascotaDTO } from 'src/app/model/mascotaDTO';
+import { ROOT_URL } from 'src/app/app.component';
 
 @Component({
   selector: 'app-modificar-mascota',
@@ -15,6 +20,10 @@ export class ModificarMascotaComponent {
 
   sendMascota!: mascota;
 
+  clienteLogueado !: cliente
+
+  mascotaDTO !: mascotaDTO
+
   formMascota: mascota = {
     id: 0,
     nombre: '',
@@ -25,14 +34,26 @@ export class ModificarMascotaComponent {
     foto: ''
   };
 
-  constructor( private route: ActivatedRoute, private mascotaService: MascotaService, private router: Router)
+  constructor( private route: ActivatedRoute, 
+    private mascotaService: MascotaService, 
+    private router: Router, 
+    private dataService: DataService,
+    private http: HttpClient)
   {
 
   }
   ngOnInit(): void {
     // Obtener el ID de la mascota desde la URL
-    const id = +this.route.snapshot.paramMap.get('id')!;
+    this.dataService.currentMascota.subscribe(mascota => {
+      this.sendMascota = mascota
+      console.log(this.sendMascota);
+      
+    })
+    this.dataService.currentCliente.subscribe(cliente => {
+      this.clienteLogueado = cliente;
+    })
     
+    this.formMascota = this.sendMascota;
     // Cargar los datos de la mascota en el formulario
     //const mascota = this.mascotaService.findById(id);
     //if (mascota) {
@@ -43,7 +64,19 @@ export class ModificarMascotaComponent {
 
   modificarMascota() {
 
-    this.mascotaService.updateMascota(this.formMascota);
+
+    this.mascotaDTO = {
+      mascota: this.formMascota,  // Datos del formulario de la mascota
+      id: this.clienteLogueado.id  // Cédula del cliente logueado
+    };
+    console.log("MascotaDTO: "+this.mascotaDTO);
+    this.http.post<mascota>(ROOT_URL + 'mascotas/update', this.mascotaDTO).subscribe(response => {
+      console.log("Mascota agregada exitosamente:", response);
+      this.router.navigate(['/mascotas/all']);  // Redirigir a la lista de mascotas
+    }, error => {
+          console.error("Error al agregar la mascota:", error);
+    })
+
     this.router.navigate(['/mascotas/all']);
   }
 }

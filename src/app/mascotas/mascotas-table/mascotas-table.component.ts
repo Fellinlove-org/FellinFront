@@ -7,6 +7,7 @@ import { cliente } from 'src/app/cliente/cliente';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ROOT_URL} from 'src/app/app.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mascotas-table',
@@ -23,7 +24,7 @@ export class MascotasTableComponent {
 
   mascotaList!: mascota[] 
 
-  constructor(private mascotaService : MascotaService, private dataService: DataService, private	http: HttpClient){
+  constructor(private mascotaService : MascotaService, private dataService: DataService, private router: Router , private	http: HttpClient){
     
   }
   ngOnInit():void{
@@ -42,13 +43,32 @@ export class MascotasTableComponent {
 
   MostrarMascota(Mascota: mascota) {
     this.selectedMascota = Mascota;
+    this.dataService.changeMascota(Mascota);
+    this.router.navigate(['/mascota/find/' + this.selectedMascota.id]);
   }
   agregarMascota(Mascota: mascota) {
     this.mascotaList.push(Mascota);
   }
 
-  eliminarMascota(mascota: mascota) {
-    const index = this.mascotaList.indexOf(mascota);
-      this.mascotaList.splice(index, 1);
+  modificarMascota(Mascota: mascota) {
+    this.selectedMascota = Mascota;
+    this.dataService.changeMascota(Mascota);
+    this.router.navigate(['/mascota/update/' + this.selectedMascota.id]);
+  }
+
+  eliminarMascota(Mascota: mascota) {
+    this.selectedMascota = Mascota;
+    this.dataService.changeMascota(Mascota);
+    console.log(this.selectedMascota.nombre);
+    this.http.get<mascota>(ROOT_URL + 'mascotas/delete/' + this.selectedMascota.id).subscribe()
+    this.mascotaList = this.mascotaList.filter(mascota => mascota !== this.selectedMascota);
+    this.router.navigate(['/mascotas/all']);
+  }
+  ngOnChanges(): void {
+    this.mascotas$ = this.http.get<mascota>(ROOT_URL + 'mascotas/search/' + this.clienteLogueado.cedula)
+    this.mascotas$.subscribe(mascotasInfo => {
+        console.log(mascotasInfo)
+        this.mascotaList = mascotasInfo
+    })
   }
 }
