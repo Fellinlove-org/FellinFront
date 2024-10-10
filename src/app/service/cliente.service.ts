@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { cliente } from '../cliente/cliente';
+import { Cliente } from '../cliente/cliente';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ export class ClienteService {
 
   constructor() { }
 
-  clienteList: cliente[] = [
+  clienteList: Cliente[] = [
     {
       id: 1,
       cedula: '123456789',
@@ -55,21 +55,21 @@ export class ClienteService {
     return this.clienteList;
   }
 
-  findById(id: number): cliente | undefined {
+  findById(id: number): Cliente | undefined {
     const cliente = this.clienteList.find(o => o.id === id);
     return cliente;
   }
 
-  addCliente(cliente: cliente){
+  addCliente(cliente: Cliente){
     this.clienteList.push(cliente);
   }
 
-  deleteCliente(cliente: cliente){
+  deleteCliente(cliente: Cliente){
     var index = this.clienteList.indexOf(cliente);
     this.clienteList.splice(index, 1);
   }
 
-  updateCliente(updatedCliente: cliente): void {
+  updateCliente(updatedCliente: Cliente): void {
     const index = this.clienteList.findIndex(cliente => cliente.id === updatedCliente.id);
     if (index !== -1) {
       this.clienteList[index] = updatedCliente;

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { cliente } from '../cliente';
+import { Cliente } from '../cliente';
 import { ClienteService } from 'src/app/service/cliente.service';
 import { Router } from '@angular/router';
 
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class NuevoClienteComponent {
 
 @Output()
-  nuevoClienteEvent = new EventEmitter<cliente>();
+  nuevoClienteEvent = new EventEmitter<Cliente>();
 
   constructor(private clienteService: ClienteService,private router: Router) { 
 
@@ -23,9 +23,9 @@ export class NuevoClienteComponent {
     this.router.navigate(['/ClienteTabla']);
   }
 
-  sendCliente!: cliente;
+  sendCliente!: Cliente;
 
-  formCliente: cliente = {
+  formCliente: Cliente = {
     id: 0,
     nombre: '',
     cedula: '',

@@ -9,10 +9,15 @@ import { MostrarClienteComponent } from './cliente/mostrar-cliente/mostrar-clien
 import { ClienteTableComponent } from './cliente/cliente-table/cliente-table.component';
 import { ModificarClienteComponent } from './cliente/modificar-cliente/modificar-cliente.component';
 import { LoginComponent } from './landing/login/login.component';
+import { UrlTestComponent } from './test/url-test/url-test.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },// Ruta para el inicio
-  {path: 'login', component: LoginComponent}, 
+  {path: '', component: HomeComponent },// Ruta para el inicio
+  {path: 'test/:id/:name', component: UrlTestComponent},
+  {path: 'home/:cedula', component: HomeComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'mascotas/:id', component: MascotasTableComponent},
   {path: 'mascotas/all',component: MascotasTableComponent},
   {path: 'mascota/find/:id',component: MostrarMascotaComponent },
   {path: "mascota/add", component: NuevaMascotaComponent},

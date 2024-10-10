@@ -1,11 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { mascota } from '../mascotas';
+import { Mascota } from '../mascota';
 import { MascotaService } from 'src/app/service/mascota.service';
 import { Router } from '@angular/router';
 import { ROOT_URL } from 'src/app/app.component';
 import { Observable } from 'rxjs';
-import { DataService } from 'src/app/service/dataService.cl';
-import { cliente } from 'src/app/cliente/cliente';
+import { Cliente } from 'src/app/cliente/cliente';
 import { HttpClient } from '@angular/common/http';
 import { mascotaDTO } from 'src/app/model/mascotaDTO';
 
@@ -17,13 +16,14 @@ import { mascotaDTO } from 'src/app/model/mascotaDTO';
 export class NuevaMascotaComponent {
 
 @Output()
-  nuevaMascotaEvent = new EventEmitter<mascota>();
+  nuevaMascotaEvent = new EventEmitter<Mascota>();
 
   mascotas$ : Observable<any> = new Observable();
-  clienteLogueado !: cliente
+  clienteLogueado !: Cliente
   mascotaDTO !: mascotaDTO
+  sendMascota!: Mascota;
 
-  formMascota: mascota = {
+  formMascota: Mascota = {
     id: 0,
     nombre: '',
     raza: '',
@@ -33,10 +33,11 @@ export class NuevaMascotaComponent {
     foto: ''
   };
 
-  constructor(private mascotaService: MascotaService,private router: Router, private dataService: DataService, private http: HttpClient) {} 
+  constructor(private mascotaService: MascotaService,private router: Router, private http: HttpClient) {} 
 
 
   addMascota() {
+    /*
     this.dataService.currentCliente.subscribe(cliente => {
       this.clienteLogueado = cliente;
     })
@@ -53,11 +54,11 @@ export class NuevaMascotaComponent {
     }, error => {
           console.error("Error al agregar la mascota:", error);
     })
-    
+    */
     
   }
 
-  sendMascota!: mascota;
+  
 
   
 

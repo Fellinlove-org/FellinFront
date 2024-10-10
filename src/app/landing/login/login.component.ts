@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { DataService } from 'src/app/service/dataService.cl';
+import { Router } from '@angular/router';
+import { Cliente } from 'src/app/cliente/cliente';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -8,13 +10,14 @@ import { DataService } from 'src/app/service/dataService.cl';
 })
 export class LoginComponent {
 
-  constructor(private dataService: DataService) {}
+  constructor(private router: Router, private userService: UserService) {}
 
   cedula: string = '';
 
 
   login() {
     console.log(`cedula en el form ${this.cedula}`);
-    this.dataService.changeCedula(this.cedula);
+    this.userService.login(this.cedula);
+    this.router.navigate(['/home/' + this.cedula]);
   }
 }

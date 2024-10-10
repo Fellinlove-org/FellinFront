@@ -24,6 +24,7 @@ import { ModificarClienteComponent } from './cliente/modificar-cliente/modificar
 import { MostrarClienteComponent } from './cliente/mostrar-cliente/mostrar-cliente.component';
 import {NuevoClienteComponent} from './cliente/nuevo-cliente/nuevo-cliente.component';
 import { LoginComponent } from './landing/login/login.component';
+import { UrlTestComponent } from './test/url-test/url-test.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { LoginComponent } from './landing/login/login.component';
     ModificarClienteComponent,
     MostrarClienteComponent,
     NuevoClienteComponent,
-    LoginComponent
+    LoginComponent,
+    UrlTestComponent
 
   ],
   imports: [

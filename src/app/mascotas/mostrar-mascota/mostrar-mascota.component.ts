@@ -1,9 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { mascota } from '../mascotas';
+import { Mascota } from '../mascota';
 import { MascotaService } from 'src/app/service/mascota.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { cliente } from 'src/app/cliente/cliente';
-import { DataService } from 'src/app/service/dataService.cl';
+import { Cliente } from 'src/app/cliente/cliente';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ROOT_URL } from 'src/app/app.component';
@@ -16,20 +15,20 @@ import { ROOT_URL } from 'src/app/app.component';
 export class MostrarMascotaComponent {
 
   mascota$ : Observable<any> = new Observable();
-  mascota!:mascota;
+  mascota!: Mascota;
 
-  clienteLogueado !: cliente
+  clienteLogueado !: Cliente
 
   constructor(private mascotaService: MascotaService, 
     private route: ActivatedRoute, 
-    private router: Router, 
-    private dataService: DataService, 
+    private router: Router,
     private http: HttpClient) {
     
   } 
 
 
   ngOnInit(): void {
+    /*
     console.log("ngOnInit de detail")
     this.dataService.currentCliente.subscribe(cliente => {
       this.clienteLogueado = cliente;
@@ -44,6 +43,7 @@ export class MostrarMascotaComponent {
         console.log(mascotaInfo)
         this.mascota = mascotaInfo
     })
+    */
   }
 
   ngOnChanges(): void {

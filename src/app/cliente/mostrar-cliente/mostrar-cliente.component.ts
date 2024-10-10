@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { cliente } from '../cliente';
+import { Cliente } from '../cliente';
 import { ClienteService } from 'src/app/service/cliente.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class MostrarClienteComponent {
 
   @Input()
-    Cliente!:cliente;
+    Cliente !: Cliente;
 
   constructor(private clienteService: ClienteService, private route: ActivatedRoute, private router: Router) { 
 

@@ -1,6 +1,6 @@
-import { mascota } from "../mascotas/mascotas";
+import { Mascota } from "../mascotas/mascota";
 
 export interface mascotaDTO{
-    mascota: mascota;
+    mascota: Mascota;
     id: number;
 }

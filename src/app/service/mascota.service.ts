@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { mascota } from '../mascotas/mascotas';
+import { Mascota } from '../mascotas/mascota';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ export class MascotaService {
 
   constructor() { }
 
-  mascotaList: mascota[] = [
+  mascotaList: Mascota[] = [
     {
       id: 1,
       nombre: 'Luna',
@@ -42,21 +42,21 @@ export class MascotaService {
     return this.mascotaList;
   }
 
-  findById(id: number): mascota | undefined {
+  findById(id: number): Mascota | undefined {
     const mascota = this.mascotaList.find(o => o.id === id);
     return mascota;
   }
 
-  addMascota(mascota: mascota){
+  addMascota(mascota: Mascota){
     this.mascotaList.push(mascota);
   }
 
-  deleteMascota(mascota: mascota){
+  deleteMascota(mascota: Mascota){
     var index = this.mascotaList.indexOf(mascota);
     this.mascotaList.splice(index, 1);
   }
 
-  updateMascota(updatedMascota: mascota): void {
+  updateMascota(updatedMascota: Mascota): void {
     const index = this.mascotaList.findIndex(mascota => mascota.id === updatedMascota.id);
     if (index !== -1) {
       this.mascotaList[index] = updatedMascota;

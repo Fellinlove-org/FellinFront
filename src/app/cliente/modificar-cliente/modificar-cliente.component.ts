@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { cliente } from '../cliente';
+import { Cliente } from '../cliente';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClienteService } from 'src/app/service/cliente.service';
 
@@ -11,11 +11,11 @@ import { ClienteService } from 'src/app/service/cliente.service';
 export class ModificarClienteComponent {
 
   @Output()
-  nuevaClienteEvent = new EventEmitter<cliente>();
+  nuevaClienteEvent = new EventEmitter<Cliente>();
 
-  sendCliente!: cliente;
+  sendCliente!: Cliente;
 
-  formCliente: cliente = {
+  formCliente: Cliente = {
     id: 0,
     nombre: '',
     cedula: '',

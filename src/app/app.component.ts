@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { DataService } from './service/dataService.cl';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { cliente } from './cliente/cliente';
+import { Cliente } from './cliente/cliente';
 import { Observable } from 'rxjs';
 import { ClienteCL } from './model/cliente-cl';
+import { UserService } from './service/user.service';
+import { Veterinario } from './veterinario/veterinario';
+import { Admin } from './admin/admin';
 
 
 export const ROOT_URL = 'http://localhost:8090/';
@@ -20,39 +22,43 @@ export const ROOT_URL = 'http://localhost:8090/';
 export class AppComponent {
   
 
-  constructor(private dataService: DataService, private router: Router, private	http: HttpClient) {}
+  constructor(private router: Router, private	http: HttpClient, private userService: UserService) {}
 
   
 
   title = 'FellinFront';
 
-  //cambiar a usuario logueado
-  //logueado !: cliente 
-  //logueado = "NOMBRE QUE VIENE DEL API"
-  cliente_logueado !: cliente 
+  userType !: string
+  userName !: string
+  cedula !: string
+
+  cliente_logueado !: Cliente 
+  veterinario_logueado !: Veterinario
+  admin_logueado !: Admin
 
   cliente$ : Observable<any> = new Observable();
 
 
   ngOnInit() {
-    this.dataService.currentCedula.subscribe(cedula => {
-      console.log(`Cédula desde el componente login: ${cedula}`);
-      //llamado al api+
-      this.cliente$ = this.http.get<cliente>(ROOT_URL + 'clientes/search/' + cedula);
-      this.cliente$.subscribe(clienteInfo => {
-        console.log(clienteInfo)
-        this.cliente_logueado = clienteInfo
-        this.cargarCliente(this.cliente_logueado)
-      }
-      )
-      this.router.navigate(['/']);
-    });
+    this.userService.currentCliente.subscribe((cliente) => {
+      this.cliente_logueado = cliente
+      this.userName = this.cliente_logueado.nombre
+      this.cedula = this.cliente_logueado.cedula
+    })
+    this.userService.currentVeterinario.subscribe((veterinario) => {
+      this.veterinario_logueado = veterinario
+      this.userName = this.veterinario_logueado.nombre
+      this.cedula = this.veterinario_logueado.cedula
+    })
+    this.userService.currentAdmin.subscribe((admin) => {
+      this.admin_logueado = admin
+      this.userName = this.admin_logueado.nombre
+      this.cedula = this.admin_logueado.cedula
+    })
+    this.userService.currentUserType.subscribe(userType => this.userType = userType)
   }
 
-  cargarCliente(cliente : cliente) {
-    console.log(`cliente logueado ${cliente.cedula}`);
-    this.dataService.changeCliente(cliente);
-  }
+
 
 
 }

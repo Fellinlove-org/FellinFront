@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { cliente } from '../cliente';
+import { Cliente } from '../cliente';
 import { ClienteCL } from 'src/app/model/cliente-cl';
 import { ClienteService } from 'src/app/service/cliente.service';
 
@@ -10,9 +10,9 @@ import { ClienteService } from 'src/app/service/cliente.service';
 })
 export class ClienteTableComponent{
 
-  selectedCliente!: cliente;
+  selectedCliente!: Cliente;
 
-  clienteList!: cliente[] 
+  clienteList!: Cliente[] 
 
   constructor(private clienteService : ClienteService){
     
@@ -21,14 +21,14 @@ export class ClienteTableComponent{
     this.clienteList=this.clienteService.findAll();
   }
 
-  MostrarCliente(Cliente: cliente) {
-    this.selectedCliente = Cliente;
+  MostrarCliente(cliente: Cliente) {
+    this.selectedCliente = cliente;
   }
-  agregarCliente(Cliente: cliente) {
-    this.clienteList.push(Cliente);
+  agregarCliente(cliente: Cliente) {
+    this.clienteList.push(cliente);
   }
 
-  eliminarCliente(cliente: cliente) {
+  eliminarCliente(cliente: Cliente) {
     const index = this.clienteList.indexOf(cliente);
       this.clienteList.splice(index, 1);
   }
