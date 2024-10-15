@@ -1,0 +1,34 @@
+<br><br><br><br><br>
+
+<div class="container">
+    <div class="form-container">
+        <h2 class="form-title">Modificar veterinario</h2>
+        <div class="datos-veterinario">
+            <img th:src="${veterinario.foto}" alt="foto del veterinario" class="imagen-veterinario">
+
+            <form class="forma-veterinario" (ngSubmit)="modificarVeterinario()">
+                <label for="nombre">✜ Nombre</label>
+                <input  type="text" id="nombre" class="form-control" name=" nombre" [(ngModel)] = "formVeterinario.nombre" >
+
+                <label for="cedula">✜ Cedula</label>
+                <input  type="text" id="cedula" class="form-control" name=" cedula" [(ngModel)] = "formVeterinario.cedula" >
+
+                <label for="correo">✜ Correo</label>
+                <input  type="text" id="correo" class="form-control" name=" correo" [(ngModel)] = "formVeterinario.correo" >
+            
+                <label for="password">✜ Celular</label>
+                <input  type="text" id="password" class="form-control" name=" password" [(ngModel)] = "formVeterinario.password" >
+                
+                <label for="especialidad">✜ Especialidad</label>
+                <input  type="text" id="especialidad" class="form-control" name=" especialidad" [(ngModel)] = "formVeterinario.especialidad" >
+
+                <label for="foto">✜ Foto</label>
+                <input type="text" id="foto" class="form-control" name=" foto" [(ngModel)]= "formVeterinario.foto">
+    
+                <button type="submit" class="btn btn-submit">Enviar</button>
+              </form>
+        </div>
+    </div>
+</div>
+
+<a class="ButtonVA" th:href="@{/veterinarios/all}" th:text="Volver"></a><br><br>

@@ -11,6 +11,9 @@ import { ModificarClienteComponent } from './cliente/modificar-cliente/modificar
 import { LoginComponent } from './landing/login/login.component';
 import { UrlTestComponent } from './test/url-test/url-test.component';
 import { AppComponent } from './app.component';
+import { VeterinarioTableComponent } from './veterinario/veterinario-table/veterinario-table.component';
+import { ModificarVeterinarioComponent } from './veterinario/modificar-veterinario/modificar-veterinario.component';
+import { MostrarVeterinarioComponent } from './veterinario/mostrar-veterinario/mostrar-veterinario.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent },// Ruta para el inicio
@@ -24,7 +27,10 @@ const routes: Routes = [
   {path: 'mascota/update/:id', component: ModificarMascotaComponent},
   {path: 'clientes/all', component: ClienteTableComponent},
   {path: 'clientes/update/:id', component: ModificarClienteComponent},
-  {path: 'cliente/find/:id', component: MostrarClienteComponent}
+  {path: 'cliente/find/:id', component: MostrarClienteComponent},
+  {path: 'veterinarios/all', component: VeterinarioTableComponent},
+  {path: 'veterinarios/update/:id', component: ModificarVeterinarioComponent},
+  {path: 'veterinario/find/:id', component: MostrarVeterinarioComponent},
 ];
 
 @NgModule({

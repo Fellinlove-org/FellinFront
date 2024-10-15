@@ -25,6 +25,9 @@ import { MostrarClienteComponent } from './cliente/mostrar-cliente/mostrar-clien
 import {NuevoClienteComponent} from './cliente/nuevo-cliente/nuevo-cliente.component';
 import { LoginComponent } from './landing/login/login.component';
 import { UrlTestComponent } from './test/url-test/url-test.component';
+import { ModificarVeterinarioComponent } from './veterinario/modificar-veterinario/modificar-veterinario.component';
+import { MostrarVeterinarioComponent } from './veterinario/mostrar-veterinario/mostrar-veterinario.component';
+import { NuevoVeterinarioComponent } from './veterinario/nuevo-veterinario/nuevo-veterinario.component';
 
 
 @NgModule({
@@ -48,7 +51,10 @@ import { UrlTestComponent } from './test/url-test/url-test.component';
     MostrarClienteComponent,
     NuevoClienteComponent,
     LoginComponent,
-    UrlTestComponent
+    UrlTestComponent,
+    ModificarVeterinarioComponent,
+    MostrarVeterinarioComponent,
+    NuevoVeterinarioComponent
 
   ],
   imports: [
