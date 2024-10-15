@@ -1,0 +1,30 @@
+<br><br><br><br><br>
+
+<div class="container">
+    <div class="form-container">
+        <h2 class="form-title">Agregar Cliente</h2>
+
+          <form class="forma-cliente" (ngSubmit)="addCliente()">
+            <label for="nombre">✜ Nombre</label>
+            <input  type="text" id="nombre" class="form-control" name=" nombre" [(ngModel)] = "formVeterinario.nombre" >
+        
+            <label for="cedula">✜ Cedula</label>
+            <input type="text" id="cedula" class="form-control" name="cedula" [(ngModel)]= "formVeterinario.cedula">
+                
+            <label for="correo">✜ Correo</label>
+            <input type="text" id="correo" class="form-control" name=" correo" [(ngModel)]= "formVeterinario.correo">
+        
+            <label for="celular">✜ Celular</label>
+            <input type="text" id="celular" class="form-control" name=" celular" [(ngModel)]= "formVeterinario.celular">
+
+            <label for=" especialidad">✜ Especialidad</label>
+            <input type="text" id=" especialidad" class="form-control" name=" especialidad" [(ngModel)]= "formVeterinario.especialidad">
+                
+            <label for="foto">✜ Foto</label>
+            <input type="text" id="foto" class="form-control" name=" fotos" [(ngModel)]= "formVeterinario.foto">
+
+            <button type="submit" class="btn btn-submit" >Enviar</button>
+          </form>
+    </div>
+    <a class="btn btn-primary" [routerLink]="['/veterinario/all']"> Tabla</a>
+</div>

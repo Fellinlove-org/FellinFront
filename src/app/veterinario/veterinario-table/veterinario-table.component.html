@@ -1,1 +1,49 @@
-<p>veterinario-table works!</p>
+<br><br><br><br><br>
+
+<div class="button-container">
+    <a class="ButtonVA" [routerLink]="['/Nuevocliente']" th:text="Agregar">Agregar</a>
+    <a class="ButtonVA" th:href="@{/}" th:text="Volver">Volver</a>
+  </div>
+  
+  <table class="table table-striped table-bordered border-primaryx" style="width: 80%; margin: 0 auto; text-align: center;">
+  
+      <thead class="table-dark">
+          <tr>
+              <th>foto</th>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Cedula</th>
+              <th>Correo</th>
+              <th>Celular</th>
+              <th>Options</th>
+          </tr>
+      </thead>
+      <tbody>
+        <br>
+          <br>
+          <tr *ngFor="let cliente of clienteList">
+              <td> 
+                <img src="{{veterinario.foto}}" 
+                style="width: 100px; height: 100px;" 
+                alt="cliente"
+                />
+              </td>
+              <td> {{veterinario.id}}</td>
+              <td> {{veterinario.nombre}}</td>
+              <td> {{veterinario.cedula}}</td>
+              <td> {{veterinario.correo}}</td>
+              <td> {{veterinario.especialidad}}</td>
+              <td><a [routerLink]="['/Cliente/find', cliente.id]" class="options-link" >
+                <img src="https://static.vecteezy.com/system/resources/previews/009/356/887/non_2x/eye-icon-sign-symbol-design-free-png.png" width="40px" class="option-icon" alt="Ver">
+              </a>
+              <a [routerLink]="['/Cliente/update', cliente.id]" class="options-link">
+                <img src="https://cdn-icons-png.flaticon.com/128/45/45406.png" width="40px" class="option-icon" alt="Editar">
+              </a>
+              <a  class="options-link" (click)="eliminarCliente(cliente)">
+                <img src="https://cdn-icons-png.flaticon.com/512/1017/1017479.png" width="40px" class="option-icon" alt="Eliminar">
+              </a>
+              </td>
+              
+          </tr>
+      </tbody>
+  </table>
