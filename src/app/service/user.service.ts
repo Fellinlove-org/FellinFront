@@ -65,7 +65,7 @@ export class UserService {
     switch (userType) {
       case 'veterinario':
         console.log('veterinario logueado');
-        this.veterinario$ = this.http.get<Veterinario>(`http://localhost:8090/veterinario/search/${cedula}`);
+        this.veterinario$ = this.http.get<Veterinario>(`http://localhost:8090/veterinarios/search/${cedula}`);
         this.veterinario$.subscribe(veterinario => {
           this.changeVeterinario(veterinario);
         })
@@ -79,7 +79,7 @@ export class UserService {
         break;
       case 'cliente':
         console.log('cliente logueado');
-        this.cliente$ = this.http.get<Cliente>(`http://localhost:8090/cliente/search/${cedula}`);
+        this.cliente$ = this.http.get<Cliente>(`http://localhost:8090/clientes/search/${cedula}`);
         this.cliente$.subscribe(cliente => {
           this.changeCliente(cliente);
         })

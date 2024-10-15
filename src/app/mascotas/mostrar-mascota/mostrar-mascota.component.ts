@@ -19,6 +19,8 @@ export class MostrarMascotaComponent {
 
   clienteLogueado !: Cliente
 
+  id : string | null | undefined
+
   constructor(private mascotaService: MascotaService, 
     private route: ActivatedRoute, 
     private router: Router,
@@ -28,22 +30,14 @@ export class MostrarMascotaComponent {
 
 
   ngOnInit(): void {
-    /*
-    console.log("ngOnInit de detail")
-    this.dataService.currentCliente.subscribe(cliente => {
-      this.clienteLogueado = cliente;
+    this.route.paramMap.subscribe(params => {
+      this.id = params.get('id');
     });
-    this.dataService.currentMascota.subscribe(mascota => {
+
+    this.mascotaService.findById(this.id!).subscribe(mascota => {
       this.mascota = mascota
-      console.log(mascota);
-      
+      console.log(this.mascota);
     })
-    this.mascota$ = this.http.get<mascota>(ROOT_URL + 'mascotas/find/' + this.mascota.id)
-    this.mascota$.subscribe(mascotaInfo => {
-        console.log(mascotaInfo)
-        this.mascota = mascotaInfo
-    })
-    */
   }
 
   ngOnChanges(): void {

@@ -34,17 +34,25 @@
             <td> {{cliente.cedula}}</td>
             <td> {{cliente.correo}}</td>
             <td> {{cliente.celular}}</td>
-            <td><a [routerLink]="['/Cliente/find', cliente.id]" class="options-link" >
+
+            <ng-container *ngIf=" this.rol== 'veterinario'">
+            <td><a (click)="MostrarCliente(cliente)" class="options-link" >
               <img src="https://static.vecteezy.com/system/resources/previews/009/356/887/non_2x/eye-icon-sign-symbol-design-free-png.png" width="40px" class="option-icon" alt="Ver">
             </a>
-            <a [routerLink]="['/Cliente/update', cliente.id]" class="options-link">
+          </ng-container>
+
+          <ng-container *ngIf=" this.rol== 'administrador'">
+            <td><a (click)="MostrarCliente(cliente)" class="options-link" >
+              <img src="https://static.vecteezy.com/system/resources/previews/009/356/887/non_2x/eye-icon-sign-symbol-design-free-png.png" width="40px" class="option-icon" alt="Ver">
+            </a>
+            <a (click)=" agregarCliente(cliente)" class="options-link">
               <img src="https://cdn-icons-png.flaticon.com/128/45/45406.png" width="40px" class="option-icon" alt="Editar">
             </a>
             <a  class="options-link" (click)="eliminarCliente(cliente)">
               <img src="https://cdn-icons-png.flaticon.com/512/1017/1017479.png" width="40px" class="option-icon" alt="Eliminar">
             </a>
             </td>
-            
+          </ng-container>
         </tr>
     </tbody>
 </table>

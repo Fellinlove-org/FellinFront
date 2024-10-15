@@ -23,6 +23,8 @@ export class ModificarMascotaComponent {
 
   mascotaDTO !: mascotaDTO
 
+  id : string | null | undefined
+
   formMascota: Mascota = {
     id: 0,
     nombre: '',
@@ -42,42 +44,30 @@ export class ModificarMascotaComponent {
   }
   ngOnInit(): void {
     // Obtener el ID de la mascota desde la URL
-    /*
-    this.dataService.currentMascota.subscribe(mascota => {
-      this.sendMascota = mascota
-      console.log(this.sendMascota);
-      
-    })
-    this.dataService.currentCliente.subscribe(cliente => {
-      this.clienteLogueado = cliente;
-    })
-      */
     
-    this.formMascota = this.sendMascota;
-    // Cargar los datos de la mascota en el formulario
-    //const mascota = this.mascotaService.findById(id);
-    //if (mascota) {
-      // Asignamos todos los valores de la mascota seleccionada al formulario
-      //this.formMascota = { ...mascota };
-    //}
+    this.route.paramMap.subscribe(params => {
+      this.id = params.get('id');
+      this.mascotaService.findById(this.id!).subscribe(mascota => {
+        this.sendMascota = mascota
+        this.formMascota = mascota;
+        console.log(this.sendMascota);
+      })
+    });
   }
 
   modificarMascota() {
-
-
     this.mascotaDTO = {
       mascota: this.formMascota,  // Datos del formulario de la mascota
       id: this.clienteLogueado.id  // Cédula del cliente logueado
     };
-    console.log("MascotaDTO: "+this.mascotaDTO);
-    this.http.post<Mascota>(ROOT_URL + 'mascotas/update', this.mascotaDTO).subscribe(response => {
-      console.log("Mascota agregada exitosamente:", response);
-      this.router.navigate(['/mascotas/all']);  // Redirigir a la lista de mascotas
-    }, error => {
-          console.error("Error al agregar la mascota:", error);
-    })
-
-    this.router.navigate(['/mascotas/all']);
+    this.mascotaService.updateMascota(this.mascotaDTO).subscribe(
+      () => {
+        console.log('Mascota agregada:', this.mascotaDTO);
+      },
+      (error) => {
+        console.error('Error al agregar la mascota:', error);
+      }
+    );
   }
 }
 

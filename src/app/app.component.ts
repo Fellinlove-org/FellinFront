@@ -31,6 +31,7 @@ export class AppComponent {
   userType !: string
   userName !: string
   cedula !: string
+  id !: number
 
   cliente_logueado !: Cliente 
   veterinario_logueado !: Veterinario
@@ -44,6 +45,7 @@ export class AppComponent {
       this.cliente_logueado = cliente
       this.userName = this.cliente_logueado.nombre
       this.cedula = this.cliente_logueado.cedula
+      this.id = this.cliente_logueado.id
     })
     this.userService.currentVeterinario.subscribe((veterinario) => {
       this.veterinario_logueado = veterinario

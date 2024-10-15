@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Veterinario } from '../veterinario';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nuevo-veterinario',
@@ -7,4 +9,21 @@ import { Component } from '@angular/core';
 })
 export class NuevoVeterinarioComponent {
 
+  constructor(
+    private router: Router
+  ){}
+
+  formVeterinario: Veterinario = {
+    id: 0,
+    nombre: '',
+    cedula: '',
+    correo: '',
+    password: '',
+    especialidad: '',
+    foto: ''
+  };
+
+  addVeterinario() {
+    this.router.navigate(['/veterinario/all']);
+  }
 }

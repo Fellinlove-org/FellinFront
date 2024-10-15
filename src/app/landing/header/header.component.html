@@ -13,15 +13,16 @@
           <li><a href="#home" class="menu-item iniciar-sesion">{{nombre_usuario}}</a></li>
         </ng-container>
         <ng-container *ngIf="userType == 'veterinario'">
-          <li><a [routerLink]="['/mascotas/all']" class="menu-item servicio">MASCOTAS</a></li>
-          <li><a [routerLink]="['/mascotas/' + cedula]" class="menu-item servicio">TRATAMIENTOS</a></li>
+          <li><a [routerLink]="['/mascotas/veterinario/' + cedula]" class="menu-item servicio">MASCOTAS</a></li>
+          <li><a [routerLink]="['/tratamientos/all' ]" class="menu-item servicio">TRATAMIENTOS</a></li>
           <li><a href="#home" class="menu-item iniciar-sesion">{{nombre_usuario}}</a></li>
         </ng-container>
         <ng-container *ngIf="userType == 'administrador'">
-          <li><a [routerLink]="['/mascotas/all']" class="menu-item servicio">MASCOTAS</a></li>
+          <li><a [routerLink]="['/mascotas/administrador/ + cedula']" class="menu-item servicio">MASCOTAS</a></li>
           <li><a [routerLink]="['/mascotas/' + cedula]" class="menu-item servicio">TRATAMIENTOS</a></li>
-          <li><a [routerLink]="['/mascotas/' + cedula]" class="menu-item servicio">CLIENTES</a></li>
-          <li><a [routerLink]="['/mascotas/' + cedula]" class="menu-item servicio">VETERINARIOS</a></li>
+          <li><a [routerLink]="['/clientes/administrador/' + cedula]" class="menu-item servicio">CLIENTES</a></li>
+          <li><a [routerLink]="['/veterinarios/administrador/' + cedula]" class="menu-item servicio">VETERINARIOS</a></li>
+          <li><a [routerLink]="['/mascotas/' + cedula]" class="menu-item servicio">DASHBOARD</a></li>
           <li><a href="#home" class="menu-item iniciar-sesion">{{nombre_usuario}}</a></li>
         </ng-container>
       </ng-container>

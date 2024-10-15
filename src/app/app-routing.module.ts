@@ -10,7 +10,6 @@ import { ClienteTableComponent } from './cliente/cliente-table/cliente-table.com
 import { ModificarClienteComponent } from './cliente/modificar-cliente/modificar-cliente.component';
 import { LoginComponent } from './landing/login/login.component';
 import { UrlTestComponent } from './test/url-test/url-test.component';
-import { AppComponent } from './app.component';
 import { VeterinarioTableComponent } from './veterinario/veterinario-table/veterinario-table.component';
 import { ModificarVeterinarioComponent } from './veterinario/modificar-veterinario/modificar-veterinario.component';
 import { MostrarVeterinarioComponent } from './veterinario/mostrar-veterinario/mostrar-veterinario.component';
@@ -21,14 +20,17 @@ const routes: Routes = [
   {path: 'home/:cedula', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'mascotas/:id', component: MascotasTableComponent},
+  {path: 'mascotas/:rol/:cedula', component: MascotasTableComponent},
   {path: 'mascotas/all',component: MascotasTableComponent},
   {path: 'mascota/find/:id',component: MostrarMascotaComponent },
   {path: "mascota/add", component: NuevaMascotaComponent},
   {path: 'mascota/update/:id', component: ModificarMascotaComponent},
+  {path: 'clientes/:rol/:cedula', component: ClienteTableComponent},
   {path: 'clientes/all', component: ClienteTableComponent},
   {path: 'clientes/update/:id', component: ModificarClienteComponent},
   {path: 'cliente/find/:id', component: MostrarClienteComponent},
   {path: 'veterinarios/all', component: VeterinarioTableComponent},
+  {path: 'veterinarios/:rol/:cedula', component: VeterinarioTableComponent},
   {path: 'veterinarios/update/:id', component: ModificarVeterinarioComponent},
   {path: 'veterinario/find/:id', component: MostrarVeterinarioComponent},
 ];
