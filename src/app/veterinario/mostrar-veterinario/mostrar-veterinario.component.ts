@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VeterinarioService } from 'src/app/service/veterinario.service';
-import { Veterinario } from '../veterinario';
+import { Veterinario } from '../../model/veterinario';
 
 @Component({
   selector: 'app-mostrar-veterinario',
@@ -22,7 +22,6 @@ export class MostrarVeterinarioComponent {
     console.log("ngOnInit de detail")
     this.route.paramMap.subscribe(params => {
       const id = Number(params.get('id'));
-      this.veterinario = this.veterinarioService.findById(id)!;
     })
   }
 

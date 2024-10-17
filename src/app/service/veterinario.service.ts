@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Veterinario } from '../veterinario/veterinario';
+import { Veterinario } from '../model/veterinario';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -14,12 +14,21 @@ export class VeterinarioService {
   veterinariosList !: Veterinario[] 
 
   findAll(){
-    return this.http.get<Veterinario[]>(`http://localhost:8090/veterinarios/all`);
+    return this.http.get<Veterinario[]>(`http://localhost:8090/veterinario/all`);
   }
-  findById(id: number): Veterinario | undefined {
-    const veterinario = this.veterinariosList.find(o => o.id === id);
-    return veterinario;
+
+  login(cedula: string, password: string){
+    return this.http.get<string>(`http://localhost:8090/veterinario/login/${cedula}/${password}`);
   }
+
+  findById(id: string) {
+    return this.http.get<Veterinario>(`http://localhost:8090/veterinario/find/${id}`);
+  }
+
+  findByCedula(cedula: string) {
+    return this.http.get<Veterinario>(`http://localhost:8090/veterinario/find/cedula/${cedula}`);
+  }
+
   addVeterinario(veterinario: Veterinario){
     this.veterinariosList.push(veterinario);
   }

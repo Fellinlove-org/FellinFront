@@ -1,6 +1,4 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
-import { Cliente } from 'src/app/cliente/cliente';
-import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +11,7 @@ export class HeaderComponent {
   nombre_usuario : string | undefined;
 
   @Input()
-  cedula : string | undefined;
+  id : string | undefined;
 
   @Input()
   userType : string | undefined;

@@ -1,12 +1,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Mascota } from '../mascota';
+import { Mascota } from '../../model/mascota';
 import { MascotaService } from 'src/app/service/mascota.service';
 import { Router } from '@angular/router';
 import { ROOT_URL } from 'src/app/app.component';
 import { Observable } from 'rxjs';
-import { Cliente } from 'src/app/cliente/cliente';
+import { Cliente } from 'src/app/model/cliente';
 import { HttpClient } from '@angular/common/http';
-import { mascotaDTO } from 'src/app/model/mascotaDTO';
 
 @Component({
   selector: 'app-nueva-mascota',
@@ -20,7 +19,6 @@ export class NuevaMascotaComponent {
 
   mascotas$ : Observable<any> = new Observable();
   clienteLogueado !: Cliente
-  mascotaDTO !: mascotaDTO
   sendMascota!: Mascota;
 
   formMascota: Mascota = {
@@ -37,24 +35,6 @@ export class NuevaMascotaComponent {
 
 
   addMascota() {
-    /*
-    this.dataService.currentCliente.subscribe(cliente => {
-      this.clienteLogueado = cliente;
-    })
-    console.log("formMascota: " + this.formMascota);
-    console.log("id cliente: " + this.clienteLogueado.id);
-    this.mascotaDTO = {
-      mascota: this.formMascota,  // Datos del formulario de la mascota
-      id: this.clienteLogueado.id  // Cédula del cliente logueado
-    };
-    console.log("MascotaDTO: "+this.mascotaDTO);
-    this.http.post<mascota>(ROOT_URL + 'mascotas/add', this.mascotaDTO).subscribe(response => {
-      console.log("Mascota agregada exitosamente:", response);
-      this.router.navigate(['/mascotas/all']);  // Redirigir a la lista de mascotas
-    }, error => {
-          console.error("Error al agregar la mascota:", error);
-    })
-    */
     
   }
 

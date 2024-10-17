@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Veterinario } from '../veterinario';
+import { Veterinario } from '../../model/veterinario';
 import { VeterinarioService } from 'src/app/service/veterinario.service';
 import { ActivatedRoute } from '@angular/router';
 

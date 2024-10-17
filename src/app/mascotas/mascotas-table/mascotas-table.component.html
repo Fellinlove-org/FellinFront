@@ -1,9 +1,23 @@
-
+<app-header [nombre_usuario] = "nombre_usuario" [userType]="userType" [id]="id"></app-header>
 <br><br><br><br><br>
 
-<div class="button-container">
-  <a class="ButtonVA" [routerLink]="['/mascota/add']" th:text="Agregar">Agregar</a>
-  <a class="ButtonVA"  [routerLink]="['/']" th:text="Volver">Volver</a>
+<ng-container *ngIf=" this.id== 'all'">
+  <div class="button-container">
+    <a class="ButtonVA" [routerLink]="['/mascota/add']" th:text="Agregar">Agregar</a>
+    <a class="ButtonVA"  [routerLink]="['/']" th:text="Volver">Volver</a>
+  </div>
+</ng-container>
+<div class="search-container">
+  <input
+    type="text"
+    class="search-input"
+    placeholder="Buscar mascota por nombre o raza"
+    [(ngModel)]="searchTerm"
+    (keyup.enter)="buscarMascota()"
+  />
+  <button type="button" class="search-btn" (click)="buscarMascota()">
+    Buscar
+  </button>
 </div>
 
 <table class="table table-striped table-bordered border-primaryx" style="width: 80%; margin: 0 auto; text-align: center;">
@@ -23,7 +37,7 @@
     <tbody>
       <br>
         <br>
-        <tr *ngFor="let mascota of mascotaList">
+        <tr *ngFor="let mascota of listaFiltrada">
             <td> 
               <img src="{{mascota.foto}}" 
               style="width: 100px; height: 100px;" 
@@ -37,14 +51,14 @@
             <td> {{mascota.peso}}</td>
             <td> {{mascota.enfermedad}}</td>
 
-            <ng-container *ngIf="this.rol== 'cliente'">
+            <ng-container *ngIf="this.id != 'all'">
               <td><a (click)="MostrarMascota(mascota)" class="options-link" >
                 <img src="https://static.vecteezy.com/system/resources/previews/009/356/887/non_2x/eye-icon-sign-symbol-design-free-png.png" width="40px" class="option-icon" alt="Ver">
               </a>
               </td>
             </ng-container>
 
-            <ng-container *ngIf=" this.rol== 'veterinario'">
+            <ng-container *ngIf=" this.id == 'all'">
               <td><a (click)="MostrarMascota(mascota)" class="options-link" >
                 <img src="https://static.vecteezy.com/system/resources/previews/009/356/887/non_2x/eye-icon-sign-symbol-design-free-png.png" width="40px" class="option-icon" alt="Ver">
               </a>
@@ -56,19 +70,6 @@
               </a>
               </td>
             </ng-container>
-
-            <ng-container *ngIf="this.rol== 'administrador'">
-            <td><a (click)="MostrarMascota(mascota)" class="options-link" >
-              <img src="https://static.vecteezy.com/system/resources/previews/009/356/887/non_2x/eye-icon-sign-symbol-design-free-png.png" width="40px" class="option-icon" alt="Ver">
-            </a>
-            <a (click)="modificarMascota(mascota)" class="options-link" >
-              <img src="https://cdn-icons-png.flaticon.com/128/45/45406.png" width="40px" class="option-icon" alt="Editar">
-            </a>
-            <a  class="options-link" (click)="eliminarMascota(mascota)">
-              <img src="https://cdn-icons-png.flaticon.com/512/1017/1017479.png" width="40px" class="option-icon" alt="Eliminar">
-            </a>
-            </td>
-          </ng-container>
         </tr>
     </tbody>
 </table>

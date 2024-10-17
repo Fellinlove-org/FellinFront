@@ -1,0 +1,101 @@
+html, body {
+    background: linear-gradient(to bottom, #ffffff, #eec263);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.papu {
+    padding-top: 0;
+    position: relative;
+}
+
+/* Estilos del contenedor de login */
+.container-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrar verticalmente */
+    align-items: center;
+    height: 100vh;
+    position: relative;
+}
+
+.login-box {
+    background-color: #fff;
+    padding: 40px 50px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 450px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1; /* Asegura que el formulario esté en el frente */
+}
+
+.logo-login {
+    position: absolute;
+    top: -30px; /* Ajusta este valor para bajar la imagen más */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.logo-login img {
+    width: 350px; /* Aumenta el tamaño de la imagen */
+	padding-top: 80px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 15px;
+    width: 100%;
+}
+
+.btn-login {
+    background-color: rgba(70, 90, 109, 1);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-login:hover {
+    background-color: rgba(90, 110, 129, 1);
+}
+
+.user-types {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.user-types .btn {
+    flex: 1;
+    margin: 0 5px;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+
+.user-types .btn-doctor, .btn-cliente{
+    background-color: #87CEEB; /* Cambiado a color igual que Admin (azul claro) */
+    color: white;
+}
+
+.user-types .btn-admin {
+    background-color: #87CEEB; /* Color azul claro */
+    color: white;
+}

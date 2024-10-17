@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VeterinarioService } from 'src/app/service/veterinario.service';
-import { Veterinario } from '../veterinario';
+import { Veterinario } from '../../model/veterinario';
 
 
 @Component({
@@ -35,12 +35,7 @@ export class ModificarVeterinarioComponent {
     const id = +this.route.snapshot.paramMap.get('id')!;
     // Cargar los datos del cliente en el formulario
 
-    const veterinario = this.veterinarioService.findById(id)!;
-    if (veterinario) {
-            // Asignamos todos los valores del cliente seleccionada al formulario
-
-      this.formVeterinario = { ...veterinario };
-    }
+    
   }
 
   modificarVeterinario() {

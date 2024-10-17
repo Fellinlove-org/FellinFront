@@ -28,6 +28,8 @@ import { UrlTestComponent } from './test/url-test/url-test.component';
 import { ModificarVeterinarioComponent } from './veterinario/modificar-veterinario/modificar-veterinario.component';
 import { MostrarVeterinarioComponent } from './veterinario/mostrar-veterinario/mostrar-veterinario.component';
 import { NuevoVeterinarioComponent } from './veterinario/nuevo-veterinario/nuevo-veterinario.component';
+import { ClienteComponent } from './cliente/cliente/cliente.component';
+import { VeterinarioComponent } from './veterinario/veterinario/veterinario.component';
 
 
 @NgModule({
@@ -54,7 +56,9 @@ import { NuevoVeterinarioComponent } from './veterinario/nuevo-veterinario/nuevo
     UrlTestComponent,
     ModificarVeterinarioComponent,
     MostrarVeterinarioComponent,
-    NuevoVeterinarioComponent
+    NuevoVeterinarioComponent,
+    ClienteComponent,
+    VeterinarioComponent
 
   ],
   imports: [

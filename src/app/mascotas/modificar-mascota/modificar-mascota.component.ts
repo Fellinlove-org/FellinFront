@@ -1,11 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Mascota } from '../mascota';
+import { Mascota } from '../../model/mascota';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MascotaService } from 'src/app/service/mascota.service';
-import { Cliente } from 'src/app/cliente/cliente';
+import { Cliente } from 'src/app/model/cliente';
 import { HttpClient } from '@angular/common/http';
-import { mascotaDTO } from 'src/app/model/mascotaDTO';
-import { ROOT_URL } from 'src/app/app.component';
 
 @Component({
   selector: 'app-modificar-mascota',
@@ -21,7 +19,7 @@ export class ModificarMascotaComponent {
 
   clienteLogueado !: Cliente
 
-  mascotaDTO !: mascotaDTO
+ 
 
   id : string | null | undefined
 
@@ -56,18 +54,8 @@ export class ModificarMascotaComponent {
   }
 
   modificarMascota() {
-    this.mascotaDTO = {
-      mascota: this.formMascota,  // Datos del formulario de la mascota
-      id: this.clienteLogueado.id  // Cédula del cliente logueado
-    };
-    this.mascotaService.updateMascota(this.mascotaDTO).subscribe(
-      () => {
-        console.log('Mascota agregada:', this.mascotaDTO);
-      },
-      (error) => {
-        console.error('Error al agregar la mascota:', error);
-      }
-    );
+    
+    
   }
 }
 

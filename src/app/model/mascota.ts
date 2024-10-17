@@ -1,3 +1,5 @@
+import { Cliente } from "./cliente";
+
 export interface Mascota{
     id: number;
     nombre: string;
@@ -6,4 +8,5 @@ export interface Mascota{
     peso: number;
     enfermedad: string;
     foto: string;
+    cliente?: Cliente;
 }

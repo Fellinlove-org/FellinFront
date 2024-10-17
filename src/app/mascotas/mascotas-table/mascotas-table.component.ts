@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { Mascota } from '../mascota';
-import { MascotaCL } from 'src/app/model/mascota-cl';
+import { Mascota } from '../../model/mascota';
 import { MascotaService } from 'src/app/service/mascota.service';
-import { Cliente } from 'src/app/cliente/cliente';
-import { Observable } from 'rxjs';
+import { Cliente } from 'src/app/model/cliente';
+import { merge, mergeMap, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ROOT_URL} from 'src/app/app.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ClienteService } from 'src/app/service/cliente.service';
 
 @Component({
   selector: 'app-mascotas-table',
@@ -15,63 +15,49 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class MascotasTableComponent {
 
-  mascotas$ : Observable<any> = new Observable();
-
-  clienteLogueado !: Cliente
 
   selectedMascota!: Mascota;
 
-  rol : string | null | undefined
-  cedula : string | null | undefined
+  id !: string
 
-  mascotaList : Mascota[] | undefined = []
+  userType !: string
+
+  nombre_usuario !: string
+
+  mascotaList : Mascota[] = []
+  listaFiltrada: Mascota[] = [];
+  searchTerm: string = '';
 
   constructor(
-    private mascotaService : MascotaService, 
+    private mascotaService : MascotaService,
+    private clienteService : ClienteService, 
     private router: Router ,
     private route: ActivatedRoute,
     private	http: HttpClient
   ){ }
   ngOnInit():void{
     this.route.paramMap.subscribe(params => {
-      this.rol = params.get('rol');
-      this.cedula = params.get('cedula');
-      if(this.rol == 'cliente'){
-        this.mascotaService.findByClienteCedula(this.cedula!).subscribe(
-          (mascotas: Mascota[]) => {
-            this.mascotaList = mascotas;
-            console.log("Lista de mascotas: ", this.mascotaList);
-          },
-          (error) => {
-            console.error('Error al obtener la lista de mascotas', error);
-          }
-        );
-      }else if(this.rol== 'veterinario')
-      {
+      this.id = params.get('id')!;
+      if(this.id == 'all'){
         this.mascotaService.findAll().subscribe(
           (mascotas: Mascota[]) => {
             this.mascotaList = mascotas;
+            this.listaFiltrada = mascotas; 
             console.log("Lista de mascotas: ", this.mascotaList);
           },
           (error) => {
             console.error('Error al obtener la lista de mascotas', error);
           }
         );
-      }else if(this.rol== 'veterinario')
-      {
-        this.mascotaService.findAll().subscribe(
-          (mascotas: Mascota[]) => {
-            this.mascotaList = mascotas;
-            console.log("Lista de mascotas: ", this.mascotaList);
-          },
-          (error) => {
-            console.error('Error al obtener la lista de mascotas', error);
-          }
-        );
-      }
-      else if(this.rol== 'administrador')
-        {
-          this.mascotaService.findAll().subscribe(
+      }else{
+        this.clienteService.findById(this.id)
+          .pipe(
+            mergeMap((clienteInfo) =>{
+              this.userType = 'cliente'
+              this.nombre_usuario = clienteInfo.nombre
+              return this.mascotaService.findByClienteId(clienteInfo.id.toString())
+            })
+          ).subscribe(
             (mascotas: Mascota[]) => {
               this.mascotaList = mascotas;
               console.log("Lista de mascotas: ", this.mascotaList);
@@ -79,15 +65,14 @@ export class MascotasTableComponent {
             (error) => {
               console.error('Error al obtener la lista de mascotas', error);
             }
-          );
-        }
-
+          )
+      }
     })
   }
 
   MostrarMascota(mascota: Mascota) {
     this.selectedMascota = mascota;
-    this.router.navigate(['/mascota/find/' + this.selectedMascota.id]);
+    this.router.navigate(['/mascota/'+ this.id +'/find/' + this.selectedMascota.id]);
   }
 
   agregarMascota(mascota: Mascota) {
@@ -112,13 +97,17 @@ export class MascotasTableComponent {
     console.log(this.selectedMascota.nombre);
     this.http.get<Mascota>(ROOT_URL + 'mascotas/delete/' + this.selectedMascota.id).subscribe()
     this.mascotaList = this.mascotaList?.filter(mascota => mascota !== this.selectedMascota);
-    this.router.navigate(['/mascotas/veterinario/'+this.cedula]);
+    //this.router.navigate(['/mascotas/veterinario/'+this.cedula]);
   }
-  ngOnChanges(): void {
-    this.mascotas$ = this.http.get<Mascota>(ROOT_URL + 'mascotas/search/' + this.clienteLogueado.cedula)
-    this.mascotas$.subscribe(mascotasInfo => {
-        console.log(mascotasInfo)
-        this.mascotaList = mascotasInfo
-    })
+
+  buscarMascota(): void {
+    const term = this.searchTerm.toLowerCase();
+  
+    this.listaFiltrada = this.mascotaList.filter((mascota) =>
+      mascota.nombre.toLowerCase().includes(term) ||
+      mascota.raza.toLowerCase().includes(term)
+    );
   }
+  
+
 }

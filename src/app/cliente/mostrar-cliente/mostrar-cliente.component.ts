@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Cliente } from '../cliente';
+import { Cliente } from '../../model/cliente';
 import { ClienteService } from 'src/app/service/cliente.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -18,10 +18,7 @@ export class MostrarClienteComponent {
   }
 
   ngOnInit(): void {
-    console.log("ngOnInit de detail")
-    this.route.paramMap.subscribe(params =>{const id= Number(params.get('id'));
-    this.Cliente = this.clienteService.findById(id)!;
-    })
+    
   }
 
   ngOnChanges(): void {

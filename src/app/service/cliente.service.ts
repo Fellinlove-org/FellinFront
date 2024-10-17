@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cliente } from '../cliente/cliente';
+import { Cliente } from '../model/cliente';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -10,33 +10,26 @@ export class ClienteService {
 
   constructor(private http: HttpClient) { }
 
-  clienteList !: Cliente[];
-
-  cliente$ : Observable<any> = new Observable();
 
 
   findAll(){
-    return this.http.get<Cliente[]>(`http://localhost:8090/clientes/all`);
+    return this.http.get<Cliente[]>(`http://localhost:8090/cliente/find/all`);
   }
 
-  findById(id: number): Cliente | undefined {
-    const cliente = this.clienteList.find(o => o.id === id);
-    return cliente;
+  findById(id: string) {
+    return this.http.get<Cliente>(`http://localhost:8090/cliente/find/${id}`);
   }
 
   addCliente(cliente: Cliente): Observable<Cliente> {
-    return this.http.post<Cliente>('http://localhost:8090/clientes/add', cliente);
+    return this.http.post<Cliente>('http://localhost:8090/cliente/add', cliente);
+  }
+
+  updateCliente(cliente: Cliente) {
+    return this.http.put<Cliente>(`http://localhost:8090/cliente/update`, cliente);
   }
 
   deleteCliente(cliente: Cliente){
-     
+     return this.http.delete<Cliente>(`http://localhost:8090/cliente/delete/${cliente.id}`);
   }
 
-  updateCliente(updatedCliente: Cliente): void {
-    const index = this.clienteList.findIndex(cliente => cliente.id === updatedCliente.id);
-    if (index !== -1) {
-      this.clienteList[index] = updatedCliente;
-    }
-
-  }
 }

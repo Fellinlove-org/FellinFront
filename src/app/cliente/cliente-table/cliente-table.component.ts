@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Cliente } from '../cliente';
-import { ClienteCL } from 'src/app/model/cliente-cl';
+import { Cliente } from '../../model/cliente';
 import { ClienteService } from 'src/app/service/cliente.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
