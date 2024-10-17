@@ -9,7 +9,7 @@ import { ClienteService } from 'src/app/service/cliente.service';
 })
 export class ClienteComponent {
 
-  id !: string;
+  cedula !: string;
 
   nombre_usuario !: string;
 
@@ -22,14 +22,14 @@ export class ClienteComponent {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.id = params.get('id')!
-      console.log(this.id)
+      this.cedula = params.get('id')!
+      console.log(this.cedula)
 
-      this.clienteService.findById(this.id).subscribe(cliente => {
+      this.clienteService.findByCedula(this.cedula).subscribe(cliente => {
         console.log(cliente);
         this.userType = 'cliente';
         this.nombre_usuario = cliente.nombre
-        this.id = cliente.id.toString()
+        this.cedula = cliente.cedula.toString()
       })
     })
   }

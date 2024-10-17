@@ -11,7 +11,7 @@ export class HeaderComponent {
   nombre_usuario : string | undefined;
 
   @Input()
-  id : string | undefined;
+  cedula : string | undefined;
 
   @Input()
   userType : string | undefined;

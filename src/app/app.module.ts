@@ -11,7 +11,6 @@ import {HttpClientModule} from '@angular/common/http';
 import { AdminTableComponent } from './admin/admin-table/admin-table.component';
 import { ClienteTableComponent } from './cliente/cliente-table/cliente-table.component';
 import { DrogaTableComponent } from './droga/droga-table/droga-table.component';
-import { TratamientoTableComponent } from './tratamiento/tratamiento-table/tratamiento-table.component';
 import { VeterinarioTableComponent } from './veterinario/veterinario-table/veterinario-table.component';
 
 import { MascotasTableComponent } from './mascotas/mascotas-table/mascotas-table.component';
@@ -30,6 +29,11 @@ import { MostrarVeterinarioComponent } from './veterinario/mostrar-veterinario/m
 import { NuevoVeterinarioComponent } from './veterinario/nuevo-veterinario/nuevo-veterinario.component';
 import { ClienteComponent } from './cliente/cliente/cliente.component';
 import { VeterinarioComponent } from './veterinario/veterinario/veterinario.component';
+import { ModificarTratamientoComponent } from './tratamiento/modificar-tratamiento/modificar-tratamiento.component';
+import { MostrarTratamientoComponent } from './tratamiento/mostrar-tratamiento/mostrar-tratamiento.component';
+import { AddTratamientoComponent } from './tratamiento/agregar-tratamiento/agregar-tratamiento.component';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { AdminComponent } from './admin/admin/admin.component';
 
 
 @NgModule({
@@ -41,7 +45,6 @@ import { VeterinarioComponent } from './veterinario/veterinario/veterinario.comp
     AdminTableComponent,
     ClienteTableComponent,
     DrogaTableComponent,
-    TratamientoTableComponent,
     VeterinarioTableComponent,
 
     MascotasTableComponent,
@@ -58,7 +61,12 @@ import { VeterinarioComponent } from './veterinario/veterinario/veterinario.comp
     MostrarVeterinarioComponent,
     NuevoVeterinarioComponent,
     ClienteComponent,
-    VeterinarioComponent
+    VeterinarioComponent,
+    AddTratamientoComponent,
+    ModificarTratamientoComponent,
+    MostrarTratamientoComponent,
+    AdminDashboardComponent,
+    AdminComponent
 
   ],
   imports: [

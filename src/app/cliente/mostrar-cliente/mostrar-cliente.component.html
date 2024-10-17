@@ -1,3 +1,4 @@
+<app-header [nombre_usuario] = "nombre_usuario" [userType]="userType" [cedula]="cedula"></app-header>
 <br><br><br><br><br>
 <br><br><br><br><br>
 
@@ -6,7 +7,7 @@
     <div class="form-container">
         <h2 class="form-title">Información del cliente</h2>
         <div class="datos-cliente">
-            <img src="{{Cliente.foto}}" 
+            <img src="{{cliente.foto}}" 
             style="width: 100px; height: 100px;" 
             alt="cliente"
             class="imagen-cliente">
@@ -14,16 +15,16 @@
             <div class="tabla-cliente">
                 
                 <span class="titulo-atributo">✜ Nombre</span><br>
-                <span class="atributo" >{{Cliente.nombre}}</span><br><br>
+                <span class="atributo" >{{cliente.nombre}}</span><br><br>
         
                 <span class="titulo-atributo">✜ Cedula</span><br>
-                <span class="atributo" >{{Cliente.cedula}}</span><br><br>
+                <span class="atributo" >{{cliente.cedula}}</span><br><br>
 
                 <span class="titulo-atributo">✜ Correo</span><br>
-                <span class="atributo" >{{Cliente.correo}}</span><br><br>
+                <span class="atributo" >{{cliente.correo}}</span><br><br>
 
                 <span class="titulo-atributo">✜ Celular</span><br>
-                <span class="atributo" >{{Cliente.celular}}</span><br><br>
+                <span class="atributo" >{{cliente.celular}}</span><br><br>
             </div>
         </div>
     </div>

@@ -19,7 +19,9 @@ export class ModificarMascotaComponent {
 
   clienteLogueado !: Cliente
 
- 
+  cedula!: string;
+  nombre_usuario!: string;
+  userType!: string;
 
   id : string | null | undefined
 
@@ -45,6 +47,7 @@ export class ModificarMascotaComponent {
     
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
+      this.cedula = params.get('cedula')!
       this.mascotaService.findById(this.id!).subscribe(mascota => {
         this.sendMascota = mascota
         this.formMascota = mascota;
@@ -55,6 +58,15 @@ export class ModificarMascotaComponent {
 
   modificarMascota() {
     
+    this.sendMascota = Object.assign({}, this.formMascota);
+    console.log(this.sendMascota);
+    console.log(this.sendMascota.cliente?.correo);
+    this.mascotaService.updateMascota(this.sendMascota).subscribe(
+      (nuevaMascota: Mascota) => {
+        console.log('Mascota agregada:', nuevaMascota);
+      }
+    )
+    this.router.navigate(['/mascotas/', this.cedula]);
     
   }
 }

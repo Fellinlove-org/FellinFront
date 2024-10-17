@@ -8,7 +8,8 @@ import { VeterinarioService } from 'src/app/service/veterinario.service';
   styleUrls: ['./veterinario.component.scss']
 })
 export class VeterinarioComponent {
-  id !: string;
+  
+  cedula !: string;
 
   nombre_usuario !: string;
 
@@ -21,14 +22,15 @@ export class VeterinarioComponent {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.id = params.get('cedula')!
-      console.log(this.id)
+      this.cedula = params.get('cedula')!
+      console.log(this.cedula)
 
-      this.veterinarioService.findByCedula(this.id).subscribe(vet => {
+      this.veterinarioService.findByCedula(this.cedula).subscribe(vet => {
         console.log(vet);
         this.userType = 'veterinario';
         this.nombre_usuario = vet.nombre
-        this.id = vet.id.toString()
+        this.cedula = vet.cedula.toString()
+        
       })
     })
   }

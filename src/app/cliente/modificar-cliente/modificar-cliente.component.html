@@ -1,3 +1,4 @@
+<app-header [nombre_usuario] = "nombre_usuario" [userType]="userType" [cedula]="cedula"></app-header>
 <br><br><br><br><br>
 
 <div class="container">
@@ -8,19 +9,19 @@
 
             <form class="forma-cliente" (ngSubmit)="modificarCliente()">
                 <label for="nombre">✜ Nombre</label>
-                <input  type="text" id="nombre" class="form-control" name=" nombre" [(ngModel)] = "formCliente.nombre" >
+                <input  type="text" id="nombre" class="form-control" name=" nombre" [(ngModel)] = "formCliente.nombre" value="{{sendCliente.nombre}}" >
 
                 <label for="cedula">✜ Cedula</label>
-                <input  type="text" id="cedula" class="form-control" name=" cedula" [(ngModel)] = "formCliente.cedula" >
+                <input  type="text" id="cedula" class="form-control" name=" cedula" [(ngModel)] = "formCliente.cedula" value="{{sendCliente.cedula}}">
 
                 <label for="correo">✜ Correo</label>
-                <input  type="text" id="correo" class="form-control" name=" correo" [(ngModel)] = "formCliente.correo" >
+                <input  type="text" id="correo" class="form-control" name=" correo" [(ngModel)] = "formCliente.correo" value="{{sendCliente.correo}}">
             
                 <label for="celular">✜ Celular</label>
-                <input  type="text" id="celular" class="form-control" name=" celular" [(ngModel)] = "formCliente.celular" >
+                <input  type="text" id="celular" class="form-control" name=" celular" [(ngModel)] = "formCliente.celular" value="{{sendCliente.celular}}">
                     
                 <label for="foto">✜ Foto</label>
-                <input type="text" id="foto" class="form-control" name=" foto" [(ngModel)]= "formCliente.foto">
+                <input type="text" id="foto" class="form-control" name=" foto" [(ngModel)]= "formCliente.foto" value="{{sendCliente.foto}}">
     
                 <button type="submit" class="btn btn-submit">Enviar</button>
               </form>

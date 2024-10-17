@@ -7,6 +7,8 @@ import { HttpClient } from '@angular/common/http';
 import { mergeMap, Observable, pipe } from 'rxjs';
 import { ROOT_URL } from 'src/app/app.component';
 import { ClienteService } from 'src/app/service/cliente.service';
+import { VeterinarioService } from 'src/app/service/veterinario.service';
+import { AdminService } from 'src/app/service/admin.service';
 
 @Component({
   selector: 'app-mostrar-mascota',
@@ -16,7 +18,7 @@ import { ClienteService } from 'src/app/service/cliente.service';
 export class MostrarMascotaComponent {
 
   
-  id !: string;
+  cedula !: string;
   idmascota !: string;
 
   nombre_usuario !: string;
@@ -32,6 +34,8 @@ export class MostrarMascotaComponent {
   constructor(
     private mascotaService: MascotaService,
     private clienteService: ClienteService, 
+    private veterinarioService: VeterinarioService,
+    private adminService: AdminService,
     private route: ActivatedRoute, 
     private router: Router,
     private http: HttpClient) {
@@ -41,13 +45,38 @@ export class MostrarMascotaComponent {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.id = params.get('idcliente')!;
-      this.clienteService.findById(this.id)
+      this.cedula = params.get('cedula')!;
+      this.idmascota = params.get('id')!;
+      this.clienteService.findTypeUser(this.cedula)
         .pipe(
-          mergeMap((clienteInfo) => {
-            this.userType = 'cliente'
-            this.nombre_usuario = clienteInfo.nombre
-            return this.mascotaService.findById(params.get('id')!)
+          mergeMap((userType) => {
+            this.userType = userType.userType;
+            console.log(this.userType);
+            if (this.userType === 'cliente') {
+              // Si es cliente, obtenemos la información del cliente y sus mascotas
+              return this.clienteService.findByCedula(this.cedula).pipe(
+                mergeMap((clienteInfo) => {
+                  this.nombre_usuario = clienteInfo.nombre;
+                  return this.mascotaService.findById(this.idmascota);
+                })
+              );
+            } else if (this.userType === 'veterinario' ) {
+              return this.veterinarioService.findByCedula(this.cedula).pipe(
+                mergeMap((vetInfo) => {
+                  this.nombre_usuario = vetInfo.nombre;
+                  return this.mascotaService.findById(this.idmascota);
+                })
+              );
+            }else if (this.userType === 'administrador') {
+              return this.adminService.findByCedula(this.cedula).pipe(
+                mergeMap((adminInfo) => {
+                  this.nombre_usuario = adminInfo.nombre;
+                  return this.mascotaService.findById(this.idmascota);
+                })
+              );
+            } else {
+              return new Observable<Mascota>();
+            }
           })
         ).subscribe(mascota => {
           this.mascota = mascota

@@ -1,5 +1,5 @@
-
-<br><br><br><br><br>
+<app-header [nombre_usuario] = "nombre_usuario" [userType]="userType" [cedula]="cedula"></app-header>
+<br><br><br><br><br><br><br><br>
 
 <div class="container">
     <div class="form-container">
@@ -24,7 +24,16 @@
             <label for="foto">✜ Foto</label>
             <input type="text" id="foto" class="form-control" name=" fotos" [(ngModel)]= "formMascota.foto">
 
+            <label for="cliente">✜ Cliente</label>
+            <select id="cliente" class="form-control" name="cliente" [(ngModel)]="formMascota.cliente">
+              <option *ngFor="let cliente of clientes" [ngValue]="cliente">{{ cliente.nombre }}</option>
+            </select>
+
             <button type="submit" class="btn btn-submit" >Enviar</button>
+
+            
+            
+
           </form>
     </div>
     <a class="btn btn-primary" > Tabla</a>

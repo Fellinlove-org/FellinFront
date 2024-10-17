@@ -15,26 +15,36 @@ import { ModificarVeterinarioComponent } from './veterinario/modificar-veterinar
 import { MostrarVeterinarioComponent } from './veterinario/mostrar-veterinario/mostrar-veterinario.component';
 import { ClienteComponent } from './cliente/cliente/cliente.component';
 import { VeterinarioComponent } from './veterinario/veterinario/veterinario.component';
+import { MostrarTratamientoComponent } from './tratamiento/mostrar-tratamiento/mostrar-tratamiento.component';
 
+
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { AdminComponent } from './admin/admin/admin.component';
 const routes: Routes = [
   {path: '', component: HomeComponent },// Ruta para el inicio
   {path: 'login', component: LoginComponent},
   {path: 'cliente/:id', component: ClienteComponent},
   {path: 'veterinario/:cedula', component: VeterinarioComponent},
-  {path: 'mascotas/:id', component: MascotasTableComponent},
+  {path: 'admin/:cedula', component: AdminComponent},
+  {path: 'mascotas/:cedula', component: MascotasTableComponent},
   {path: 'mascotas/:rol/:cedula', component: MascotasTableComponent},
   {path: 'mascotas/all',component: MascotasTableComponent},
-  {path: 'mascota/:idcliente/find/:id',component: MostrarMascotaComponent },
-  {path: "mascota/add", component: NuevaMascotaComponent},
-  {path: 'mascota/update/:id', component: ModificarMascotaComponent},
-  {path: 'clientes/:rol/:cedula', component: ClienteTableComponent},
-  {path: 'clientes/all', component: ClienteTableComponent},
-  {path: 'clientes/update/:id', component: ModificarClienteComponent},
-  {path: 'cliente/find/:id', component: MostrarClienteComponent},
-  {path: 'veterinarios/all', component: VeterinarioTableComponent},
+  {path: 'mascota/:cedula/find/:id',component: MostrarMascotaComponent },
+  {path: "mascota/:cedula/add", component: NuevaMascotaComponent},
+  {path: 'mascota/:cedula/update/:id', component: ModificarMascotaComponent},
+  {path: 'clientes/:cedula', component: ClienteTableComponent},
+  {path: 'clientes/:cedula/update/:id', component: ModificarClienteComponent},
+  {path: 'cliente/:cedula/find/:id', component: MostrarClienteComponent},
+  {path: 'veterinarios/:cedula', component: VeterinarioTableComponent},
   {path: 'veterinarios/:rol/:cedula', component: VeterinarioTableComponent},
   {path: 'veterinarios/update/:id', component: ModificarVeterinarioComponent},
-  {path: 'veterinario/find/:id', component: MostrarVeterinarioComponent},
+  {path: 'veterinario/:cedula/find/:id', component: MostrarVeterinarioComponent},
+  {path: 'veterinario/:cedula/update/:id', component: ModificarVeterinarioComponent},
+  {path: 'tratamiento/:cedula', component: MostrarTratamientoComponent},
+  {path: 'tratamiento/:cedula/update/:id', component: MostrarTratamientoComponent},
+  
+
+  { path: 'admin/negocio', component: AdminDashboardComponent }
 ];
 
 @NgModule({

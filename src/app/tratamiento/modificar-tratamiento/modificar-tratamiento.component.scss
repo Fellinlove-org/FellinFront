@@ -1,0 +1,114 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Asegúrate de que sea 100vh */
+  background: linear-gradient(to bottom, #064469, #5790ab, #74aabf);
+}
+
+main {
+  flex: 1; /* Hace que main ocupe el espacio disponible */
+  padding: 20px; /* Agrega un poco de espacio alrededor del contenido de main */
+  background: linear-gradient(to bottom, #064469, #54859a);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#cuadro {
+  background: radial-gradient(circle, #74aabf, #5790ab, #064469);
+  padding: 3em;
+  height: auto;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 20px;
+  border: 1px solid black;
+  backdrop-filter: blur(10px);
+  box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+  color: white;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #064469;
+  height: 100px;
+}
+
+header img {
+  height: 80%;
+  margin-left: 20px;
+}
+
+a {
+  margin: 10px;
+  text-decoration: none;
+  color: white;
+}
+
+header > ul {
+  display: flex;
+  justify-content: end;
+  margin: 0;
+  padding: 0;
+}
+
+header ul li {
+  align-items: center;
+  display: flex;
+  font-size: 18px;
+  list-style-type: none;
+  color: white;
+}
+
+header li a:hover {
+  color: red;
+  text-decoration: underline;
+}
+
+header a {
+  padding: 3px;
+}
+
+form {
+  margin: 0 20px 10px;
+}
+
+#cuadro h1 {
+  margin: 0 10px;
+  text-align: center;
+}
+
+.col {
+  margin-top: 10px;
+}
+
+.col label {
+  font-size: 20px;
+}
+
+.mb-3 {
+  font-size: 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: center; /* Centra la tabla horizontalmente */
+  align-items: center; /* Centra la tabla verticalmente */
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}

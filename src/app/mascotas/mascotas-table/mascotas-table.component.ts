@@ -7,6 +7,8 @@ import { HttpClient } from '@angular/common/http';
 import { ROOT_URL} from 'src/app/app.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClienteService } from 'src/app/service/cliente.service';
+import { VeterinarioService } from 'src/app/service/veterinario.service';
+import { AdminService } from 'src/app/service/admin.service';
 
 @Component({
   selector: 'app-mascotas-table',
@@ -18,7 +20,7 @@ export class MascotasTableComponent {
 
   selectedMascota!: Mascota;
 
-  id !: string
+  cedula !: string
 
   userType !: string
 
@@ -31,48 +33,64 @@ export class MascotasTableComponent {
   constructor(
     private mascotaService : MascotaService,
     private clienteService : ClienteService, 
+    private veterinarioService : VeterinarioService,
+    private adminService : AdminService,
     private router: Router ,
     private route: ActivatedRoute,
     private	http: HttpClient
   ){ }
   ngOnInit():void{
     this.route.paramMap.subscribe(params => {
-      this.id = params.get('id')!;
-      if(this.id == 'all'){
-        this.mascotaService.findAll().subscribe(
+      this.cedula = params.get('cedula')!;
+      this.clienteService.findTypeUser(this.cedula)
+        .pipe(
+          mergeMap((userType) => {
+            this.userType = userType.userType;
+            console.log(this.userType);
+            if (this.userType === 'cliente') {
+              // Si es cliente, obtenemos la información del cliente y sus mascotas
+              return this.clienteService.findByCedula(this.cedula).pipe(
+                mergeMap((clienteInfo) => {
+                  this.nombre_usuario = clienteInfo.nombre;
+                  return this.mascotaService.findByClienteId(clienteInfo.id.toString());
+                })
+              );
+            } else if (this.userType === 'veterinario' ) {
+              return this.veterinarioService.findByCedula(this.cedula).pipe(
+                mergeMap((vetInfo) => {
+                  this.nombre_usuario = vetInfo.nombre;
+                  return this.mascotaService.findAll();
+                })
+              );
+            }else if (this.userType === 'administrador') {
+              return this.adminService.findByCedula(this.cedula).pipe(
+                mergeMap((adminInfo) => {
+                  this.nombre_usuario = adminInfo.nombre;
+                  return this.mascotaService.findAll();
+                })
+              );
+            } else {
+              return new Observable<Mascota[]>();
+            }
+          })
+        )
+        .subscribe(
           (mascotas: Mascota[]) => {
             this.mascotaList = mascotas;
-            this.listaFiltrada = mascotas; 
+            this.listaFiltrada = mascotas;
             console.log("Lista de mascotas: ", this.mascotaList);
           },
           (error) => {
             console.error('Error al obtener la lista de mascotas', error);
           }
         );
-      }else{
-        this.clienteService.findById(this.id)
-          .pipe(
-            mergeMap((clienteInfo) =>{
-              this.userType = 'cliente'
-              this.nombre_usuario = clienteInfo.nombre
-              return this.mascotaService.findByClienteId(clienteInfo.id.toString())
-            })
-          ).subscribe(
-            (mascotas: Mascota[]) => {
-              this.mascotaList = mascotas;
-              console.log("Lista de mascotas: ", this.mascotaList);
-            },
-            (error) => {
-              console.error('Error al obtener la lista de mascotas', error);
-            }
-          )
-      }
+
     })
   }
 
   MostrarMascota(mascota: Mascota) {
     this.selectedMascota = mascota;
-    this.router.navigate(['/mascota/'+ this.id +'/find/' + this.selectedMascota.id]);
+    this.router.navigate(['/mascota/'+ this.cedula +'/find/' + this.selectedMascota.id]);
   }
 
   agregarMascota(mascota: Mascota) {
@@ -89,15 +107,14 @@ export class MascotasTableComponent {
 
   modificarMascota(mascota: Mascota) {
     this.selectedMascota = mascota;
-    this.router.navigate(['/mascota/update/' + this.selectedMascota.id]);
+    this.router.navigate(['/mascota/'+ this.cedula +'/update/' + this.selectedMascota.id]);
   }
 
   eliminarMascota(mascota: Mascota) {
     this.selectedMascota = mascota;
     console.log(this.selectedMascota.nombre);
-    this.http.get<Mascota>(ROOT_URL + 'mascotas/delete/' + this.selectedMascota.id).subscribe()
-    this.mascotaList = this.mascotaList?.filter(mascota => mascota !== this.selectedMascota);
-    //this.router.navigate(['/mascotas/veterinario/'+this.cedula]);
+    this.mascotaService.deleteMascota(this.selectedMascota).subscribe()
+    this.listaFiltrada = this.listaFiltrada.filter(m => m.id !== this.selectedMascota.id);
   }
 
   buscarMascota(): void {

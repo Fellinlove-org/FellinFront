@@ -10,7 +10,9 @@ export class ClienteService {
 
   constructor(private http: HttpClient) { }
 
-
+  findTypeUser(cedula : string){
+    return this.http.get<any>(`http://localhost:8090/login/${cedula}`);
+  }
 
   findAll(){
     return this.http.get<Cliente[]>(`http://localhost:8090/cliente/find/all`);
@@ -18,6 +20,13 @@ export class ClienteService {
 
   findById(id: string) {
     return this.http.get<Cliente>(`http://localhost:8090/cliente/find/${id}`);
+  }
+
+  findByCedula(cedula : string) {
+    return this.http.get<Cliente>(`http://localhost:8090/cliente/find/cedula/${cedula}`);
+  }
+  findByVeterinarioId(veterinarioId: string): Observable<Cliente[]> {
+    return this.http.get<Cliente[]>(`http://localhost:8090/cliente/findByVeterinario/${veterinarioId}`);
   }
 
   addCliente(cliente: Cliente): Observable<Cliente> {

@@ -33,13 +33,21 @@ export class MascotaService {
   }
 
   updateMascota(mascota: Mascota) {
-    return this.http.post<Mascota>('http://localhost:8090/mascota/update', mascota);
+    return this.http.put<Mascota>('http://localhost:8090/mascota/update', mascota);
   }
 
   deleteMascota(mascota: Mascota) {
-    return this.http.get<string>(`http://localhost:8090/mascota/delete/${mascota.id}`);
+    return this.http.delete<string>(`http://localhost:8090/mascota/delete/${mascota.id}`);
 
   }
 
+
+  getTotalMascotas(): Observable<number> {
+    return this.http.get<number>(`http://localhost:8090/mascotas/total`);
+  }
+
+  getMascotasEnTratamiento(): Observable<number> {
+    return this.http.get<number>(`http://localhost:8090/mascotas/en-tratamiento`);
+  }
   
 }

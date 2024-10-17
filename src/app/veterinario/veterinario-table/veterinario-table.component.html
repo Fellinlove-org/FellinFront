@@ -1,3 +1,5 @@
+<app-header [nombre_usuario] = "nombre_usuario" [userType]="userType" [cedula]="cedula"></app-header>
+
 <br><br><br><br><br>
 
 <div class="button-container">
@@ -11,8 +13,8 @@
           <tr>
               <th>foto</th>
               <th>Id</th>
-              <th>Nombre</th>
-              <th>Cedula</th>
+              <th>cedula</th>
+              <th>nombre</th>
               <th>Correo</th>
               <th>Celular</th>
               <th>Options</th>
@@ -29,17 +31,17 @@
                 />
               </td>
               <td> {{veterinario.id}}</td>
-              <td> {{veterinario.nombre}}</td>
               <td> {{veterinario.cedula}}</td>
+              <td> {{veterinario.nombre}}</td>
               <td> {{veterinario.correo}}</td>
               <td> {{veterinario.especialidad}}</td>
-              <td><a [routerLink]="['/cliente/find', veterinario.id]" class="options-link" >
+              <td><a [routerLink]="['/veterinario/'+cedula+'/find/', veterinario.id]" class="options-link" >
                 <img src="https://static.vecteezy.com/system/resources/previews/009/356/887/non_2x/eye-icon-sign-symbol-design-free-png.png" width="40px" class="option-icon" alt="Ver">
               </a>
-              <a [routerLink]="['/cliente/update', veterinario.id]" class="options-link">
+              <a [routerLink]="['/veterinario/'+cedula+'/update', veterinario.id]" class="options-link">
                 <img src="https://cdn-icons-png.flaticon.com/128/45/45406.png" width="40px" class="option-icon" alt="Editar">
               </a>
-              <a  class="options-link">
+              <a  class="options-link" (click)="eliminarVeterinario(veterinario)">
                 <img src="https://cdn-icons-png.flaticon.com/512/1017/1017479.png" width="40px" class="option-icon" alt="Eliminar">
               </a>
               </td>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Veterinario } from '../model/veterinario';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +12,8 @@ export class VeterinarioService {
     private http: HttpClient
   ) { }
 
-  veterinariosList !: Veterinario[] 
-
   findAll(){
-    return this.http.get<Veterinario[]>(`http://localhost:8090/veterinario/all`);
+    return this.http.get<Veterinario[]>(`http://localhost:8090/veterinario/find/all`);
   }
 
   login(cedula: string, password: string){
@@ -28,21 +27,17 @@ export class VeterinarioService {
   findByCedula(cedula: string) {
     return this.http.get<Veterinario>(`http://localhost:8090/veterinario/find/cedula/${cedula}`);
   }
-
+  findTypeUser(cedula: string): Observable<any> {
+    return this.http.get<any>(`http://localhost:8090/login/${cedula}`);
+  }
   addVeterinario(veterinario: Veterinario){
-    this.veterinariosList.push(veterinario);
+    return this.http.post<Veterinario>('http://localhost:8090/veterinario/add', veterinario);
   }
   deleteVeterinario(veterinario: Veterinario){
-    const index = this.veterinariosList.indexOf(veterinario);
-    if (index > -1) {
-      this.veterinariosList.splice(index, 1);
-    }
+    return this.http.delete<Veterinario>(`http://localhost:8090/veterinario/delete/${veterinario.id}`);
   }
   updateVeterinario(veterinario: Veterinario){
-    const index = this.veterinariosList.indexOf(veterinario);
-    if (index > -1) {
-      this.veterinariosList[index] = veterinario;
-    }
+    return this.http.put<Veterinario>(`http://localhost:8090/veterinario/update`, veterinario);
   }
 
 }

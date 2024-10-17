@@ -1,0 +1,59 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+  
+    .form-container {
+      background-color: #ffdab3; 
+      padding: 50px;
+      border-radius: 10px;
+      border: 3px solid #000000;
+      box-shadow: 30px 30px 8px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      width: 600px;
+  
+      .form-title {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #653e2d;
+      }
+  
+      .datos-mascota {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between; 
+        margin-top: 40px; 
+  
+        .imagen-mascota {
+          border-radius: 10px;
+          height: 500px;
+          object-fit: cover;
+          margin-right: 20px;
+        }
+  
+        .tabla-mascota {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          margin-right: 0px; 
+  
+          .titulo-atributo {
+            font-weight: bold;
+            color: #653e2d; 
+            font-size: 25px;
+          }
+  
+          .atributo {
+            color: #653e2d; 
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  
+    .btn {
+      margin-top: 20px;
+    }
+  }

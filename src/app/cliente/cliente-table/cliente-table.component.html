@@ -1,4 +1,4 @@
-
+<app-header [nombre_usuario] = "nombre_usuario" [userType]="userType" [cedula]="cedula"></app-header>
 <br><br><br><br><br>
 
 <div class="button-container">
@@ -35,17 +35,23 @@
             <td> {{cliente.correo}}</td>
             <td> {{cliente.celular}}</td>
 
-            <ng-container *ngIf=" this.rol== 'veterinario'">
-            <td><a (click)="MostrarCliente(cliente)" class="options-link" >
+            <ng-container *ngIf=" this.userType== 'veterinario'">
+            <td><a (click)="mostrarCliente(cliente)" class="options-link" >
               <img src="https://static.vecteezy.com/system/resources/previews/009/356/887/non_2x/eye-icon-sign-symbol-design-free-png.png" width="40px" class="option-icon" alt="Ver">
+            </a>
+            <a (click)=" modificarCliente(cliente)" class="options-link">
+              <img src="https://cdn-icons-png.flaticon.com/128/45/45406.png" width="40px" class="option-icon" alt="Editar">
+            </a>
+            <a  class="options-link" (click)="eliminarCliente(cliente)">
+              <img src="https://cdn-icons-png.flaticon.com/512/1017/1017479.png" width="40px" class="option-icon" alt="Eliminar">
             </a>
           </ng-container>
 
-          <ng-container *ngIf=" this.rol== 'administrador'">
-            <td><a (click)="MostrarCliente(cliente)" class="options-link" >
+          <ng-container *ngIf=" this.userType== 'administrador'">
+            <td><a (click)="mostrarCliente(cliente)" class="options-link" >
               <img src="https://static.vecteezy.com/system/resources/previews/009/356/887/non_2x/eye-icon-sign-symbol-design-free-png.png" width="40px" class="option-icon" alt="Ver">
             </a>
-            <a (click)=" agregarCliente(cliente)" class="options-link">
+            <a (click)=" modificarCliente(cliente)" class="options-link">
               <img src="https://cdn-icons-png.flaticon.com/128/45/45406.png" width="40px" class="option-icon" alt="Editar">
             </a>
             <a  class="options-link" (click)="eliminarCliente(cliente)">

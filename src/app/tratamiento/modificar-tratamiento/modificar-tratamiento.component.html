@@ -1,0 +1,79 @@
+<header>
+    <img src="assets/images/LogoFin.png" alt="Logo" />
+    <ul>
+      <li>
+        <a [routerLink]="['/tratamientos']">Inicio</a>
+      </li>
+    </ul>
+  </header>
+  
+  <main>
+    <div class="container">
+      <div id="cuadro">
+        <h1 class="mb-3">Registrar Tratamiento</h1>
+        <form #tratamientoForm="ngForm" (ngSubmit)="modificarTratamiento()">
+          <!-- Mostrar el nombre de la mascota seleccionada -->
+          <div class="row mb-3">
+            <label for="mascota" class="form-label">Mascota</label>
+            <input
+              type="text"
+              class="form-control"
+              id="mascota"
+              [value]="formConsulta.mascota?.nombre"
+              readonly
+            />
+          </div>
+  
+          <!-- Mostrar el nombre de la droga seleccionada -->
+          <div class="row mb-3">
+            <label for="droga" class="form-label">Droga</label>
+            <input
+              type="text"
+              class="form-control"
+              id="droga"
+              [value]="formConsulta.droga?.nombre"
+              readonly
+            />
+          </div>
+  
+          <!-- Mostrar el nombre del veterinario seleccionado -->
+          <div class="row mb-3">
+            <label for="veterinario" class="form-label">Veterinario</label>
+            <input
+              type="text"
+              class="form-control"
+              id="veterinario"
+              [value]="formConsulta.veterinario?.nombre"
+              readonly
+            />
+          </div>
+  
+          <div class="row mb-3">
+            <label for="cantidad">Cantidad</label>
+            <select
+              id="cantidad"
+              class="form-control"
+              name="cantidad"
+              [(ngModel)]="formConsulta.cantidad"
+              [disabled]="unidadesDisponibles.length === 0"
+            >
+              <option *ngFor="let cantidad of unidadesDisponibles" [value]="cantidad">
+                {{ cantidad }}
+              </option>
+            </select>
+            <p *ngIf="unidadesDisponibles.length === 0" class="text-danger">
+              No hay unidades disponibles para esta droga.
+            </p>
+          </div>        
+  
+          <button
+            type="submit"
+            class="btn btn-dark"
+            [disabled]="!tratamientoForm.form.valid"
+          >
+            Agregar
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>

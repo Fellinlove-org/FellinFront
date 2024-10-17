@@ -1,7 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { VeterinarioService } from 'src/app/service/veterinario.service';
 import { Veterinario } from '../../model/veterinario';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ClienteService } from 'src/app/service/cliente.service';
+import { Admin } from 'src/app/model/admin';
+import { HttpClient } from '@angular/common/http';
+import { VeterinarioService } from 'src/app/service/veterinario.service';
 
 
 @Component({
@@ -12,35 +15,58 @@ import { Veterinario } from '../../model/veterinario';
 export class ModificarVeterinarioComponent {
 
   @Output()
-  nuevaVeterinarioEvent = new EventEmitter<Veterinario>();
+  nuevoVeterinarioEvent = new EventEmitter<Veterinario>();
 
-  sendVeterinario!: Veterinario
+  sendVeterinario!: Veterinario;
 
-    formVeterinario:Veterinario = {
+  adminLogueado !: Admin
+
+  id : string | null | undefined 
+
+  cedula!: string;
+  nombre_usuario!: string;
+  userType!: string;
+
+
+  formVeterinario: Veterinario = {
     id: 0,
-    nombre: '',
     cedula: '',
+    nombre: '',
     correo: '',
     password: '',
     especialidad: '',
     foto: ''
-  }
+  };
 
-  constructor( private route: ActivatedRoute, private veterinarioService : VeterinarioService, private router: Router  ) {
 
-   }
-
+  constructor( private route: ActivatedRoute,
+     private veterinarioService: VeterinarioService,
+      private router: Router,
+      private http: HttpClient)
+  {}
   ngOnInit(): void {
-    // Obtener el ID del cliente desde la URL
-    const id = +this.route.snapshot.paramMap.get('id')!;
-    // Cargar los datos del cliente en el formulario
-
+    // Obtener el ID de la mascota desde la URL
+    
+    this.route.paramMap.subscribe(params => {
+      this.id = params.get('id');
+      this.cedula = params.get('cedula')!
+      this.veterinarioService.findById(this.id!).subscribe(cliente => {
+        this.sendVeterinario = cliente
+        this.formVeterinario = cliente;
+        console.log(this.sendVeterinario);
+      })
+    });
+  }
+  modificarVeterinario() {
+    
+    this.sendVeterinario = Object.assign({}, this.formVeterinario);
+    console.log(this.sendVeterinario);
+    this.veterinarioService.updateVeterinario(this.sendVeterinario).subscribe(
+      (nuevoVeterinario: Veterinario) => {
+        console.log('Veterinario agregado', nuevoVeterinario);
+      }
+    )
+    this.router.navigate(['/veterinarios/', this.cedula]);
     
   }
-
-  modificarVeterinario() {
-    this.veterinarioService.updateVeterinario(this.formVeterinario);
-    this.router.navigate(['/VeterinarioTabla']);
-  }
-
 }

@@ -51,7 +51,20 @@ export class LoginComponent {
         }
       )
     } else if (this.userType == 'Admin') {
-      this.router.navigate(['/admin/ + this.datosLogin.cedula']);
+      this.amdinService.login(this.datosLogin.cedula, this.datosLogin.password).subscribe(
+        (data : any) => {
+          console.log(data.msg);
+          if (data.msg == 'ok'){
+            this.router.navigate(['/admin/' + this.datosLogin.cedula]);
+          }else{
+            alert("Credenciales incorrectas");
+          }
+        },
+        (error) => {
+          console.log(error);
+          alert("Credenciales incorrectas");
+        }
+      )
     } else if (this.userType == 'cliente') {
       this.router.navigate(['/cliente/' + this.datosLogin.cedula]);
     }
