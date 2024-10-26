@@ -93,17 +93,6 @@ export class MascotasTableComponent {
     this.router.navigate(['/mascota/'+ this.cedula +'/find/' + this.selectedMascota.id]);
   }
 
-  agregarMascota(mascota: Mascota) {
-    this.mascotaService.addMascota(mascota).subscribe(
-      (nuevaMascota: Mascota) => {
-        this.mascotaList?.push(nuevaMascota);
-        console.log('Mascota agregada:', nuevaMascota);
-      },
-      (error) => {
-        console.error('Error al agregar la mascota:', error);
-      }
-    );
-  }
 
   modificarMascota(mascota: Mascota) {
     this.selectedMascota = mascota;

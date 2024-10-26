@@ -28,6 +28,7 @@ const routes: Routes = [
   {path: 'admin/:cedula', component: AdminComponent},
   {path: 'mascotas/:cedula', component: MascotasTableComponent},
   {path: 'mascotas/:rol/:cedula', component: MascotasTableComponent},
+  {path: 'mascota/:cedula/update/:id', component: ModificarMascotaComponent},
   {path: 'mascotas/all',component: MascotasTableComponent},
   {path: 'mascota/:cedula/find/:id',component: MostrarMascotaComponent },
   {path: "mascota/:cedula/add", component: NuevaMascotaComponent},
