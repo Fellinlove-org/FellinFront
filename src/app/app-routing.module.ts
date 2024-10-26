@@ -20,6 +20,7 @@ import { MostrarTratamientoComponent } from './tratamiento/mostrar-tratamiento/m
 
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { AdminComponent } from './admin/admin/admin.component';
+import { TratamientoTableComponent } from './tratamiento/tratamiento-table/tratamiento-table.component';
 const routes: Routes = [
   {path: '', component: HomeComponent },// Ruta para el inicio
   {path: 'login', component: LoginComponent},
@@ -42,6 +43,7 @@ const routes: Routes = [
   {path: 'veterinario/:cedula/find/:id', component: MostrarVeterinarioComponent},
   {path: 'veterinario/:cedula/update/:id', component: ModificarVeterinarioComponent},
   {path: 'tratamiento/:cedula', component: MostrarTratamientoComponent},
+  {path: 'tratamientos/:cedula', component: TratamientoTableComponent},
   {path: 'tratamiento/:cedula/update/:id', component: MostrarTratamientoComponent},
   
 

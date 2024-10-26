@@ -33,7 +33,8 @@ export class ModificarMascotaComponent {
     edad: 0,
     peso: 0,
     enfermedad: '',
-    foto: ''
+    foto: '',
+    estado : false
   };
 
   constructor(

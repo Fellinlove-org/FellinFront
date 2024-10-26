@@ -7,7 +7,7 @@ import { DrogaService } from 'src/app/service/droga.service';
 @Component({
   selector: 'app-modificar-tratamiento',
   templateUrl: './modificar-tratamiento.component.html',
-  styleUrls: ['./modificar-tratamiento.component.css'],
+  styleUrls: ['./modificar-tratamiento.component.scss'],
 })
 export class ModificarTratamientoComponent implements OnInit {
   formConsulta: Tratamiento= {
@@ -31,6 +31,7 @@ export class ModificarTratamientoComponent implements OnInit {
       foto: '',
       enfermedad: '',
       peso: 0,
+      estado: false,
     },
     droga: {
       id: 0,

@@ -37,7 +37,7 @@ export class MascotaService {
     return this.http.put<Mascota>(`http://localhost:8090/mascota/update/${cedula}`, mascota);
   }
   findClienteCedulaById(id: string) {
-    return this.http.get<Cliente>(`http://localhost:8090/mascota/findcliente/${id}`);
+    return this.http.get<Cliente>(`http://localhost:8090/mascota/find/cliente/${id}`);
   }
   
   deleteMascota(mascota: Mascota) {

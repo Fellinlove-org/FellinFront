@@ -8,5 +8,5 @@ export interface Mascota{
     peso: number;
     enfermedad: string;
     foto: string;
-    cliente?: Cliente;
+    estado : boolean;
 }
