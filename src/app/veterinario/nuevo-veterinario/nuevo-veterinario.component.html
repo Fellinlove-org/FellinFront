@@ -1,10 +1,12 @@
+<app-header [nombre_usuario] = "nombre_usuario" [userType]="userType" [cedula]="cedula"></app-header>
+<br><br><br><br><br>
 <br><br><br><br><br>
 
 <div class="container">
     <div class="form-container">
         <h2 class="form-title">Agregar Cliente</h2>
 
-          <form class="forma-cliente" (ngSubmit)="addVeterinario()">
+          <form class="forma-vetrerinario" (ngSubmit)="addVeterinario()">
             <label for="nombre">✜ Nombre</label>
             <input  type="text" id="nombre" class="form-control" name=" nombre" [(ngModel)] = "formVeterinario.nombre" >
         

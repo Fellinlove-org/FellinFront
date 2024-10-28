@@ -16,6 +16,7 @@
               <th>Droga</th>
               <th>Cantidad</th>
               <th>Fecha del Tratamiento</th>
+              <th>Options</th>
           </tr>
       </thead>
       <tbody>
@@ -30,28 +31,19 @@
               <td> {{tratamiento.fechaConsulta}}</td>
   
               <ng-container *ngIf=" this.userType== 'veterinario'">
-              <td><a (click)="mostrarTratamiento(tratamiento)" class="options-link" >
-                <img src="https://static.vecteezy.com/system/resources/previews/009/356/887/non_2x/eye-icon-sign-symbol-design-free-png.png" width="40px" class="option-icon" alt="Ver">
-              </a>
+              <td>
               <a (click)=" modificarTratamiento(tratamiento)" class="options-link">
                 <img src="https://cdn-icons-png.flaticon.com/128/45/45406.png" width="40px" class="option-icon" alt="Editar">
               </a>
-              <a  class="options-link" (click)="eliminarTratamiento(tratamiento)">
-                <img src="https://cdn-icons-png.flaticon.com/512/1017/1017479.png" width="40px" class="option-icon" alt="Eliminar">
-              </a>
+            
             </ng-container>
   
             <ng-container *ngIf=" this.userType== 'administrador'">
-              <td><a (click)="mostrarTratamiento(tratamiento)" class="options-link" >
-                <img src="https://static.vecteezy.com/system/resources/previews/009/356/887/non_2x/eye-icon-sign-symbol-design-free-png.png" width="40px" class="option-icon" alt="Ver">
-              </a>
+              <td>
               <a (click)=" modificarTratamiento(tratamiento)" class="options-link">
                 <img src="https://cdn-icons-png.flaticon.com/128/45/45406.png" width="40px" class="option-icon" alt="Editar">
               </a>
-              <a  class="options-link" (click)="eliminarTratamiento(tratamiento)">
-                <img src="https://cdn-icons-png.flaticon.com/512/1017/1017479.png" width="40px" class="option-icon" alt="Eliminar">
-              </a>
-              </td>
+             </td>
             </ng-container>
           </tr>
       </tbody>

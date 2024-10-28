@@ -32,4 +32,7 @@
   </div>
 </div>
 
-<a class="ButtonVA" [routerLink]="['/mascotas/all']">Volver</a><br><br>
+<ng-container>
+  <button [routerLink]="['/mascotas/' + cedula]" class="menu-item servicio"> Volver </button>
+</ng-container>
+

@@ -6,6 +6,8 @@ import { mergeMap, Observable } from 'rxjs';
 import { VeterinarioService } from 'src/app/service/veterinario.service';
 import { AdminService } from 'src/app/service/admin.service';
 import { Veterinario } from 'src/app/model/veterinario';
+import { Mascota } from 'src/app/model/mascota';
+import { MascotaService } from 'src/app/service/mascota.service';
 
 
 @Component({
@@ -23,11 +25,13 @@ export class MostrarClienteComponent {
   cedula!: string;
   nombre_usuario!: string;
   userType!: string;
+  MascotasList: Mascota[] = [];
 
   veterinarioLogueado !: Veterinario
 
   constructor(
     private clienteService: ClienteService,
+    private mascotaService: MascotaService,
     private route: ActivatedRoute,
     private veterinarioService: VeterinarioService,
     private adminService: AdminService,
@@ -38,6 +42,10 @@ export class MostrarClienteComponent {
     this.route.paramMap.subscribe(params => {
       this.cedula = params.get('cedula')!;
       this.idcliente = params.get('id')!;
+      this.mascotaService.findByClienteId(this.idcliente).subscribe(mascotas => {
+        this.MascotasList = mascotas
+      })
+      console.log(this.MascotasList, this.idcliente)
       this.veterinarioService.findTypeUser(this.cedula)
         .pipe(
           mergeMap((userType) => {

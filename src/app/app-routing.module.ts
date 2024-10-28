@@ -16,11 +16,12 @@ import { MostrarVeterinarioComponent } from './veterinario/mostrar-veterinario/m
 import { ClienteComponent } from './cliente/cliente/cliente.component';
 import { VeterinarioComponent } from './veterinario/veterinario/veterinario.component';
 import { MostrarTratamientoComponent } from './tratamiento/mostrar-tratamiento/mostrar-tratamiento.component';
-
-
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { AdminComponent } from './admin/admin/admin.component';
 import { TratamientoTableComponent } from './tratamiento/tratamiento-table/tratamiento-table.component';
+import { NuevoClienteComponent } from './cliente/nuevo-cliente/nuevo-cliente.component';
+import { NuevoVeterinarioComponent } from './veterinario/nuevo-veterinario/nuevo-veterinario.component';
+
 const routes: Routes = [
   {path: '', component: HomeComponent },// Ruta para el inicio
   {path: 'login', component: LoginComponent},
@@ -37,16 +38,19 @@ const routes: Routes = [
   {path: 'clientes/:cedula', component: ClienteTableComponent},
   {path: 'clientes/:cedula/update/:id', component: ModificarClienteComponent},
   {path: 'cliente/:cedula/find/:id', component: MostrarClienteComponent},
+  {path: 'cliente/:cedula/add', component: NuevoClienteComponent},
   {path: 'veterinarios/:cedula', component: VeterinarioTableComponent},
   {path: 'veterinarios/:rol/:cedula', component: VeterinarioTableComponent},
   {path: 'veterinarios/update/:id', component: ModificarVeterinarioComponent},
   {path: 'veterinario/:cedula/find/:id', component: MostrarVeterinarioComponent},
   {path: 'veterinario/:cedula/update/:id', component: ModificarVeterinarioComponent},
-  {path: 'tratamiento/:cedula', component: MostrarTratamientoComponent},
+  {path: 'veterinario/:cedula/add', component: NuevoVeterinarioComponent},
+  {path: 'tratamiento/:cedula/find/:id', component: MostrarTratamientoComponent},
   {path: 'tratamientos/:cedula', component: TratamientoTableComponent},
   {path: 'tratamiento/:cedula/update/:id', component: MostrarTratamientoComponent},
-  
+  {path: 'tratamiento/:cedula/add', component: TratamientoTableComponent},
 
+  
   { path: 'admin/negocio', component: AdminDashboardComponent }
 ];
 

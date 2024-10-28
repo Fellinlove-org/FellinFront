@@ -1,20 +1,24 @@
-<app-header [nombre_usuario] = "nombre_usuario" [userType]="userType" [cedula]="cedula"></app-header>
+<app-header [nombre_usuario]="nombre_usuario" [userType]="userType" [cedula]="cedula"></app-header>
 <br><br><br><br><br>
 
+<ng-container *ngIf="this.userType === 'veterinario' || this.userType === 'administrador'">
+    <div class="button-container">
+        <a class="btn" [routerLink]="['/tratamiento', cedula, 'add']">Agregar Tratamiento</a>
+    </div>
+</ng-container>
 
 <div class="container">
     <div class="form-container">
         <h2 class="form-title">Información de la mascota</h2>
         <div class="datos-mascota">
             <img src="{{mascota.foto}}" 
-            style="width: 100px; height: 100px;" 
-            alt="mascota"
-            class="imagen-mascota">
+                 style="width: 100px; height: 100px;" 
+                 alt="mascota"
+                 class="imagen-mascota">
 
             <div class="tabla-mascota">
-                
                 <span class="titulo-atributo">✜ Nombre</span><br>
-                <span class="atributo" >{{mascota.nombre}}</span><br><br>
+                <span class="atributo">{{mascota.nombre}}</span><br><br>
         
                 <span class="titulo-atributo">✜ Raza</span><br>
                 <span class="atributo">{{mascota.raza}}</span><br><br>
@@ -31,5 +35,11 @@
         </div>
     </div>
 </div>
-<button (click) ="siguiente()" class="btn btn-primary"> Siguiente</button>
-<a class="btn btn-primary" [routerLink]="['/mascotas/all']"> Tabla</a>
+
+<button (click)="siguiente()" class="btn btn-primary">Siguiente</button>
+
+<ng-container>
+    <button [routerLink]="['/mascotas/' + cedula]" class="menu-item servicio">Volver</button>
+</ng-container>
+
+<a class="btn btn-primary" [routerLink]="['/mascotas/all']">Tabla</a>
