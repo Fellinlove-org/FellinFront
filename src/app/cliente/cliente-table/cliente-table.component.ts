@@ -76,6 +76,7 @@ export class ClienteTableComponent {
     });
   }
 
+
   mostrarCliente(cliente: Cliente) {
     this.selectedCliente = cliente;
     this.router.navigate(['/cliente/'+ this.cedula+'/find/' + this.selectedCliente.id]);
