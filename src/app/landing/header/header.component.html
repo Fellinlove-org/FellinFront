@@ -9,7 +9,7 @@
       <li><a href="#servicios" class="menu-item servicio">SERVICIOS</a></li>
       <ng-container *ngIf="nombre_usuario">
         <ng-container *ngIf="userType == 'cliente'">
-          <li><a [routerLink]="['/mascotas/' + cedula]" class="menu-item servicio">MIS MASCOTAS</a></li>
+          <li><a id="mis-mascotas" [routerLink]="['/mascotas/' + cedula]" class="menu-item servicio">MIS MASCOTAS</a></li>
           <li><a href="#home" class="menu-item iniciar-sesion">{{nombre_usuario}}</a></li>
         </ng-container>
         <ng-container *ngIf="userType == 'veterinario'">

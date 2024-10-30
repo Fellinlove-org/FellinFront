@@ -2,8 +2,9 @@
     background-color: #5383c1; /* Color de fondo */
     padding: 20px;
     border-radius: 10px;
-    width: 75%; /* Ancho del formulario */
-    margin-left: 25%;
+    width: 60%; /* Ancho del formulario */
+    height: 100%;
+    margin-left: 30%;
     transform: translateX(-20%);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     border: 2px solid #ffffff; /* Borde blanco */
@@ -16,6 +17,17 @@
         margin-bottom: 20px;
         font-size: 28px; /* Tamaño de fuente más grande */
         font-weight: bold; /* Hacerlo en negrita */
+    }
+
+    .forma-mascota{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        grid-auto-rows: minmax(100px, auto);
+        .ultimo{
+            grid-column: 1 / 4;
+            grid-row: 3;
+        }
     }
 
     label {

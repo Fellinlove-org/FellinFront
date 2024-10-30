@@ -22,7 +22,7 @@
     [(ngModel)]="searchTerm"
     (keyup.enter)="buscarMascota()"
   />
-  <button type="button" class="search-btn" (click)="buscarMascota()">
+  <button id="btn-search-mascota" type="button" class="search-btn" (click)="buscarMascota()">
     Buscar
   </button>
 </div>
@@ -52,12 +52,12 @@
               alt="mascota"
               />
             </td>
-            <td> {{mascota.id}}</td>
-            <td> {{mascota.nombre}}</td>
-            <td> {{mascota.raza}}</td>
-            <td> {{mascota.edad}}</td>
-            <td> {{mascota.peso}}</td>
-            <td> {{mascota.enfermedad}}</td>
+            <td id="mascota-id"> {{mascota.id}}</td>
+            <td id="mascota-nombre"> {{mascota.nombre}}</td>
+            <td id="mascota-raza"> {{mascota.raza}}</td>
+            <td id="mascota-edad"> {{mascota.edad}}</td>
+            <td id="mascota-peso"> {{mascota.peso}}</td>
+            <td id="mascota-enfermedad"> {{mascota.enfermedad}}</td>
 
             <ng-container *ngIf="this.userType === 'cliente'">
               <td><a (click)="MostrarMascota(mascota)" class="options-link" >
