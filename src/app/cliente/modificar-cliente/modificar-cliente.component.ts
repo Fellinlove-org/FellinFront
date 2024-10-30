@@ -60,9 +60,10 @@ export class ModificarClienteComponent {
     this.clienteService.updateCliente(this.sendCliente).subscribe(
       (NuevoCliente: Cliente) => {
         console.log('Cliente agregado', NuevoCliente);
+        this.router.navigate(['/clientes/', this.cedula]);
       }
     )
-    this.router.navigate(['/clientes/', this.cedula]);
+    
     
   }
 }

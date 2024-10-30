@@ -91,8 +91,8 @@ export class NuevoClienteComponent {
     this.clienteService.addCliente(this.sendCliente).subscribe(
       (nuevoCliente: Cliente) => {
         console.log('Cliente agregado:', nuevoCliente);
+        this.router.navigate(['/clientes', this.cedula]);
       }
     )
-    this.router.navigate(['/clientes', this.cedula]);
   }
 }

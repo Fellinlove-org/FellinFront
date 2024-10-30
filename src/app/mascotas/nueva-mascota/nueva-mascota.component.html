@@ -5,31 +5,31 @@
     <div class="form-container">
         <h2 class="form-title">Agregar mascota</h2>
 
-          <form class="forma-mascota" (ngSubmit)="addMascota()">
+          <form id="form-mascota" class="forma-mascota" (ngSubmit)="addMascota()">
             <label for="nombre">✜ Nombre</label>
-            <input  type="text" id="nombre" class="form-control" name=" nombre" [(ngModel)] = "formMascota.nombre" >
+            <input  type="text" id="nombre-mascota" class="form-control" name=" nombre" [(ngModel)] = "formMascota.nombre" >
         
             <label for="raza">✜ Raza</label>
-            <input type="text" id="raza" class="form-control" name="raza" [(ngModel)]= "formMascota.raza">
+            <input type="text" id="raza-mascota" class="form-control" name="raza" [(ngModel)]= "formMascota.raza">
                 
             <label for="edad">✜ Edad</label>
-            <input type="number" id="edad" class="form-control" name=" edad" [(ngModel)]= "formMascota.edad">
+            <input type="number" id="edad-mascota" class="form-control" name=" edad" [(ngModel)]= "formMascota.edad">
         
             <label for="peso">✜ Peso</label>
-            <input type="number" id="peso" class="form-control" name=" peso" [(ngModel)]= "formMascota.peso">
+            <input type="number" id="peso-mascota" class="form-control" name=" peso" [(ngModel)]= "formMascota.peso">
         
             <label for="enfermedad">✜ Enfermedad</label>
-            <input  type="text" id="enfermedad" class="form-control" name=" enfermedad" [(ngModel)]= "formMascota.enfermedad">
+            <input  type="text" id="enfermedad-mascota" class="form-control" name=" enfermedad" [(ngModel)]= "formMascota.enfermedad">
                 
             <label for="foto">✜ Foto</label>
-            <input type="text" id="foto" class="form-control" name=" fotos" [(ngModel)]= "formMascota.foto">
+            <input type="text" id="foto-mascota" class="form-control" name=" fotos" [(ngModel)]= "formMascota.foto">
 
             <label for="cliente">✜ Cliente</label>
             <select id="cliente" class="form-control" name="cliente" [(ngModel)]="cliente">
-              <option *ngFor="let cliente of clientes" [ngValue]="cliente">{{ cliente.nombre }}</option>
+              <option id="cliente-option" *ngFor="let cliente of clientes" [ngValue]="cliente">{{ cliente.nombre }}</option>
             </select>
 
-            <button type="submit" class="btn btn-submit" >Enviar</button>
+            <button id="btn-submit-mascota" type="submit" class="btn btn-submit" >Enviar</button>
 
             
             
@@ -41,5 +41,6 @@
 <ng-container>
   <button [routerLink]="['/mascotas/' + cedula]" class="menu-item servicio"> Volver </button>
 </ng-container>
+<br><br><br><br><br><br><br>
 
 
