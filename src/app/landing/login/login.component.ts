@@ -36,33 +36,31 @@ export class LoginComponent {
     this.sendDatos = Object.assign({}, this.datosLogin);
     if (this.userType == 'veterinario') {
       //verificar si la contraseña esta bien
+      
       this.veterinarioService.login(this.datosLogin.cedula, this.datosLogin.password).subscribe(
         (data : any) => {
           console.log(data.msg);
-          if (data.msg == 'ok'){
+          if (data.msg === 'Acceso permitido'){
+            console.log("si entro");
             this.router.navigate(['/veterinario/' + this.datosLogin.cedula]);
           }else{
+            console.log("paila");
             alert("Credenciales incorrectas");
           }
         },
         (error) => {
           console.log(error);
-          alert("Credenciales incorrectas");
         }
       )
     } else if (this.userType == 'Admin') {
       this.amdinService.login(this.datosLogin.cedula, this.datosLogin.password).subscribe(
-        (data : any) => {
-          console.log(data.msg);
-          if (data.msg == 'ok'){
+        (data : string) => {
+          console.log(data);
+          if (data.toString() === 'ok'){
             this.router.navigate(['/admin/' + this.datosLogin.cedula]);
           }else{
             alert("Credenciales incorrectas");
           }
-        },
-        (error) => {
-          console.log(error);
-          alert("Credenciales incorrectas");
         }
       )
     } else if (this.userType == 'cliente') {

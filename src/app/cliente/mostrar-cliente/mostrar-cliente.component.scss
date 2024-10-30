@@ -1,98 +1,121 @@
-.form-container {
-    background-color: #5383c1; /* Color de fondo */
-    padding: 20px;
-    border-radius: 10px;
-    width: 75%; /* Ancho del formulario */
-    margin-left: 25%;
-    transform: translateX(-20%);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    border: 2px solid #ffffff; /* Borde blanco */
-    margin-top: -10%;
-    margin-bottom: 7%;
-
-    .form-title {
-        text-align: center;
-        color: white;
-        margin-bottom: 20px;
-        font-size: 28px; /* Tamaño de fuente más grande */
-        font-weight: bold; /* Hacerlo en negrita */
-    }
-
-    label {
-        color: white;
-        margin-top: 10px;
-        font-weight: bold; /* Etiquetas en negrita */
-    }
-
-    .form-control {
-        margin-bottom: 15px; /* Espaciado entre campos aumentado */
-        border-radius: 8px; /* Bordes redondeados */
-        border: 2px solid #ffffff; /* Bordes blancos */
-    }
-
-    .form-group {
-        display: flex;
-        justify-content: space-between;
-
-        .form-control {
-            width: 48%;
-        }
-    }
-
-    .btn-submit {
-        width: 100%;
-        background-color: #1c7430; /* Verde más oscuro */
-        color: white;
-        font-weight: bold; /* Botón en negrita */
-        border-radius: 8px; /* Bordes redondeados */
-        border: none;
-
-        &:hover {
-            background-color: #145822; /* Color del botón en hover */
-        }
-    }
-
-    .gato-imagen {
-        left: 10%;
-        top: 0%;
-        transform: translateY(100%);
-        max-height: 300px;
-    }
-}
-.datos-cliente {
+.container {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
 
-    .imagen-cliente {
-        height: 50%;
-        padding: 40px;
-    }
-
-    .forma-cliente {
-        width: 100%;
-    }
-
-    .tabla-cliente {
-        width: 100%;
-    }
-
-    .titulo-atributo {
-        color: white;
-        font-weight: bold;
-    }
-
-    .atributo {
-        background-color: white;
-        padding: 10px;
-        display: inline-block; /* Para respetar el ancho y alto fijo */
-        width: 100%;
+    .form-container {
+        background-color: #ffdab3;
+        padding: 50px;
         border-radius: 10px;
+        border: 3px solid #000000;
+        box-shadow: 30px 30px 8px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        width: 600px;
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #4a90e2;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .datos-cliente {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 40px;
+
+            .imagen-cliente {
+                border-radius: 10px;
+                height: 300px;
+                object-fit: cover;
+                margin-right: 20px;
+            }
+
+            .tabla-cliente {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                .titulo-atributo {
+                    font-weight: bold;
+                    color: #4a90e2;
+                    font-size: 25px;
+                }
+
+                .atributo {
+                    color: #4a90e2;
+                    background-color: white;
+                    padding: 10px;
+                    font-size: 20px;
+                    display: inline-block;
+                    border-radius: 10px;
+                    width: 100%;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+
+        /* Contenedor de las tarjetas de mascotas */
+        .mascotas-container {
+            display: flex;
+            flex-direction: column; /* Organiza en una columna */
+            align-items: center; /* Centra las tarjetas */
+            gap: 20px;
+            margin-top: 20px;
+            width: 100%; /* Alinea al ancho completo del form-container */
+        }
+
+        /* Estilos de cada tarjeta de mascota */
+        .tarjeta-mascota {
+            background-color: #e3f2fd;
+            border-radius: 10px;
+            padding: 20px;
+            width: 100%; /* Ocupa todo el ancho disponible del contenedor */
+            max-width: 500px; /* Opcional: limita el ancho máximo para centrar mejor */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+            .imagen-mascota {
+                width: 100px;
+                height: 100px;
+                border-radius: 10px;
+                margin-bottom: 15px;
+            }
+
+            .titulo-atributo {
+                font-weight: bold;
+                color: #4a90e2;
+                font-size: 18px;
+                margin-top: 5px;
+            }
+
+            .atributo {
+                color: #4a90e2;
+                background-color: white;
+                padding: 5px;
+                font-size: 16px;
+                border-radius: 5px;
+                width: 100%;
+                margin-top: 5px;
+            }
+        }
+    }
+
+    .btn {
+        margin-top: 20px;
     }
 }
 
 /* Estilos para los botones */
 .button-container {
-    display: flex; /* Alinea los botones a la derecha; usa 'center' o 'flex-start' para centrar o alinear a la izquierda */
+    display: flex;
     margin-left: 80%;
     gap: 10px;
     margin-bottom: 15px;
@@ -102,7 +125,6 @@
         padding: 10px 20px;
         background-color: #80C4F9;
         color: #fff;
-        text-decoration: none;
         font-size: 16px;
         font-weight: 500;
         border: none;

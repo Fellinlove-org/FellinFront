@@ -80,11 +80,11 @@ export class NuevoVeterinarioComponent {
   addVeterinario() {
     this.sendVeterinario = Object.assign({}, this.formVeterinario);
     console.log(this.sendVeterinario);
-    this.veterinarioService.addVeterinario(this.veterinario).subscribe(
+    this.veterinarioService.addVeterinario(this.sendVeterinario).subscribe(
       (nuevoVeterinario: Veterinario) => {
-        console.log('Mascota agregada:', nuevoVeterinario);
+        console.log('veterinario agregado:', nuevoVeterinario);
       }
     )
-    this.router.navigate(['/mascotas', this.cedula]);
+    this.router.navigate(['/veterinarios/', this.cedula]);
   }
 }

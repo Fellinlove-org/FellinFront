@@ -42,15 +42,10 @@ export class NuevaMascotaComponent {
     peso: 0,
     enfermedad: '',
     foto: '',
-    cliente: {
-      id: 0,
-      cedula: '',
-      nombre: '',
-      correo: '',
-      celular: '',
-      foto: '',
-    }
+    estado : false
   };
+
+  cliente !: Cliente
 
   constructor(
     private mascotaService: MascotaService,
@@ -110,8 +105,7 @@ export class NuevaMascotaComponent {
   addMascota() {
     this.sendMascota = Object.assign({}, this.formMascota);
     console.log(this.sendMascota);
-    console.log(this.sendMascota.cliente?.correo);
-    this.mascotaService.addMascota(this.sendMascota).subscribe(
+    this.mascotaService.addMascota(this.sendMascota, this.cliente.id).subscribe(
       (nuevaMascota: Mascota) => {
         console.log('Mascota agregada:', nuevaMascota);
       }

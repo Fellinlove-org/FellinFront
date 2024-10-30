@@ -29,4 +29,6 @@
     </div>
 </div>
 
-<a class="ButtonVA" th:href="@{/clientes/all}" th:text="Volver"></a><br><br>
+<ng-container>
+    <button [routerLink]="['/clientes/' + cedula]" class="menu-item servicio"> Volver </button>
+  </ng-container>

@@ -34,6 +34,7 @@ import { MostrarTratamientoComponent } from './tratamiento/mostrar-tratamiento/m
 import { AddTratamientoComponent } from './tratamiento/agregar-tratamiento/agregar-tratamiento.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { AdminComponent } from './admin/admin/admin.component';
+import { TratamientoTableComponent } from './tratamiento/tratamiento-table/tratamiento-table.component';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { AdminComponent } from './admin/admin/admin.component';
     ModificarTratamientoComponent,
     MostrarTratamientoComponent,
     AdminDashboardComponent,
-    AdminComponent
+    AdminComponent,
+    TratamientoTableComponent
 
   ],
   imports: [

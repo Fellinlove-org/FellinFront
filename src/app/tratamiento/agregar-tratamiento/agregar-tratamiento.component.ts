@@ -59,6 +59,7 @@ export class AddTratamientoComponent {
       peso: 0,
       foto: '',
       enfermedad: '',
+      estado: false,
     },
     droga: {
       id: 0,

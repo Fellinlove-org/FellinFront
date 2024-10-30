@@ -25,7 +25,7 @@
             <input type="text" id="foto" class="form-control" name=" fotos" [(ngModel)]= "formMascota.foto">
 
             <label for="cliente">✜ Cliente</label>
-            <select id="cliente" class="form-control" name="cliente" [(ngModel)]="formMascota.cliente">
+            <select id="cliente" class="form-control" name="cliente" [(ngModel)]="cliente">
               <option *ngFor="let cliente of clientes" [ngValue]="cliente">{{ cliente.nombre }}</option>
             </select>
 
@@ -38,4 +38,8 @@
     </div>
     <a class="btn btn-primary" > Tabla</a>
 </div>
+<ng-container>
+  <button [routerLink]="['/mascotas/' + cedula]" class="menu-item servicio"> Volver </button>
+</ng-container>
+
 

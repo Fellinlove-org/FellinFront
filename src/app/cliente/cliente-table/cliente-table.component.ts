@@ -76,6 +76,7 @@ export class ClienteTableComponent {
     });
   }
 
+
   mostrarCliente(cliente: Cliente) {
     this.selectedCliente = cliente;
     this.router.navigate(['/cliente/'+ this.cedula+'/find/' + this.selectedCliente.id]);
@@ -96,7 +97,7 @@ export class ClienteTableComponent {
   eliminarCliente(cliente: Cliente) {
     this.selectedCliente = cliente;
     console.log(this.selectedCliente.nombre);
-    this.http.get<Cliente>(ROOT_URL + 'clientes/delete/' + this.selectedCliente.id).subscribe();
+    this.http.delete<Cliente>(ROOT_URL + 'cliente/delete/' + this.selectedCliente.id).subscribe();
     this.clienteList = this.clienteList.filter(c => c !== this.selectedCliente);
   }
 

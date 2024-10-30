@@ -1,0 +1,47 @@
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+    gap: 10px;
+
+    .ButtonVA {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #80C4F9;
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        border: none;
+        border-radius: 25px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        &:hover {
+            background-color: #68B0E9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        &:active {
+            background-color: #5DA8E0;
+            transform: translateY(0);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    }
+}
+
+.options-link {
+    margin-right: 5px;
+
+    .option-icon {
+        border: 3px solid transparent;
+        border-radius: 6px;
+        transition: border-color 0.3s ease, filter 0.3s ease;
+
+        &:hover {
+            border-color: #007bff;
+            filter: brightness(100%);
+        }
+    }
+}
