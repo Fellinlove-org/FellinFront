@@ -74,7 +74,8 @@ export class TratamientoTableComponent {
     throw new Error('Method not implemented.');
   }
   modificarTratamiento(tratamiento: Tratamiento) {
-    throw new Error('Method not implemented.');
+    this.tratamientoSeleccionado = tratamiento;
+    this.router.navigate(['/tratamiento/'+ this.cedula +'/update/' + this.tratamientoSeleccionado.id]);
   }
   mostrarTratamiento(tratamiento: Tratamiento) {
     throw new Error('Method not implemented.');

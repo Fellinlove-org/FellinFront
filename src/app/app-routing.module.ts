@@ -21,6 +21,7 @@ import { AdminComponent } from './admin/admin/admin.component';
 import { TratamientoTableComponent } from './tratamiento/tratamiento-table/tratamiento-table.component';
 import { NuevoClienteComponent } from './cliente/nuevo-cliente/nuevo-cliente.component';
 import { NuevoVeterinarioComponent } from './veterinario/nuevo-veterinario/nuevo-veterinario.component';
+import { ModificarTratamientoComponent } from './tratamiento/modificar-tratamiento/modificar-tratamiento.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent },// Ruta para el inicio
@@ -47,7 +48,7 @@ const routes: Routes = [
   {path: 'veterinario/:cedula/add', component: NuevoVeterinarioComponent},
   {path: 'tratamiento/:cedula/find/:id', component: MostrarTratamientoComponent},
   {path: 'tratamientos/:cedula', component: TratamientoTableComponent},
-  {path: 'tratamiento/:cedula/update/:id', component: MostrarTratamientoComponent},
+  {path: 'tratamiento/:cedula/update/:id', component: ModificarTratamientoComponent},
   {path: 'tratamiento/:cedula/add', component: TratamientoTableComponent},
 
   

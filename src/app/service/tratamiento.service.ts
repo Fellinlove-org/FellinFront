@@ -13,7 +13,7 @@ export class TratamientoService {
     return this.http.get<Tratamiento[]>('http://localhost:8090/tratamiento/find/all');
   }
 
-  findById(id: number): Observable<Tratamiento> {
+  findById(id: string): Observable<Tratamiento> {
     return this.http.get<Tratamiento>('http://localhost:8090/tratamiento/find/' + id);
   }
 
@@ -23,11 +23,11 @@ export class TratamientoService {
 
   add(tratamiento: Tratamiento) {
     console.log(tratamiento);
-    return this.http.post('http://localhost:8090/tratamiento/add/', tratamiento);
+    return this.http.post('http://localhost:8090/tratamiento/add', tratamiento);
   }
 
   update(tratamiento: Tratamiento) {
-    return this.http.put('http://localhost:8090/tratamiento/update/', tratamiento);
+    return this.http.put<Tratamiento>('http://localhost:8090/tratamiento/update', tratamiento);
   }
 
   getTratamientosUltimoMes(): Observable<number> {

@@ -10,31 +10,31 @@ export class DrogaService {
   constructor(private http: HttpClient) {}
 
   findAll(): Observable<Droga[]> {
-    return this.http.get<Droga[]>('http://localhost:8080/drogas/ver');
+    return this.http.get<Droga[]>('http://localhost:8090/drogas/all');
   }
 
   findById(id: number): Observable<Droga> {
-    return this.http.get<Droga>('http://localhost:8080/drogas/ver/' + id);
+    return this.http.get<Droga>('http://localhost:8090/drogas/find/' + id);
   }
 
   deleteById(id: number) {
-    return this.http.delete('http://localhost:8080/drogas/ver/' + id);
+    return this.http.delete('http://localhost:8090/drogas/find/' + id);
   }
 
   updateDroga(droga: Droga) {
-    return this.http.put('http://localhost:8080/drogas/modificar', droga);
+    return this.http.put<Droga>('http://localhost:8090/drogas/update', droga);
   }
 
   getVentasTotales(): Observable<number> {
-    return this.http.get<number>(`http://localhost:8080/drogas/ventas-totales`);
+    return this.http.get<number>(`http://localhost:8090/drogas/ventas-totales`);
   }
 
   getGananciasTotales(): Observable<number> {
-    return this.http.get<number>(`http://localhost:8080/drogas/ganancias-totales`);
+    return this.http.get<number>(`http://localhost:8090/drogas/ganancias-totales`);
   }
 
   getTopTratamientos(): Observable<any[]> {
-    return this.http.get<any[]>('http://localhost:8080/drogas/top3');
+    return this.http.get<any[]>('http://localhost:8090/drogas/top3');
   }
 
 }
