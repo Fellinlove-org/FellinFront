@@ -38,7 +38,7 @@
     <tbody>
       <br>
         <br>
-        <tr id="cliente" *ngFor="let cliente of clienteList">
+        <tr id="cliente" *ngFor="let cliente of listaFiltrada">
             <td> 
               <img src="{{cliente.foto}}" 
               style="width: 100px; height: 100px;" 
@@ -46,7 +46,7 @@
               />
             </td>
             <td> {{cliente.id}}</td>
-            <td> {{cliente.nombre}}</td>
+            <td id="nombre-cliente"> {{cliente.nombre}}</td>
             <td> {{cliente.cedula}}</td>
             <td> {{cliente.correo}}</td>
             <td> {{cliente.celular}}</td>
@@ -55,7 +55,7 @@
             <td><a (click)="mostrarCliente(cliente)" class="options-link" >
               <img src="https://static.vecteezy.com/system/resources/previews/009/356/887/non_2x/eye-icon-sign-symbol-design-free-png.png" width="40px" class="option-icon" alt="Ver">
             </a>
-            <a (click)=" modificarCliente(cliente)" class="options-link">
+            <a id="edit-cliente" (click)=" modificarCliente(cliente)" class="options-link">
               <img src="https://cdn-icons-png.flaticon.com/128/45/45406.png" width="40px" class="option-icon" alt="Editar">
             </a>
             <a  class="options-link" (click)="eliminarCliente(cliente)">

@@ -7,7 +7,7 @@
         <div class="datos-cliente">
             <img th:src="${cliente.foto}" alt="foto del cliente" class="imagen-cliente">
 
-            <form class="forma-cliente" (ngSubmit)="modificarCliente()">
+            <form id="form-cliente" class="forma-cliente" (ngSubmit)="modificarCliente()">
                 <label for="nombre">✜ Nombre</label>
                 <input  type="text" id="nombre" class="form-control" name=" nombre" [(ngModel)] = "formCliente.nombre" value="{{sendCliente.nombre}}" >
 
@@ -23,7 +23,7 @@
                 <label for="foto">✜ Foto</label>
                 <input type="text" id="foto" class="form-control" name=" foto" [(ngModel)]= "formCliente.foto" value="{{sendCliente.foto}}">
     
-                <button type="submit" class="btn btn-submit">Enviar</button>
+                <button id="btn-submit" type="submit" class="btn btn-submit">Enviar</button>
               </form>
         </div>
     </div>
