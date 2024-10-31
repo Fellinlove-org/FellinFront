@@ -3,48 +3,39 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Tratamiento } from 'src/app/model/tratamiento';
 import { TratamientoService } from 'src/app/service/tratamiento.service';
 import { DrogaService } from 'src/app/service/droga.service';
+import { Droga } from 'src/app/model/droga';
+import { TratamientoDTO } from 'src/app/model/tratamiento-dto';
 
 @Component({
   selector: 'app-modificar-tratamiento',
   templateUrl: './modificar-tratamiento.component.html',
   styleUrls: ['./modificar-tratamiento.component.scss'],
 })
-export class ModificarTratamientoComponent implements OnInit {
-  formConsulta: Tratamiento= {
+export class ModificarTratamientoComponent {
+
+  id : string | null | undefined 
+
+  cedula!: string;
+
+  cantidadSelected !: number
+
+  formConsulta: TratamientoDTO= {
     id: 0,
-    fechaConsulta: new Date(),
+    nombreVeterinario: '',
+    nombreMascota:'',
+    nombreDroga:'',
     cantidad: 0,
-    veterinario: {
-      id: 0,
-      nombre: '',
-      cedula: '',
-      correo: '',
-      especialidad: '',
-      foto: '',
-      password: '',
-    },
-    mascota: {
-      id: 0,
-      nombre: '',
-      raza: '',
-      edad: 0,
-      foto: '',
-      enfermedad: '',
-      peso: 0,
-      estado: false,
-    },
-    droga: {
-      id: 0,
-      nombre: '',
-      precioCompra: 0,
-      precioVenta: 0,
-      unidadesVendidas: 0,
-      unidadesDisponibles: 0,
-    },
+    fechaConsulta: new Date(),
+    unidadesDisponibles: 0,
+    idVeterinario: 0,
+    idMascota: 0,
+    idDroga: 0
+    
   };
 
   unidadesDisponibles: number[] = [];
   cantidadOriginal: number = 0; // Nueva variable para almacenar la cantidad original
+  unidadesDisponiblesOriginal: number = 0;
 
   constructor(
     private router: Router,
@@ -54,18 +45,24 @@ export class ModificarTratamientoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      const id = Number(params['id']);
-      this.tratamientoService.findById(id).subscribe((tratamiento) => {
-        this.formConsulta = { ...tratamiento };
+    this.route.paramMap.subscribe(params => {
+      this.id = params.get('id');
+      this.cedula = params.get('cedula')!;
+      console.log(this.id);
+      this.tratamientoService.findById(this.id!).subscribe((tratamientoDTO) => {
+        console.log("tratamientoDTO", tratamientoDTO);
+        
+        this.formConsulta = tratamientoDTO;
         this.cantidadOriginal = this.formConsulta.cantidad; // Guardamos la cantidad original
+        this.unidadesDisponiblesOriginal = this.formConsulta.unidadesDisponibles;
+        
         this.generarOpcionesCantidad();
       });
     });
   }
 
   generarOpcionesCantidad(): void {
-    const maxCantidad = this.formConsulta.droga?.unidadesDisponibles || 0;
+    const maxCantidad = this.formConsulta.unidadesDisponibles || 0;
     this.unidadesDisponibles = Array.from(
       { length: maxCantidad },
       (_, i) => i + 1
@@ -73,37 +70,14 @@ export class ModificarTratamientoComponent implements OnInit {
   }
 
   modificarTratamiento() {
-    if (this.formConsulta.droga) {
-      const nuevaCantidad = Number(this.formConsulta.cantidad) || 0;
-
-      console.log('Cantidad original:', this.cantidadOriginal);
-      console.log('Cantidad nueva ingresada:', nuevaCantidad);
-
-      // Sumar la nueva cantidad a la cantidad original
-      const cantidadTotal = this.cantidadOriginal + nuevaCantidad;
-      console.log('Cantidad total del tratamiento:', cantidadTotal);
-
-      // Actualizar las unidades vendidas
-      this.formConsulta.droga.unidadesVendidas += nuevaCantidad;
-      console.log('Unidades vendidas actualizadas:', this.formConsulta.droga.unidadesVendidas);
-
-      // Reducir las unidades disponibles
-      this.formConsulta.droga.unidadesDisponibles -= nuevaCantidad;
-
-      // Actualizar la droga en el backend
-      this.drogaService.updateDroga(this.formConsulta.droga).subscribe(
-        (response) => console.log('Droga actualizada:', response),
-        (error) => console.error('Error al actualizar la droga:', error)
-      );
-
-      // Actualizar la consulta
-      this.formConsulta.cantidad = cantidadTotal;
-      this.formConsulta.fechaConsulta = new Date();
-      this.tratamientoService.update(this.formConsulta).subscribe({
-        complete: () => this.router.navigate(['/tratamientos']),
+      const nuevaCantidad = Number(this.formConsulta.cantidad);
+      this.formConsulta.cantidad = nuevaCantidad + this.cantidadOriginal;
+      this.formConsulta.unidadesDisponibles = this.unidadesDisponiblesOriginal - nuevaCantidad;
+      console.log("Modificando el tratamiento:", this.formConsulta);
+      
+      this.tratamientoService.update(this.formConsulta).subscribe((tratamiento) => {
+        console.log('Tratamiento modificado:', tratamiento);
+        this.router.navigate(['/tratamientos/' + this.cedula]);
       });
-    } else {
-      console.log('No hay suficientes unidades disponibles o la cantidad es incorrecta.');
-    }
   }
 }

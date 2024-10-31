@@ -54,13 +54,18 @@ export class LoginComponent {
       )
     } else if (this.userType == 'Admin') {
       this.amdinService.login(this.datosLogin.cedula, this.datosLogin.password).subscribe(
-        (data : string) => {
-          console.log(data);
-          if (data.toString() === 'ok'){
+        (data : any) => {
+          console.log(data.msg);
+          if (data.msg === 'Acceso permitido'){
+            console.log("si entro");
             this.router.navigate(['/admin/' + this.datosLogin.cedula]);
           }else{
+            console.log("paila");
             alert("Credenciales incorrectas");
           }
+        },
+        (error) => {
+          console.log(error);
         }
       )
     } else if (this.userType == 'cliente') {

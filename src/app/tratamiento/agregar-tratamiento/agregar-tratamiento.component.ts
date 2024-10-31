@@ -8,6 +8,7 @@ import { TratamientoService } from 'src/app/service/tratamiento.service';
 import { DrogaService } from 'src/app/service/droga.service';
 import { MascotaService } from 'src/app/service/mascota.service';
 import { VeterinarioService } from 'src/app/service/veterinario.service';
+import { TratamientoDTO } from 'src/app/model/tratamiento-dto';
 
 @Component({
   selector: 'app-add-tratamiento',
@@ -15,6 +16,30 @@ import { VeterinarioService } from 'src/app/service/veterinario.service';
   styleUrls: ['./agregar-tratamiento.component.scss'],
 })
 export class AddTratamientoComponent {
+  id: string | null | undefined;
+  cedula!: string;
+
+  mascotas!: Mascota[];
+  drogas!: Droga[];
+  veterinarios!: Veterinario[];
+  unidadesDisponibles: number[] = [];
+  mascotaSeleccionada!: Mascota;
+  DrogaSeleccionada!: Droga;
+  VeterinarioSeleccionado!: Veterinario;
+
+  formConsulta: TratamientoDTO = {
+    id: 0,
+    nombreVeterinario: '',
+    nombreMascota: '',
+    nombreDroga: '',
+    cantidad: 0,
+    fechaConsulta: new Date(),
+    unidadesDisponibles: 0,
+    idVeterinario: 0,
+    idMascota: 0,
+    idDroga: 0,
+  };
+
   constructor(
     private mascotaService: MascotaService,
     private drogaService: DrogaService,
@@ -24,104 +49,56 @@ export class AddTratamientoComponent {
     private route: ActivatedRoute
   ) {}
 
-  mascotas!: Mascota[];
-  drogas!: Droga[];
-  veterinarios!: Veterinario[];
-  unidadesDisponibles: number[] = [];
-
   ngOnInit(): void {
-    this.mascotaService.findAll().subscribe((mascotas) => {
-      this.mascotas = mascotas;
+    this.route.paramMap.subscribe((params) => {
+      this.id = params.get('id');
+      this.cedula = params.get('cedula')!;
+      console.log(this.id);
+      this.mascotaService.findById(this.id!).subscribe((mascota) => {
+        console.log('tratamientoDTO', mascota);
+        this.mascotaSeleccionada = mascota;
+        this.formConsulta.nombreMascota = mascota.nombre;
+        this.formConsulta.idMascota = mascota.id; // Asigna el nombre de la mascota
+      });
     });
+
     this.drogaService.findAll().subscribe((drogas) => {
       this.drogas = drogas;
     });
-  }
 
-  formConsulta: Tratamiento = {
-    id: 0,
-    fechaConsulta: new Date(),
-    cantidad: 0,
-    veterinario: {
-      id: 0,
-      nombre: '',
-      cedula: '',
-      especialidad: '',
-      foto: '',
-      password: '',
-      correo: '',
-    },
-    mascota: {
-      id: 0,
-      nombre: '',
-      raza: '',
-      edad: 0,
-      peso: 0,
-      foto: '',
-      enfermedad: '',
-      estado: false,
-    },
-    droga: {
-      id: 0,
-      nombre: '',
-      precioCompra: 0,
-      precioVenta: 0,
-      unidadesVendidas: 0,
-      unidadesDisponibles: 0,
-    },
-  };
-
-  onMascotaSeleccionada(event: Event): void {
-    const selectedMascotaId = (event.target as HTMLSelectElement).value;
-    const mascotaSeleccionada = this.mascotas.find(
-      (mascota) => mascota.id === +selectedMascotaId
-    );
-    if (mascotaSeleccionada) {
-      this.formConsulta.mascota = mascotaSeleccionada;
-    }
+    this.veterinarioService.findByCedula(this.cedula!).subscribe((veterinario) => {
+      this.VeterinarioSeleccionado = veterinario;
+      this.formConsulta.nombreVeterinario = veterinario.nombre;
+      this.formConsulta.idVeterinario = veterinario.id; // Asigna el nombre del veterinario
+    });
   }
 
   onDrogaSeleccionada(event: Event): void {
-    const selectedDroga = this.formConsulta.droga;
-
+    const selectedDrogaId = Number((event.target as HTMLSelectElement).value);
+    const selectedDroga = this.drogas.find((droga) => droga.id === selectedDrogaId);
     if (selectedDroga) {
+      this.DrogaSeleccionada = selectedDroga;
+      this.formConsulta.nombreDroga = selectedDroga.nombre;
+      this.formConsulta.idDroga = selectedDroga .id; // Asigna el nombre de la droga seleccionada
       this.generarOpcionesCantidad();
     }
   }
 
   generarOpcionesCantidad(): void {
-    const maxCantidad = this.formConsulta.droga?.unidadesDisponibles || 0;
-    this.unidadesDisponibles = Array.from(
-      { length: maxCantidad },
-      (_, i) => i + 1
-    );
+    const maxCantidad = this.DrogaSeleccionada?.unidadesDisponibles || 0;
+    this.unidadesDisponibles = Array.from({ length: maxCantidad }, (_, i) => i + 1);
     console.log('Opciones de cantidad generadas:', this.unidadesDisponibles);
   }
 
   addTratamiento() {
-    if (this.formConsulta.droga) {
-      // Reducir las unidades disponibles y aumentar las unidades vendidas
-      this.formConsulta.droga.unidadesDisponibles -= this.formConsulta.cantidad;
-      this.formConsulta.droga.unidadesVendidas += this.formConsulta.cantidad;
-
-      // Llamada al servicio para actualizar la droga en el backend
-      this.drogaService.updateDroga(this.formConsulta.droga).subscribe(
-        (response) => {
-          console.log('Droga actualizada correctamente:', response);
-        },
-        (error) => {
-          console.error('Error al actualizar la droga:', error);
-        }
-      );
-    } else {
-      console.log(
-        'No hay suficientes unidades disponibles o la cantidad solicitada es incorrecta.'
-      );
-    }
-
-    this.formConsulta.fechaConsulta = new Date();
-    this.tratamientoService.add(this.formConsulta).subscribe({
-      complete: () => this.router.navigate(['/tratamientos']),
+    // Aquí se procesará el objeto formConsulta para agregar el tratamiento
+    console.log('Tratamiento a agregar:', this.formConsulta);
+    // Llama al servicio para agregar el tratamiento
+    this.formConsulta.unidadesDisponibles = this.DrogaSeleccionada?.unidadesDisponibles - this.formConsulta.cantidad;
+    this.tratamientoService.add(this.formConsulta).subscribe((nuevoTratamiento) => {
+      console.log('Tratamiento agregado correctamente:', nuevoTratamiento);
+      // Redirige o maneja la respuesta según sea necesario
     });
+    this.router.navigate(['/tratamientos', this.cedula]);
   }
 }

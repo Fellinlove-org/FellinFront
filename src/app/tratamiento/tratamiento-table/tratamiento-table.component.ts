@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { mergeMap, Observable } from 'rxjs';
 import { Tratamiento } from 'src/app/model/tratamiento';
+import { TratamientoDTO } from 'src/app/model/tratamiento-dto';
 import { AdminService } from 'src/app/service/admin.service';
 import { TratamientoService } from 'src/app/service/tratamiento.service';
 import { VeterinarioService } from 'src/app/service/veterinario.service';
@@ -15,13 +16,13 @@ import { VeterinarioService } from 'src/app/service/veterinario.service';
 export class TratamientoTableComponent {
 
 
-  tratamientoSeleccionado!: Tratamiento;
+  tratamientoDTOSeleccionado!: TratamientoDTO;
   cedula!: string;
   userType!: string;
   nombre_usuario !: string;
 
-  tratamientoList: Tratamiento[] = [];
-  listaFiltrada: Tratamiento[] = [];
+  tratamientoDTOList: TratamientoDTO[] = [];
+  listaFiltrada: TratamientoDTO[] = [];
   searchTerm: string = '';
 
 
@@ -54,15 +55,15 @@ export class TratamientoTableComponent {
               })
             );
           } else{
-            return new Observable<Tratamiento[]>();;
+            return new Observable<TratamientoDTO[]>();;
           }
         })
       )
       .subscribe(
-        (tratamiento: Tratamiento[]) => {
-        this.tratamientoList = tratamiento;
-        this.listaFiltrada = tratamiento;
-        console.log("Lista de tratamientos",this.tratamientoList);
+        (tratamientoDTO: TratamientoDTO[]) => {
+        this.tratamientoDTOList = tratamientoDTO;
+        this.listaFiltrada = tratamientoDTO;
+        console.log("Lista de tratamientos",this.tratamientoDTOList);
       },
       (error) => {
         console.error('Error al cargar los tratamientos:', error);
@@ -73,8 +74,9 @@ export class TratamientoTableComponent {
   eliminarTratamiento(tratamiento: Tratamiento) {
     throw new Error('Method not implemented.');
   }
-  modificarTratamiento(tratamiento: Tratamiento) {
-    throw new Error('Method not implemented.');
+  modificarTratamiento(tratamiento: TratamientoDTO) {
+    this.tratamientoDTOSeleccionado = tratamiento;
+    this.router.navigate(['/tratamiento/'+ this.cedula +'/update/' + this.tratamientoDTOSeleccionado.id]);
   }
   mostrarTratamiento(tratamiento: Tratamiento) {
     throw new Error('Method not implemented.');
