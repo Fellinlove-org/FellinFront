@@ -11,7 +11,7 @@
     <div class="container">
       <div id="cuadro">
         <h1 class="mb-3">Registrar Tratamiento</h1>
-        <form #tratamientoForm="ngForm" (ngSubmit)="modificarTratamiento()">
+        <form (ngSubmit)="modificarTratamiento()">
           <!-- Mostrar el nombre de la mascota seleccionada -->
           <div class="row mb-3">
             <label for="mascota" class="form-label">Mascota</label>
@@ -19,7 +19,7 @@
               type="text"
               class="form-control"
               id="mascota"
-              [value]="formConsulta.mascota?.nombre"
+              [value]="formConsulta.nombreMascota"
               readonly
             />
           </div>
@@ -31,7 +31,7 @@
               type="text"
               class="form-control"
               id="droga"
-              [value]="formConsulta.droga?.nombre"
+              [value]="formConsulta.nombreDroga"
               readonly
             />
           </div>
@@ -43,7 +43,7 @@
               type="text"
               class="form-control"
               id="veterinario"
-              [value]="formConsulta.veterinario?.nombre"
+              [value]="formConsulta.nombreVeterinario"
               readonly
             />
           </div>
@@ -69,7 +69,6 @@
           <button
             type="submit"
             class="btn btn-dark"
-            [disabled]="!tratamientoForm.form.valid"
           >
             Agregar
           </button>

@@ -3,7 +3,7 @@
 
 <ng-container *ngIf="this.userType === 'veterinario' || this.userType === 'administrador'">
     <div class="button-container">
-        <a class="btn" [routerLink]="['/tratamiento', cedula, 'add']">Agregar Tratamiento</a>
+        <a class="btn" [routerLink]="['/tratamiento', cedula, 'add' , idmascota]">Agregar Tratamiento</a>
     </div>
 </ng-container>
 
@@ -33,6 +33,29 @@
                 <span class="atributo">{{mascota.enfermedad}}</span><br><br>
             </div>
         </div>
+        <h3 class="form-title">HISTORIAL MEDICO</h3>
+        <div *ngIf="listaTratamientosDTO && listaTratamientosDTO.length > 0; else noTratamientos" class="mascotas-container">
+            <div *ngFor="let TratamientoDTO of listaTratamientosDTO" class="tarjeta-mascota">
+                
+                <div class="tabla-mascota">
+                    <span class="titulo-atributo">✜ Fecha</span>
+                    <span class="atributo">{{TratamientoDTO.fechaConsulta}}</span><br><br>
+
+                    <span class="titulo-atributo">✜ Cantidad</span>
+                    <span class="atributo">{{TratamientoDTO.cantidad}}</span><br><br>
+
+                    <span class="titulo-atributo">✜ NombreDroga</span>
+                    <span class="atributo">{{TratamientoDTO.nombreDroga}}</span><br><br>
+
+                    <span class="titulo-atributo">✜ Veterinario</span>
+                    <span class="atributo">{{TratamientoDTO.nombreVeterinario}}</span><br><br>
+                </div>
+            </div>
+        </div>
+        <!-- Mensaje cuando no hay mascotas -->
+        <ng-template #noTratamientos>
+            <p class="atributo">No se encontraron mascotas para este cliente.</p>
+        </ng-template>
     </div>
 </div>
 

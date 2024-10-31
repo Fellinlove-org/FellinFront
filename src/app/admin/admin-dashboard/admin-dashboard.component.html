@@ -1,15 +1,8 @@
-<header>
-    <img src="assets/images/LogoFin.png" alt="Logo" />
-    <ul>
-      <li><a routerLink="/admin">Inicio</a></li>
-    </ul>
-  </header>
+<app-header></app-header>
+
+<br><br><br><br>
   
-  <main>
-    <div class="row">
-      <h1 class="text-center mb-4" id="title">Dashboard de Administración</h1>
-    </div>
-  
+<main>
     <div class="container mt-4 contenedor">
       <!-- Tarjetas de estadísticas -->
       <div class="row mb-4 cards-container">
@@ -47,29 +40,5 @@
         </div>
       </div>
   
-      <!-- Tabla de Cantidad de Tratamientos por Tipo de Medicamento -->
-      <div class="tabla-container">
-        <div class="row mb-4">
-          <div class="col-lg-12">
-            <h3 class="text-center">
-              Cantidad de Tratamientos por Tipo de Medicamento
-            </h3>
-            <table class="table table-striped top-tratamientos">
-              <thead>
-                <tr>
-                  <th>Nombre del Medicamento</th>
-                  <th>Cantidad Tratamientos</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let tratamiento of cant_tratamientos">
-                  <td>{{ tratamiento.nombre }}</td>
-                  <td>{{ tratamiento.cantidad }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
     </div>
-  </main>
+</main>

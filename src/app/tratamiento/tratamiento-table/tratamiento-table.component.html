@@ -16,23 +16,25 @@
               <th>Droga</th>
               <th>Cantidad</th>
               <th>Fecha del Tratamiento</th>
+              <th>Unidades Disponibles</th>
               <th>Options</th>
           </tr>
       </thead>
       <tbody>
         <br>
           <br>
-          <tr *ngFor="let tratamiento of tratamientoList">
-              <td> {{tratamiento.id}}</td>
-              <td> {{tratamiento.veterinario?.nombre}}</td>
-              <td> {{tratamiento.mascota?.nombre}}</td>
-              <td> {{tratamiento.droga?.nombre}}</td>
-              <td> {{tratamiento.cantidad}}</td>
-              <td> {{tratamiento.fechaConsulta}}</td>
+          <tr *ngFor="let tratamientoDTO of tratamientoDTOList">
+              <td> {{tratamientoDTO.id}}</td>
+              <td> {{tratamientoDTO.nombreVeterinario}}</td>
+              <td> {{tratamientoDTO.nombreMascota}}</td>
+              <td> {{tratamientoDTO.nombreDroga}}</td>
+              <td> {{tratamientoDTO.cantidad}}</td>
+              <td> {{tratamientoDTO.fechaConsulta}}</td>
+              <td> {{tratamientoDTO.unidadesDisponibles}}</td>
   
               <ng-container *ngIf=" this.userType== 'veterinario'">
               <td>
-              <a (click)=" modificarTratamiento(tratamiento)" class="options-link">
+              <a (click)=" modificarTratamiento(tratamientoDTO)" class="options-link">
                 <img src="https://cdn-icons-png.flaticon.com/128/45/45406.png" width="40px" class="option-icon" alt="Editar">
               </a>
             
@@ -40,7 +42,7 @@
   
             <ng-container *ngIf=" this.userType== 'administrador'">
               <td>
-              <a (click)=" modificarTratamiento(tratamiento)" class="options-link">
+              <a (click)=" modificarTratamiento(tratamientoDTO)" class="options-link">
                 <img src="https://cdn-icons-png.flaticon.com/128/45/45406.png" width="40px" class="option-icon" alt="Editar">
               </a>
              </td>

@@ -9,6 +9,8 @@ import { ROOT_URL } from 'src/app/app.component';
 import { ClienteService } from 'src/app/service/cliente.service';
 import { VeterinarioService } from 'src/app/service/veterinario.service';
 import { AdminService } from 'src/app/service/admin.service';
+import { TratamientoDTO } from 'src/app/model/tratamiento-dto';
+import { TratamientoService } from 'src/app/service/tratamiento.service';
 
 @Component({
   selector: 'app-mostrar-mascota',
@@ -16,6 +18,9 @@ import { AdminService } from 'src/app/service/admin.service';
   styleUrls: ['./mostrar-mascota.component.scss']
 })
 export class MostrarMascotaComponent {
+modificarTratamiento(_t62: TratamientoDTO) {
+throw new Error('Method not implemented.');
+}
 
   
   cedula !: string;
@@ -30,11 +35,14 @@ export class MostrarMascotaComponent {
 
   clienteLogueado !: Cliente
 
+  listaTratamientosDTO !:TratamientoDTO[]
+
 
   constructor(
     private mascotaService: MascotaService,
     private clienteService: ClienteService, 
     private veterinarioService: VeterinarioService,
+    private tratamientoService: TratamientoService,
     private adminService: AdminService,
     private route: ActivatedRoute, 
     private router: Router,
@@ -47,6 +55,11 @@ export class MostrarMascotaComponent {
     this.route.paramMap.subscribe(params => {
       this.cedula = params.get('cedula')!;
       this.idmascota = params.get('id')!;
+      this.tratamientoService.findByIdMascota(this.idmascota).subscribe((tratamientos) => {
+        this.listaTratamientosDTO = tratamientos;
+        console.log("lista de tratamientos", this.listaTratamientosDTO);
+        
+      })
       this.clienteService.findTypeUser(this.cedula)
         .pipe(
           mergeMap((userType) => {

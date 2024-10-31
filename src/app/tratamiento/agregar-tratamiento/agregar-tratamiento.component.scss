@@ -1,113 +1,112 @@
-html,
-body {
-  height: 100%;
-  margin: 0;
-}
-
-body {
+header {
   display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Asegúrate de que sea 100vh */
-  background: white;
-}
-
-main {
-  flex: 1; /* Hace que main ocupe el espacio disponible */
-  padding: 20px; /* Agrega un poco de espacio alrededor del contenido de main */
-  background: white;
+  align-items: center;
+  background-color: #5383c1;
+  padding: 10px;
+  img {
+    height: 50px;
+  }
+  ul {
+    list-style: none;
+    display: flex;
+    margin-left: auto;
+    li {
+      margin-left: 20px;
+      a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        &:hover {
+          color: #cce1ff;
+        }
+      }
+    }
+  }
 }
 
 .container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  padding: 20px;
 }
 
 #cuadro {
-  background: white;
-  padding: 3em;
-  height: auto;
+  background-color: #5383c1;
+  padding: 20px;
+  border-radius: 10px;
   width: 100%;
-  max-width: 600px;
-  border-radius: 20px;
-  border: 1px solid black;
-  box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  transition: all 0.2s ease-in-out;
+  max-width: 500px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   color: white;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .row {
+    margin-bottom: 15px;
+
+    label {
+      font-weight: bold;
+      color: white;
+      margin-bottom: 5px;
+    }
+
+    .form-control {
+      border-radius: 8px;
+      border: 2px solid #ffffff;
+    }
+  }
+
+  .btn {
+    width: 100%;
+    background-color: #1c7430;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    border: none;
+    padding: 10px;
+
+    &:hover {
+      background-color: #145822;
+    }
+  }
 }
 
-header {
+.text-danger {
+  color: #ffcccc;
+}
+
+.button-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: white;
-  height: 100px;
-}
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
 
-header img {
-  height: 80%;
-  margin-left: 20px;
-}
+  .ButtonVA {
+    padding: 10px 20px;
+    background-color: #80C4F9;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
-a {
-  margin: 10px;
-  text-decoration: none;
-  color: white;
-}
+    &:hover {
+      background-color: #68B0E9;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
 
-header > ul {
-  display: flex;
-  justify-content: end;
-  margin: 0;
-  padding: 0;
-}
-
-header ul li {
-  align-items: center;
-  display: flex;
-  font-size: 18px;
-  list-style-type: none;
-  color: white;
-}
-
-header li a:hover {
-  color: red;
-  text-decoration: underline;
-}
-
-header a {
-  padding: 3px;
-}
-
-form {
-  margin: 0 20px 10px;
-}
-
-#cuadro h1 {
-  margin: 0 10px;
-  text-align: center;
-}
-
-.col {
-  margin-top: 10px;
-}
-
-.col label {
-  font-size: 20px;
-}
-
-.mb-3 {
-  font-size: 20px;
-}
-
-.container {
-  display: flex;
-  justify-content: center; /* Centra la tabla horizontalmente */
-  align-items: center; /* Centra la tabla verticalmente */
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 100%;
+    &:active {
+      background-color: #5DA8E0;
+      transform: translateY(0);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  }
 }
