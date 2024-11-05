@@ -6,6 +6,21 @@
   <a class="ButtonVA" routerLink="/" th:text="Volver">Volver</a>
 </div>
   
+<div class="search-container">
+  <input
+    type="text"
+    class="search-input"
+    id="search-tratamiento"
+    placeholder="Buscar tratamiento por nombre de la mascota"
+    [(ngModel)]="searchTerm"
+    (keyup.enter)="buscarTratamiento()"
+  />
+  <button id="btn-search-tratamiento" type="button" class="search-btn" (click)="buscarTratamiento()">
+    Buscar
+  </button>
+</div>
+<br><br>
+
   <table class="table table-striped table-bordered border-primaryx" style="width: 80%; margin: 0 auto; text-align: center;">
   
       <thead class="table-dark">
@@ -23,12 +38,12 @@
       <tbody>
         <br>
           <br>
-          <tr *ngFor="let tratamientoDTO of tratamientoDTOList">
+          <tr [attr.id]="'tratamiento' + tratamientoDTO.id" *ngFor="let tratamientoDTO of listaFiltrada">
               <td> {{tratamientoDTO.id}}</td>
-              <td> {{tratamientoDTO.nombreVeterinario}}</td>
-              <td> {{tratamientoDTO.nombreMascota}}</td>
-              <td> {{tratamientoDTO.nombreDroga}}</td>
-              <td> {{tratamientoDTO.cantidad}}</td>
+              <td [attr.id]="'nombre-veterinario' + tratamientoDTO.id"> {{tratamientoDTO.nombreVeterinario}}</td>
+              <td [attr.id]="'nombre-mascota' + tratamientoDTO.id"> {{tratamientoDTO.nombreMascota}}</td>
+              <td [attr.id]="'nombre-droga' + tratamientoDTO.id"> {{tratamientoDTO.nombreDroga}}</td>
+              <td [attr.id]="'cantidad' + tratamientoDTO.id"> {{tratamientoDTO.cantidad}}</td>
               <td> {{tratamientoDTO.fechaConsulta}}</td>
               <td> {{tratamientoDTO.unidadesDisponibles}}</td>
   

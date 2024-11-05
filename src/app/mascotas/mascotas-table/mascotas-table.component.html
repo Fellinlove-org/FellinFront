@@ -67,7 +67,7 @@
             </ng-container>
 
             <ng-container *ngIf=" this.userType == 'veterinario'">
-              <td><a (click)="MostrarMascota(mascota)" class="options-link" >
+              <td><a id="mostar-mascota" (click)="MostrarMascota(mascota)" class="options-link" >
                 <img src="https://static.vecteezy.com/system/resources/previews/009/356/887/non_2x/eye-icon-sign-symbol-design-free-png.png" width="40px" class="option-icon" alt="Ver">
               </a>
               <a (click)="modificarMascota(mascota)" class="options-link" >

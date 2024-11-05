@@ -17,6 +17,9 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
   cant_tratamientos: { nombre: string; cantidad: number }[] = [];
   private subscription: Subscription = new Subscription();
 
+  totalTratamientos: number = 0;
+  mascotasActivas: number = 0;
+
   constructor(
     private veterinarioService: VeterinarioService,
     private mascotaService: MascotaService,
@@ -38,6 +41,12 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
     // Cargar los datos iniciales al iniciar el componente
     this.cargarDatos();
     this.createBarChart();
+
+    this.tratamientoService.getTotalTratamientos().subscribe(
+      (total: number) => this.totalTratamientos = total,
+    )
+
+    
   }
 
   ngOnDestroy(): void {

@@ -82,4 +82,13 @@ export class TratamientoTableComponent {
     throw new Error('Method not implemented.');
   }
 
+  buscarTratamiento(): void {
+    const term = this.searchTerm.toLowerCase();
+  
+    this.listaFiltrada = this.tratamientoDTOList.filter((tratamientoDTO) =>
+      tratamientoDTO.nombreMascota.toLowerCase().includes(term) ||
+    tratamientoDTO.nombreDroga.toLowerCase().includes(term)
+    );
+  }
+
 }

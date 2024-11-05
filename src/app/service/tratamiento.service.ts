@@ -40,5 +40,9 @@ export class TratamientoService {
 
   getTratamientosPorDroga(): Observable<any> {
     return this.http.get<any[]>('http://localhost:8090/consultas/tratamiento-por-droga');
-  }  
+  }
+  
+  getTotalTratamientos(): Observable<number> {
+    return this.http.get<number>('http://localhost:8090/tratamiento/count');
+  }
 }

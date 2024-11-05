@@ -52,7 +52,7 @@ const routes: Routes = [
   {path: 'tratamiento/:cedula/update/:id', component: ModificarTratamientoComponent},
   {path: 'tratamiento/:cedula/add/:id', component: AddTratamientoComponent },
 
-  { path: 'admin/:cedula/negocio', component: AdminDashboardComponent }
+  { path: 'admin/:cedula/dashboard', component: AdminDashboardComponent }
 ];
 
 @NgModule({

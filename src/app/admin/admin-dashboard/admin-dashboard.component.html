@@ -10,7 +10,7 @@
           <div class="card text-center shadow-sm card-hover mb-4">
             <div class="card-body">
               <h5 class="card-title">{{ kpi.title }}</h5>
-              <p class="card-text display-4">
+              <p id="kpi-value" class="card-text display-4">
                 <!-- Verificar si es un valor numérico o string -->
                 <ng-container
                   *ngIf="
@@ -36,6 +36,16 @@
           <div class="col-lg-12">
             <h3 class="text-center">Top 3 tratamientos más vendidos</h3>
             <canvas id="top3_tratamientos"></canvas>
+          </div>
+        </div>
+        <div class="cantidades">
+          <div class="cantidad-tratamientos">
+            <h3> Cantidad total de tratamientos suministrados </h3>
+            <p id="total-tratamientos" >{{ totalTratamientos }}</p>
+          </div>
+          <div class="cantidad-tratamientos">
+            <h3> Cantidad total de mascotas activas </h3>
+            <p>{{ mascotasActivas }}</p>
           </div>
         </div>
       </div>

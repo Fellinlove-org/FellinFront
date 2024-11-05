@@ -23,7 +23,7 @@
           <li><a [routerLink]="['/tratamientos/' + cedula ]" class="menu-item servicio">TRATAMIENTOS</a></li>
           <li><a [routerLink]="['/clientes/'+ cedula]" class="menu-item servicio">CLIENTES</a></li>
           <li><a [routerLink]="['/veterinarios/' + cedula]" class="menu-item servicio">VETERINARIOS</a></li>
-          <li><a [routerLink]="['/dashboard/']" class="menu-item servicio">DASHBOARD</a></li>
+          <li><a id="dashboard" [routerLink]="['/admin/' + cedula +'/dashboard/']" class="menu-item servicio">DASHBOARD</a></li>
           <li><a href="#home" class="menu-item iniciar-sesion">{{nombre_usuario}}</a></li>
         </ng-container>
       </ng-container>

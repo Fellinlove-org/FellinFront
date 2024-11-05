@@ -12,67 +12,67 @@
     <div class="container">
       <div id="cuadro">
         <h1 class="mb-3">Registrar Tratamiento</h1>
-        <form #tratamientoForm="ngForm" (ngSubmit)="addTratamiento()">
+        <form id="form-tratamiento" #tratamientoForm="ngForm" (ngSubmit)="addTratamiento()">
           <!-- Mostrar el nombre del veterinario seleccionado -->
-<div class="row mb-3">
-  <label for="veterinario" class="form-label">Veterinario</label>
-  <input
-      type="text"
-      class="form-control"
-      id="veterinario"
-      [value]="VeterinarioSeleccionado.nombre"
-      readonly
-  />
-</div>
+          <div class="row mb-3">
+            <label for="veterinario" class="form-label">Veterinario</label>
+            <input
+                type="text"
+                class="form-control"
+                id="veterinario"
+                [value]="VeterinarioSeleccionado.nombre"
+                readonly
+            />
+          </div>
 
-<!-- Mostrar el nombre de la mascota seleccionada -->
-<div class="row mb-3">
-  <label for="mascota" class="form-label">Mascota</label>
-  <input
-      type="text"
-      class="form-control"
-      id="mascota"
-      [value]="mascotaSeleccionada.nombre"
-      readonly
-  />
-</div>
+          <!-- Mostrar el nombre de la mascota seleccionada -->
+          <div class="row mb-3">
+            <label for="mascota" class="form-label">Mascota</label>
+            <input
+                type="text"
+                class="form-control"
+                id="mascota"
+                [value]="mascotaSeleccionada.nombre"
+                readonly
+            />
+          </div>
 
-<!-- Lista desplegable para seleccionar la droga -->
-<div class="row mb-3">
-  <label for="droga" class="form-label">Droga</label>
-  <select
-      id="droga"
-      class="form-control"
-      name="droga"
-      (change)="onDrogaSeleccionada($event)"
-      required
-  >
-      <option *ngFor="let droga of drogas" [value]="droga.id">{{ droga.nombre }}</option>
-  </select>
-</div>
+          <!-- Lista desplegable para seleccionar la droga -->
+          <div class="row mb-3">
+            <label for="droga" class="form-label">Droga</label>
+            <select
+                id="droga"
+                class="form-control"
+                name="droga"
+                (change)="onDrogaSeleccionada($event)"
+                required
+            >
+                <option [attr.id]="'droga' + droga.id" *ngFor="let droga of drogas" [value]="droga.id">{{ droga.nombre }}</option>
+            </select>
+          </div>
 
-<!-- Cantidad -->
-<div class="row mb-3">
-  <label for="cantidad">Cantidad</label>
-  <select
-      id="cantidad"
-      class="form-control"
-      name="cantidad"
-      [(ngModel)]="formConsulta.cantidad"
-      [disabled]="unidadesDisponibles.length === 0"
-  >
-      <option *ngFor="let cantidad of unidadesDisponibles" [value]="cantidad">
-          {{ cantidad }}
-      </option>
-  </select>
-  <p *ngIf="unidadesDisponibles.length === 0" class="text-danger">
-      No hay unidades disponibles para esta droga.
-  </p>
-</div>
+          <!-- Cantidad -->
+          <div class="row mb-3">
+            <label for="cantidad">Cantidad</label>
+            <select
+                id="cantidad"
+                class="form-control"
+                name="cantidad"
+                [(ngModel)]="formConsulta.cantidad"
+                [disabled]="unidadesDisponibles.length === 0"
+            >
+                <option [attr.id]="'cantidad' + cantidad" *ngFor="let cantidad of unidadesDisponibles" [value]="cantidad">
+                    {{ cantidad }}
+                </option>
+            </select>
+            <p *ngIf="unidadesDisponibles.length === 0" class="text-danger">
+                No hay unidades disponibles para esta droga.
+            </p>
+          </div>
 
-<button type="submit" class="btn btn-dark" [disabled]="!tratamientoForm.form.valid">
-  Agregar
-</button>
+          <button id="btn-submit-tratamiento" type="submit" class="btn btn-dark" [disabled]="!tratamientoForm.form.valid">
+            Agregar
+          </button>
         </form>
       </div>
     </div>

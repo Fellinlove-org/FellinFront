@@ -97,8 +97,8 @@ export class AddTratamientoComponent {
     this.formConsulta.unidadesDisponibles = this.DrogaSeleccionada?.unidadesDisponibles - this.formConsulta.cantidad;
     this.tratamientoService.add(this.formConsulta).subscribe((nuevoTratamiento) => {
       console.log('Tratamiento agregado correctamente:', nuevoTratamiento);
-      // Redirige o maneja la respuesta según sea necesario
+      this.router.navigate(['/tratamientos', this.cedula]);
     });
-    this.router.navigate(['/tratamientos', this.cedula]);
+    
   }
 }

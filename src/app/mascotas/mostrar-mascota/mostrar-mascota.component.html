@@ -3,7 +3,7 @@
 
 <ng-container *ngIf="this.userType === 'veterinario' || this.userType === 'administrador'">
     <div class="button-container">
-        <a class="btn" [routerLink]="['/tratamiento', cedula, 'add' , idmascota]">Agregar Tratamiento</a>
+        <a id="add-tratamiento" class="btn" [routerLink]="['/tratamiento', cedula, 'add' , idmascota]">Agregar Tratamiento</a>
     </div>
 </ng-container>
 
