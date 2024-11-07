@@ -21,6 +21,7 @@ export class ClienteComponent {
   ){}
 
   ngOnInit() {
+    /*
     this.route.paramMap.subscribe(params => {
       this.cedula = params.get('id')!
       console.log(this.cedula)
@@ -31,6 +32,14 @@ export class ClienteComponent {
         this.nombre_usuario = cliente.nombre
         this.cedula = cliente.cedula.toString()
       })
+    })
+    */
+
+    this.clienteService.clienteHome().subscribe(cliente => {
+      console.log(cliente);
+      this.userType = 'cliente';
+      this.nombre_usuario = cliente.nombre
+      this.cedula = cliente.cedula.toString()
     })
   }
 }

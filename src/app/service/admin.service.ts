@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Admin } from '../model/admin';
 import { Observable } from 'rxjs';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +25,12 @@ export class AdminService {
     return this.http.get<Admin>(`http://localhost:8090/admin/find/cedula/${cedula}`);
   }
 
-  login(cedula: string, password: string){
-    return this.http.get<string>(`http://localhost:8090/admin/login/${cedula}/${password}`);
+  login(user : User): Observable<string> {
+    return this.http.post(`http://localhost:8090/admin/login`, user,
+    {
+      responseType: 'text'
+    });
   }
   
+
 }

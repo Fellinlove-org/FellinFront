@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './landing/header/header.component';
 import { FooterComponent } from './landing/footer/footer.component';
 import { HomeComponent } from './landing/home/home.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import { AdminTableComponent } from './admin/admin-table/admin-table.component';
 import { ClienteTableComponent } from './cliente/cliente-table/cliente-table.component';
@@ -35,6 +35,7 @@ import { AddTratamientoComponent } from './tratamiento/agregar-tratamiento/agreg
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { AdminComponent } from './admin/admin/admin.component';
 import { TratamientoTableComponent } from './tratamiento/tratamiento-table/tratamiento-table.component';
+import { AuthInterceptor } from './helpers/auth.interceptor';
 
 
 @NgModule({
@@ -77,7 +78,13 @@ import { TratamientoTableComponent } from './tratamiento/tratamiento-table/trata
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi : true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Veterinario } from '../model/veterinario';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +15,6 @@ export class VeterinarioService {
 
   findAll(){
     return this.http.get<Veterinario[]>(`http://localhost:8090/veterinario/find/all`);
-  }
-
-  login(cedula: string, password: string){
-    return this.http.get<string>(`http://localhost:8090/veterinario/login/${cedula}/${password}`);
   }
 
   findById(id: string) {
@@ -38,6 +35,13 @@ export class VeterinarioService {
   }
   updateVeterinario(veterinario: Veterinario){
     return this.http.put<Veterinario>(`http://localhost:8090/veterinario/update`, veterinario);
+  }
+
+  login(user : User): Observable<string> {
+    return this.http.post(`http://localhost:8090/veterinario/login`, user,
+    {
+      responseType: 'text'
+    });
   }
 
 }
