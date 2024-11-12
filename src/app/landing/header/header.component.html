@@ -5,8 +5,11 @@
       <div class="logo-text">Fellinlove</div>
     </div>
     <ul>
-      <li><a href="#nosotros" class="menu-item nosotros">NOSOTROS</a></li>
-      <li><a href="#servicios" class="menu-item servicio">SERVICIOS</a></li>
+      <ng-container *ngIf="!nombre_usuario">
+        <li><a href="#nosotros" class="menu-item nosotros">NOSOTROS</a></li>
+        <li><a href="#servicios" class="menu-item servicio">SERVICIOS</a></li>
+      </ng-container>
+
       <ng-container *ngIf="nombre_usuario">
         <ng-container *ngIf="userType == 'cliente'">
           <li><a id="mis-mascotas" [routerLink]="['/mascotas/' + cedula]" class="menu-item servicio">MIS MASCOTAS</a></li>

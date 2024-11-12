@@ -1,29 +1,40 @@
-<app-header [nombre_usuario] = "nombre_usuario" [userType]="userType" [cedula]="cedula"></app-header>
-<br><br><br><br><br>
-<br><br><br><br><br>
+<app-header [nombre_usuario]="nombre_usuario" [userType]="userType" [cedula]="cedula"></app-header>
 
 <div class="container">
     <div class="form-container">
         <h2 class="form-title">Agregar Cliente</h2>
 
-          <form class="forma-vetrerinario" (ngSubmit)="addVeterinario()">
-            <label for="nombre">✜ Nombre</label>
-            <input  type="text" id="nombre" class="form-control" name=" nombre" [(ngModel)] = "formVeterinario.nombre" >
-        
-            <label for="cedula">✜ Cedula</label>
-            <input type="text" id="cedula" class="form-control" name="cedula" [(ngModel)]= "formVeterinario.cedula">
-                
-            <label for="correo">✜ Correo</label>
-            <input type="text" id="correo" class="form-control" name=" correo" [(ngModel)]= "formVeterinario.correo">
+        <form class="forma-veterinario" (ngSubmit)="addVeterinario()">
+            <div>
+                <label for="nombre">✜ Nombre</label>
+                <input type="text" id="nombre" class="form-control" name="nombre" [(ngModel)]="formVeterinario.nombre">
+            </div>
 
-            <label for=" especialidad">✜ Especialidad</label>
-            <input type="text" id=" especialidad" class="form-control" name=" especialidad" [(ngModel)]= "formVeterinario.especialidad">
-                
-            <label for="foto">✜ Foto</label>
-            <input type="text" id="foto" class="form-control" name=" fotos" [(ngModel)]= "formVeterinario.foto">
+            <div>
+                <label for="cedula">✜ Cédula</label>
+                <input type="text" id="cedula" class="form-control" name="cedula" [(ngModel)]="formVeterinario.cedula">
+            </div>
 
-            <button type="submit" class="btn btn-submit" >Enviar</button>
-          </form>
+            <div>
+                <label for="correo">✜ Correo</label>
+                <input type="text" id="correo" class="form-control" name="correo" [(ngModel)]="formVeterinario.correo">
+            </div>
+
+            <div>
+                <label for="especialidad">✜ Especialidad</label>
+                <input type="text" id="especialidad" class="form-control" name="especialidad" [(ngModel)]="formVeterinario.especialidad">
+            </div>
+
+            <div>
+                <label for="foto">✜ Foto</label>
+                <input type="text" id="foto" class="form-control" name="foto" [(ngModel)]="formVeterinario.foto">
+            </div>
+
+            <button type="submit" class="btn btn-submit">Enviar</button>
+        </form>
     </div>
-    <a class="btn btn-primary" [routerLink]="['/veterinario/all']"> Tabla</a>
+</div>
+
+<div class="button-container-bottom">
+    <button [routerLink]="['/veterinario/all']" class="btn btn-primary">Volver</button>
 </div>

@@ -1,25 +1,14 @@
 <app-header [nombre_usuario]="nombre_usuario" [userType]="userType" [cedula]="cedula"></app-header>
-<br><br><br><br><br>
-
-<ng-container *ngIf="this.userType === 'veterinario' || this.userType === 'administrador'">
-    <div class="button-container">
-        <a id="add-tratamiento" class="btn" [routerLink]="['/tratamiento', cedula, 'add' , idmascota]">Agregar Tratamiento</a>
-    </div>
-</ng-container>
 
 <div class="container">
     <div class="form-container">
-        <h2 class="form-title">Información de la mascota</h2>
+        <h2 class="form-title">Información de la mascota</h2>
         <div class="datos-mascota">
-            <img src="{{mascota.foto}}" 
-                 style="width: 100px; height: 100px;" 
-                 alt="mascota"
-                 class="imagen-mascota">
-
+            <img src="{{mascota.foto}}" alt="mascota" class="imagen-mascota">
             <div class="tabla-mascota">
                 <span class="titulo-atributo">✜ Nombre</span><br>
                 <span class="atributo">{{mascota.nombre}}</span><br><br>
-        
+
                 <span class="titulo-atributo">✜ Raza</span><br>
                 <span class="atributo">{{mascota.raza}}</span><br><br>
 
@@ -36,7 +25,6 @@
         <h3 class="form-title">HISTORIAL MEDICO</h3>
         <div *ngIf="listaTratamientosDTO && listaTratamientosDTO.length > 0; else noTratamientos" class="mascotas-container">
             <div *ngFor="let TratamientoDTO of listaTratamientosDTO" class="tarjeta-mascota">
-                
                 <div class="tabla-mascota">
                     <span class="titulo-atributo">✜ Fecha</span>
                     <span class="atributo">{{TratamientoDTO.fechaConsulta}}</span><br><br>
@@ -52,17 +40,15 @@
                 </div>
             </div>
         </div>
-        <!-- Mensaje cuando no hay mascotas -->
         <ng-template #noTratamientos>
             <p class="atributo">No se encontraron mascotas para este cliente.</p>
         </ng-template>
     </div>
 </div>
 
-<button (click)="siguiente()" class="btn btn-primary">Siguiente</button>
-
-<ng-container>
-    <button [routerLink]="['/mascotas/' + cedula]" class="menu-item servicio">Volver</button>
-</ng-container>
-
-<a class="btn btn-primary" [routerLink]="['/mascotas/all']">Tabla</a>
+<div class="button-container-bottom">
+    <ng-container *ngIf="this.userType === 'veterinario'">
+        <button id="add-tratamiento" class="btn btn-primary" [routerLink]="['/tratamiento', cedula, 'add' , idmascota]">Agregar Tratamiento</button>
+    </ng-container>
+    <button [routerLink]="['/mascotas/' + cedula]" class="btn btn-primary">Volver</button>
+</div>

@@ -97,7 +97,7 @@ export class ClienteTableComponent {
   eliminarCliente(cliente: Cliente) {
     this.selectedCliente = cliente;
     console.log(this.selectedCliente.nombre);
-    this.http.delete<Cliente>(ROOT_URL + 'cliente/delete/' + this.selectedCliente.id).subscribe();
+    this.http.delete<Cliente>(ROOT_URL + 'cliente/delete/' + this.selectedCliente.id.toString()).subscribe();
     this.clienteList = this.clienteList.filter(c => c !== this.selectedCliente);
   }
 

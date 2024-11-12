@@ -5,6 +5,9 @@ import { MascotaService } from 'src/app/service/mascota.service';
 import { Cliente } from 'src/app/model/cliente';
 import { HttpClient } from '@angular/common/http';
 import { ClienteService } from 'src/app/service/cliente.service';
+import { mergeMap, Observable } from 'rxjs';
+import { AdminService } from 'src/app/service/admin.service';
+import { VeterinarioService } from 'src/app/service/veterinario.service';
 
 @Component({
   selector: 'app-modificar-mascota',
@@ -19,6 +22,10 @@ export class ModificarMascotaComponent {
   sendMascota!: Mascota;
 
   clienteLogueado !: Cliente;
+
+  idmascota !: string;
+
+  mascota!: Mascota;
 
   cedula!: string;
   nombre_usuario!: string;
@@ -41,7 +48,10 @@ export class ModificarMascotaComponent {
     private route: ActivatedRoute,
     private mascotaService: MascotaService,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private clienteService: ClienteService,
+    private adminService: AdminService,
+    private veterinarioService: VeterinarioService,
   ) {}
 
   ngOnInit(): void {
@@ -56,9 +66,44 @@ export class ModificarMascotaComponent {
         this.sendMascota = mascota;
         this.formMascota = mascota; // Asignar mascota recibida al formulario
         console.log(this.sendMascota);
-      });
-    });
-  }
+      })
+      this.clienteService.findTypeUser(this.cedula)
+      .pipe(
+        mergeMap((userType) => {
+          this.userType = userType.userType;
+          console.log(this.userType);
+          if (this.userType === 'cliente') {
+            // Si es cliente, obtenemos la información del cliente y sus mascotas
+            return this.clienteService.findByCedula(this.cedula).pipe(
+              mergeMap((clienteInfo) => {
+                this.nombre_usuario = clienteInfo.nombre;
+                return this.mascotaService.findById(this.idmascota);
+              })
+            );
+          } else if (this.userType === 'veterinario' ) {
+            return this.veterinarioService.findByCedula(this.cedula).pipe(
+              mergeMap((vetInfo) => {
+                this.nombre_usuario = vetInfo.nombre;
+                return this.mascotaService.findById(this.idmascota);
+              })
+            );
+          }else if (this.userType === 'administrador') {
+            return this.adminService.findByCedula(this.cedula).pipe(
+              mergeMap((adminInfo) => {
+                this.nombre_usuario = adminInfo.nombre;
+                return this.mascotaService.findById(this.idmascota);
+              })
+            );
+          } else {
+            return new Observable<Mascota>();
+          }
+        })
+      ).subscribe(mascota => {
+        this.mascota = mascota
+        console.log(this.mascota);
+      })
+  });
+}
 
   modificarMascota() {
     this.sendMascota = { ...this.formMascota }; // Copiar los datos del formulario

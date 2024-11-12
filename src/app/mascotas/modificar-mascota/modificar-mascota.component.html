@@ -30,9 +30,9 @@
       </form>
     </div>
   </div>
+
+  <!-- Botón "Volver" centrado debajo de la tarjeta -->
+  <div class="button-container-bottom">
+    <button [routerLink]="['/mascotas/' + cedula]" class="btn btn-primary">Volver</button>
+  </div>
 </div>
-
-<ng-container>
-  <button [routerLink]="['/mascotas/' + cedula]" class="menu-item servicio"> Volver </button>
-</ng-container>
-

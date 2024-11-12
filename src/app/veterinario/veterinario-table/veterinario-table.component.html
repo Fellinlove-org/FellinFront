@@ -2,13 +2,27 @@
 
 <br><br><br><br><br>
 
-<ng-container *ngIf=" this.userType == 'administrador'">
-  <div class="button-container">
-    <a class="ButtonVA" [routerLink]="['/veterinario/'+ cedula +'/add']" >Agregar</a>
-  </div>
-</ng-container>
+<div class="search-container">
+  <input
+    type="text"
+    id="search-veterinario"
+    class="search-input"
+    placeholder="Buscar veterinario por nombre"
+    [(ngModel)]="searchTerm"
+    (keyup.enter)="buscarVeterinario()"
+  />
+  <button type="button" class="search-btn" id="btn-search" (click)="buscarVeterinario()">
+    Buscar
+  </button>
+  <ng-container *ngIf=" this.userType == 'administrador'">
+    <div>
+      <a id="add-veterinario" class="search-btn" [routerLink]="['/veterinario/'+ cedula +'/add']" >Agregar</a>
+    </div>
+  </ng-container>
+
+</div>
   
-  <table class="table table-striped table-bordered border-primaryx" style="width: 80%; margin: 0 auto; text-align: center;">
+<table id = "veterianrios" class="TableMscota">
   
       <thead class="table-dark">
           <tr>
@@ -22,9 +36,7 @@
           </tr>
       </thead>
       <tbody>
-        <br>
-          <br>
-          <tr *ngFor="let veterinario of veterinarioList">
+          <tr *ngFor="let veterinario of listaFiltrada">
               <td> 
                 <img src="{{veterinario.foto}}" 
                 style="width: 100px; height: 100px;" 
