@@ -4,6 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ClienteService } from 'src/app/service/cliente.service';
 import { Veterinario } from 'src/app/model/veterinario';
 import { HttpClient } from '@angular/common/http';
+import { VeterinarioService } from 'src/app/service/veterinario.service';
+import { AdminService } from 'src/app/service/admin.service';
+import { mergeMap, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-modificar-cliente',
@@ -17,6 +20,8 @@ export class ModificarClienteComponent {
 
   sendCliente!: Cliente;
 
+  cliente!: Cliente;
+
   veterinarioLogueado !: Veterinario
 
   id : string | null | undefined 
@@ -24,6 +29,8 @@ export class ModificarClienteComponent {
   cedula!: string;
   nombre_usuario!: string;
   userType!: string;
+
+  idcliente !: string;
 
 
   formCliente: Cliente = {
@@ -37,6 +44,8 @@ export class ModificarClienteComponent {
 
   constructor( private route: ActivatedRoute,
      private clienteService: ClienteService,
+      private veterinarioService: VeterinarioService,
+      private adminService: AdminService,
       private router: Router,
       private http: HttpClient)
   {}
@@ -45,12 +54,43 @@ export class ModificarClienteComponent {
     
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
+      this.idcliente = params.get('id')!;
       this.cedula = params.get('cedula')!;
       this.clienteService.findById(this.id!).subscribe(mascota => {
         this.sendCliente = mascota
         this.formCliente = mascota;
         console.log(this.sendCliente);
       })
+      this.veterinarioService.findTypeUser(this.cedula)
+        .pipe(
+          mergeMap((userType) => {
+            this.userType = userType.userType;
+            console.log(this.userType);
+            if (this.userType === 'cliente') {
+              // Si es cliente, obtenemos la información del cliente
+              return this.clienteService.findById(this.idcliente);
+            } else if (this.userType === 'administrador') {
+              return this.adminService.findByCedula(this.cedula).pipe(
+                mergeMap((adminInfo) => {
+                  this.nombre_usuario = adminInfo.nombre;
+                  return this.clienteService.findById(this.idcliente);
+                })
+              );
+            } else if (this.userType === 'veterinario') {
+              return this.veterinarioService.findByCedula(this.cedula).pipe(
+                mergeMap((vetInfo) => {
+                  this.nombre_usuario = vetInfo.nombre;
+                  return this.clienteService.findById(this.idcliente);
+                })
+              );
+            } else {
+              return new Observable<Cliente>();
+            }
+          })
+        ).subscribe(cliente => {
+          this.cliente = cliente;
+          console.log(this.cliente);
+        });
     });
   }
   modificarCliente() {

@@ -1,11 +1,12 @@
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff;
-  
-    .form-container {
-      background-color: #ffdab3; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  padding-top: 7%;
+
+  .form-container {
+      background-color: #ffdab3;
       padding: 50px;
       border-radius: 10px;
       border: 3px solid #000000;
@@ -13,47 +14,76 @@
       display: flex;
       flex-direction: column;
       width: 600px;
-  
+      align-items: center;
+
       .form-title {
-        text-align: center;
-        margin-bottom: 20px;
-        color: #653e2d;
+          text-align: center;
+          margin-bottom: 20px;
+          color: #653e2d;
+          font-size: 28px;
+          font-weight: bold;
       }
-  
-      .datos-mascota {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between; 
-        margin-top: 40px; 
-  
-        .imagen-mascota {
-          border-radius: 10px;
-          height: 500px;
-          object-fit: cover;
-          margin-right: 20px;
-        }
-  
-        .tabla-mascota {
+
+      .datos-veterinario {
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          margin-right: 0px; 
-  
-          .titulo-atributo {
-            font-weight: bold;
-            color: #653e2d; 
-            font-size: 25px;
+          align-items: center;
+          margin-top: 40px;
+
+          .imagen-veterinario {
+              width: 150px;
+              height: 150px;
+              border-radius: 10px;
+              margin-bottom: 15px;
+              object-fit: cover;
           }
-  
-          .atributo {
-            color: #653e2d; 
-            font-size: 20px;
+
+          .tabla-veterinario {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              text-align: center;
+
+              .titulo-atributo {
+                  font-weight: bold;
+                  color: #653e2d;
+                  font-size: 18px;
+                  margin-top: 5px;
+              }
+
+              .atributo {
+                  color: #653e2d;
+                  background-color: white;
+                  padding: 5px;
+                  font-size: 16px;
+                  border-radius: 5px;
+                  width: 100%;
+                  margin-top: 5px;
+                  text-align: center;
+              }
           }
-        }
       }
-    }
-  
-    .btn {
-      margin-top: 20px;
-    }
   }
+}
+
+.button-container-bottom {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+
+  .btn {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 16px;
+      transition: background-color 0.3s;
+
+      &:hover {
+          background-color: #0056b3;
+      }
+  }
+}

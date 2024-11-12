@@ -1,36 +1,33 @@
-<app-header [nombre_usuario] = "nombre_usuario" [userType]="userType" [cedula]="cedula"></app-header>
-<br><br><br><br><br>
+<app-header [nombre_usuario]="nombre_usuario" [userType]="userType" [cedula]="cedula"></app-header>
 <br><br><br><br><br>
 
 <div class="container">
     <div class="form-container">
-        <h2 class="form-title">Modificar veterinario</h2>
+        <h2 class="form-title">Modificar Veterinario</h2>
         <div class="datos-veterinario">
-            <img th:src="${veterinario.foto}" alt="foto del veterinario" class="imagen-veterinario">
+            <img src="{{sendVeterinario.foto}}" alt="foto del veterinario" class="imagen-veterinario">
 
             <form class="forma-veterinario" (ngSubmit)="modificarVeterinario()">
                 <label for="nombre">✜ Nombre</label>
-                <input  type="text" id="nombre" class="form-control" name=" nombre" [(ngModel)] = "formVeterinario.nombre" >
+                <input type="text" id="nombre" class="form-control" name="nombre" [(ngModel)]="formVeterinario.nombre">
 
-                <label for="cedula">✜ Cedula</label>
-                <input  type="text" id="cedula" class="form-control" name=" cedula" [(ngModel)] = "formVeterinario.cedula" >
+                <label for="cedula">✜ Cédula</label>
+                <input type="text" id="cedula" class="form-control" name="cedula" [(ngModel)]="formVeterinario.cedula">
 
                 <label for="correo">✜ Correo</label>
-                <input  type="text" id="correo" class="form-control" name=" correo" [(ngModel)] = "formVeterinario.correo" >
-            
-                <label for="password">✜ Celular</label>
-                <input  type="text" id="password" class="form-control" name=" password" [(ngModel)] = "formVeterinario.password" >
-                
+                <input type="text" id="correo" class="form-control" name="correo" [(ngModel)]="formVeterinario.correo">
                 <label for="especialidad">✜ Especialidad</label>
-                <input  type="text" id="especialidad" class="form-control" name=" especialidad" [(ngModel)] = "formVeterinario.especialidad" >
+                <input type="text" id="especialidad" class="form-control" name="especialidad" [(ngModel)]="formVeterinario.especialidad">
 
                 <label for="foto">✜ Foto</label>
-                <input type="text" id="foto" class="form-control" name=" foto" [(ngModel)]= "formVeterinario.foto">
-    
+                <input type="text" id="foto" class="form-control" name="foto" [(ngModel)]="formVeterinario.foto">
+
                 <button type="submit" class="btn btn-submit">Enviar</button>
-              </form>
+            </form>
         </div>
     </div>
 </div>
 
-<a class="ButtonVA" th:href="@{/veterinarios/all}" th:text="Volver"></a><br><br>
+<div class="button-container-bottom">
+    <button [routerLink]="['/veterinarios/all']" class="btn btn-primary">Volver</button>
+</div>

@@ -1,18 +1,12 @@
 <app-header [nombre_usuario]="nombre_usuario" [userType]="userType" [cedula]="cedula"></app-header>
 
-<br><br><br><br><br><br><br><br><br>
-
 <div class="container">
     <div class="form-container">
-        <h2 class="form-title">Información del cliente</h2>
+        <h2 class="form-title">Información del cliente</h2>
         <div class="datos-cliente">
-            <img src="{{cliente.foto}}" 
-            style="width: 100px; height: 100px;" 
-            alt="cliente"
-            class="imagen-cliente">
+            <img src="{{cliente.foto}}" alt="cliente" class="imagen-cliente">
 
             <div class="tabla-cliente">
-                
                 <span class="titulo-atributo">✜ Nombre</span><br>
                 <span class="atributo">{{cliente.nombre}}</span><br><br>
         
@@ -31,10 +25,7 @@
         <h3 class="form-title">Mascotas del Cliente</h3>
         <div *ngIf="MascotasList && MascotasList.length > 0; else noMascotas" class="mascotas-container">
             <div *ngFor="let mascota of MascotasList" class="tarjeta-mascota">
-                <img [src]="mascota.foto" 
-                     alt="mascota" 
-                     class="imagen-mascota" 
-                     style="width: 100px; height: 100px; border-radius: 10px; margin-right: 10px;">
+                <img [src]="mascota.foto" alt="mascota" class="imagen-mascota">
                 
                 <div class="tabla-mascota">
                     <span class="titulo-atributo">✜ Nombre</span>
@@ -59,8 +50,6 @@
     </div>
 </div>
 
-<button (click)="siguiente()" class="btn btn-primary">Siguiente</button>
-<a class="btn btn-primary" [routerLink]="['/ClienteTabla']">Tabla</a>
-<ng-container>
-    <button [routerLink]="['/clientes/' + cedula]" class="menu-item servicio">Volver</button>
-</ng-container>
+<div class="button-container-bottom">
+    <button [routerLink]="['/clientes/' + cedula]" class="btn btn-primary">Volver</button>
+</div>

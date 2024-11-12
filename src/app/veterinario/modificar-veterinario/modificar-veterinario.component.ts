@@ -5,6 +5,8 @@ import { ClienteService } from 'src/app/service/cliente.service';
 import { Admin } from 'src/app/model/admin';
 import { HttpClient } from '@angular/common/http';
 import { VeterinarioService } from 'src/app/service/veterinario.service';
+import { AdminService } from 'src/app/service/admin.service';
+import { mergeMap, Observable } from 'rxjs';
 
 
 @Component({
@@ -20,6 +22,8 @@ export class ModificarVeterinarioComponent {
   sendVeterinario!: Veterinario;
 
   adminLogueado !: Admin
+  idveterinario !: string;
+  veterinario! : Veterinario;
 
   id : string | null | undefined 
 
@@ -42,6 +46,7 @@ export class ModificarVeterinarioComponent {
   constructor( private route: ActivatedRoute,
      private veterinarioService: VeterinarioService,
       private router: Router,
+      private adminService: AdminService,
       private http: HttpClient)
   {}
   ngOnInit(): void {
@@ -49,14 +54,35 @@ export class ModificarVeterinarioComponent {
     
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
+      this.idveterinario = params.get('id')!;
       this.cedula = params.get('cedula')!
       this.veterinarioService.findById(this.id!).subscribe(cliente => {
         this.sendVeterinario = cliente
         this.formVeterinario = cliente;
         console.log(this.sendVeterinario);
       })
-    });
-  }
+    this.adminService.findTypeUser(this.cedula)
+      .pipe(
+        mergeMap((userType) => {
+          this.userType = userType.userType;
+          console.log(this.userType);
+         if (this.userType === 'administrador') {
+            return this.adminService.findByCedula(this.cedula).pipe(
+              mergeMap((adminInfo) => {
+                this.nombre_usuario = adminInfo.nombre;
+                return this.veterinarioService.findById(this.idveterinario);
+              })
+            );
+          } else {
+            return new Observable<Veterinario>();
+          }
+        })
+      ).subscribe(veterinario => {
+        this.veterinario = veterinario;
+        console.log(this.veterinario);
+      });
+  });
+}
   modificarVeterinario() {
     
     this.sendVeterinario = Object.assign({}, this.formVeterinario);

@@ -21,7 +21,7 @@ export class MostrarTratamientoComponent {
 
   ngOnInit(): void {
 
-  
+    
 
     this.tratamientoService.findAll().subscribe((tratamiento) => {
       this.listaTratamiento = tratamiento;

@@ -9,6 +9,7 @@ import { DrogaService } from 'src/app/service/droga.service';
 import { MascotaService } from 'src/app/service/mascota.service';
 import { VeterinarioService } from 'src/app/service/veterinario.service';
 import { TratamientoDTO } from 'src/app/model/tratamiento-dto';
+import { mergeMap, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-tratamiento',
@@ -26,6 +27,12 @@ export class AddTratamientoComponent {
   mascotaSeleccionada!: Mascota;
   DrogaSeleccionada!: Droga;
   VeterinarioSeleccionado!: Veterinario;
+
+  idVeterinario!: string;
+  veterinario !: Veterinario;
+
+  nombre_usuario!: string;
+  userType!: string;
 
   formConsulta: TratamientoDTO = {
     id: 0,
@@ -52,6 +59,7 @@ export class AddTratamientoComponent {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.id = params.get('id');
+      this.idVeterinario = params.get('id')!;
       this.cedula = params.get('cedula')!;
       console.log(this.id);
       this.mascotaService.findById(this.id!).subscribe((mascota) => {
@@ -59,6 +67,29 @@ export class AddTratamientoComponent {
         this.mascotaSeleccionada = mascota;
         this.formConsulta.nombreMascota = mascota.nombre;
         this.formConsulta.idMascota = mascota.id; // Asigna el nombre de la mascota
+      })
+      this.veterinarioService.findTypeUser(this.cedula)
+      .pipe(
+        mergeMap((userType) => {
+          this.userType = userType.userType;
+          console.log(this.userType);
+
+          if (this.userType === 'veterinario') {
+            // Si es veterinario, obtenemos la información de los clientes asociados
+            return this.veterinarioService.findByCedula(this.cedula).pipe(
+              mergeMap((vetInfo) => {
+                this.nombre_usuario = vetInfo.nombre;
+                return this.veterinarioService.findById(this.idVeterinario);
+              })
+            );
+          } else {
+            return new Observable<Veterinario>();
+          }
+        })
+      )
+      .subscribe(veterinario => {
+        this.veterinario = veterinario;
+        console.log(this.veterinario);
       });
     });
 

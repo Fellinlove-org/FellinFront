@@ -1,18 +1,6 @@
 <app-header [nombre_usuario] = "nombre_usuario" [userType]="userType" [cedula]="cedula"></app-header>
 <br><br><br><br><br>
 
-<ng-container *ngIf=" this.userType == 'veterinario'">
-  <div class="button-container">
-    <a id="add-mascota" class="ButtonVA" [routerLink]="['/mascota/'+ cedula +'/add']">Agregar</a>
-  </div>
-</ng-container>
-
-<ng-container *ngIf=" this.userType == 'administrador'">
-  <div class="button-container">
-    <a class="ButtonVA" [routerLink]="['/mascota/'+ cedula +'/add']" >Agregar</a>
-  </div>
-</ng-container>
-
 <div class="search-container">
   <input
     type="text"
@@ -25,12 +13,22 @@
   <button id="btn-search-mascota" type="button" class="search-btn" (click)="buscarMascota()">
     Buscar
   </button>
+
+  <ng-container *ngIf=" this.userType == 'veterinario'">
+      <a id="add-mascota" class="search-btn" [routerLink]="['/mascota/'+ cedula +'/add']">Agregar</a>
+  </ng-container>
+
+  <ng-container *ngIf=" this.userType == 'administrador'">
+    <a id="add-mascota" class="search-btn" [routerLink]="['/mascota/'+ cedula +'/add']">Agregar</a>
+</ng-container>
 </div>
+
+
 <br><br>
 
-<table id="mascotas" class="table table-striped table-bordered border-primaryx" style="width: 80%; margin: 0 auto; text-align: center;">
+<table id="mascotas" class="TableMscota">
 
-    <thead class="table-dark">
+    <thead>
         <tr>
             <th>foto</th>
             <th>Id</th>
@@ -43,8 +41,6 @@
         </tr>
     </thead>
     <tbody>
-      <br>
-        <br>
         <tr id="mascota" *ngFor="let mascota of listaFiltrada">
             <td> 
               <img src="{{mascota.foto}}" 

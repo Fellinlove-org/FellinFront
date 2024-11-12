@@ -3,9 +3,10 @@
     justify-content: center;
     align-items: center;
     background-color: #ffffff;
+    padding: 7%; // Agrega padding a la pantalla para evitar que la tarjeta ocupe todo el ancho
 
     .form-container {
-        background-color: #ffdab3;
+        background-color: #ffdab3; /* Color café */
         padding: 50px;
         border-radius: 10px;
         border: 3px solid #000000;
@@ -13,48 +14,51 @@
         display: flex;
         flex-direction: column;
         width: 600px;
+        align-items: center;
 
         .form-title {
             text-align: center;
             margin-bottom: 20px;
-            color: #4a90e2;
+            color: #653e2d;
             font-size: 28px;
             font-weight: bold;
         }
 
         .datos-cliente {
             display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            margin-top: 40px;
+            flex-direction: column; // Pone la imagen arriba de las características
+            align-items: center;
+            margin-top: 20px;
 
             .imagen-cliente {
+                width: 150px;
+                height: 150px;
                 border-radius: 10px;
-                height: 300px;
+                margin-bottom: 15px;
                 object-fit: cover;
-                margin-right: 20px;
             }
 
             .tabla-cliente {
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
+                align-items: center;
 
                 .titulo-atributo {
                     font-weight: bold;
-                    color: #4a90e2;
-                    font-size: 25px;
+                    color: #653e2d;
+                    font-size: 18px;
+                    margin-top: 5px;
                 }
 
                 .atributo {
-                    color: #4a90e2;
+                    color: #653e2d;
                     background-color: white;
-                    padding: 10px;
-                    font-size: 20px;
-                    display: inline-block;
-                    border-radius: 10px;
+                    padding: 5px;
+                    font-size: 16px;
+                    border-radius: 5px;
                     width: 100%;
-                    margin-bottom: 10px;
+                    margin-top: 5px;
+                    text-align: center;
                 }
             }
         }
@@ -62,11 +66,11 @@
         /* Contenedor de las tarjetas de mascotas */
         .mascotas-container {
             display: flex;
-            flex-direction: column; /* Organiza en una columna */
-            align-items: center; /* Centra las tarjetas */
+            flex-direction: column;
+            align-items: center;
             gap: 20px;
             margin-top: 20px;
-            width: 100%; /* Alinea al ancho completo del form-container */
+            width: 100%;
         }
 
         /* Estilos de cada tarjeta de mascota */
@@ -74,8 +78,8 @@
             background-color: #e3f2fd;
             border-radius: 10px;
             padding: 20px;
-            width: 100%; /* Ocupa todo el ancho disponible del contenedor */
-            max-width: 500px; /* Opcional: limita el ancho máximo para centrar mejor */
+            width: 100%;
+            max-width: 500px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             display: flex;
             flex-direction: column;
@@ -107,41 +111,26 @@
             }
         }
     }
-
-    .btn {
-        margin-top: 20px;
-    }
 }
 
-/* Estilos para los botones */
-.button-container {
+.button-container-bottom {
     display: flex;
-    margin-left: 80%;
+    justify-content: center;
     gap: 10px;
-    margin-bottom: 15px;
+    margin-top: -4%;
 
-    .ButtonVA {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #80C4F9;
+    .btn-primary {
+        background-color: #007bff;
         color: #fff;
-        font-size: 16px;
-        font-weight: 500;
         border: none;
-        border-radius: 25px;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        padding: 10px 20px;
+        text-decoration: none;
+        font-size: 16px;
+        transition: background-color 0.3s;
 
         &:hover {
-            background-color: #68B0E9;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        &:active {
-            background-color: #5DA8E0;
-            transform: translateY(0);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #0056b3;
         }
     }
 }
