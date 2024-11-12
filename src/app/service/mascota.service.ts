@@ -46,11 +46,11 @@ export class MascotaService {
   }
 
   getTotalMascotas(): Observable<number> {
-    return this.http.get<number>(`http://localhost:8090/mascotas/total`);
+    return this.http.get<number>(`http://localhost:8090/mascota/total`);
   }
 
   getMascotasEnTratamiento(): Observable<number> {
-    return this.http.get<number>(`http://localhost:8090/mascotas/en-tratamiento`);
+    return this.http.get<number>(`http://localhost:8090/mascota/count/active`);
   }
   
 }

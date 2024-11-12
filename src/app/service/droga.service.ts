@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Droga } from '../model/droga';
+import { DrogaDTO } from '../model/droga-dto';
 
 @Injectable({
   providedIn: 'root',
@@ -35,6 +36,10 @@ export class DrogaService {
 
   getTopTratamientos(): Observable<any[]> {
     return this.http.get<any[]>('http://localhost:8090/drogas/top3');
+  }
+
+  getDrogasEscasas(): Observable<DrogaDTO[]> {
+    return this.http.get<DrogaDTO[]>('http://localhost:8090/drogas/escasas');
   }
 
 }

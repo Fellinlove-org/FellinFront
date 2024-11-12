@@ -34,10 +34,6 @@ export class TratamientoService {
     return this.http.put<TratamientoDTO>('http://localhost:8090/tratamiento/update', tratamientoDTO);
   }
 
-  getTratamientosUltimoMes(): Observable<number> {
-    return this.http.get<number>('http://localhost:8090/tratamiento/ultimoMes');
-  }
-
   getTratamientosPorDroga(): Observable<any> {
     return this.http.get<any[]>('http://localhost:8090/consultas/tratamiento-por-droga');
   }
@@ -45,4 +41,5 @@ export class TratamientoService {
   getTotalTratamientos(): Observable<number> {
     return this.http.get<number>('http://localhost:8090/tratamiento/count');
   }
+
 }

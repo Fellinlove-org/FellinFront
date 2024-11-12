@@ -1,34 +1,57 @@
-<app-header></app-header>
-
+<app-header [nombre_usuario] = "nombre_usuario" [userType]="userType" [cedula]="cedula" ></app-header>
 <br><br><br><br>
   
 <main>
     <div class="container mt-4 contenedor">
       <!-- Tarjetas de estadísticas -->
       <div class="row mb-4 cards-container">
-        <div class="col-lg-4" *ngFor="let kpi of kpis">
-          <div class="card text-center shadow-sm card-hover mb-4">
-            <div class="card-body">
-              <h5 class="card-title">{{ kpi.title }}</h5>
-              <p id="kpi-value" class="card-text display-4">
-                <!-- Verificar si es un valor numérico o string -->
-                <ng-container
-                  *ngIf="
-                    kpi.title.includes('Ventas') ||
-                      kpi.title.includes('Ganancias');
-                    else numero
-                  "
-                >
-                  {{ kpi.value | currency : "USD" : "symbol" : "1.2-2" }}
-                </ng-container>
-                <ng-template #numero>
-                  {{ kpi.value }}
-                </ng-template>
-              </p>
-            </div>
+        <div class="col-lg-4">
+          <h1>Ganancias totales:</h1>
+          <div class="cantidades">
+            <p>{{ gananciasTotal | currency }}</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <h1>Ventas totales:</h1>
+          <div class="cantidades">
+            <p>{{ ventasTotal | currency }}</p>
           </div>
         </div>
       </div>
+
+      <br>
+
+      <div class="cantidades">
+        <div class="cantidad-tratamientos">
+          <h3> Cantidad total de tratamientos suministrados </h3>
+          <p id="total-tratamientos" >{{ totalTratamientos }}</p>
+        </div>
+        <div class="cantidad-tratamientos">
+          <h3> Cantidad total de mascotas activas </h3>
+          <p>{{ mascotasActivas }}</p>
+        </div>
+        <div class="cantidad-tratamientos">
+        <h3>Drogas escasas</h3>
+        <br>
+        <table class="table table-striped table-bordered border-primaryx" style="width: 60%; margin: 0 auto; text-align: center;">
+          <thead>
+            <tr>
+              <th>Droga</th>
+              <th>Cantidad</th>
+              <th>Comprar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let droga of drogas_escasas">
+              <td>{{ droga.nombre }}</td>
+              <td>{{ droga.unidadesDisponibles }}</td>
+              <td><a href="https://www.amazon.com/s?k={{ droga.nombre }}" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/2420/2420157.png" alt="Icono de Link" style="width: 25px;"></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+      <br><br>
   
       <!-- Top 3 de tratamientos más usados -->
       <div class="graficos">
@@ -38,14 +61,14 @@
             <canvas id="top3_tratamientos"></canvas>
           </div>
         </div>
-        <div class="cantidades">
-          <div class="cantidad-tratamientos">
-            <h3> Cantidad total de tratamientos suministrados </h3>
-            <p id="total-tratamientos" >{{ totalTratamientos }}</p>
-          </div>
-          <div class="cantidad-tratamientos">
-            <h3> Cantidad total de mascotas activas </h3>
-            <p>{{ mascotasActivas }}</p>
+      </div>
+
+      <div class="cantidades">
+        <div class="cantidad-tratamientos">
+          <h3> Empleado del mes </h3>
+          <div class="card">
+            <img src="{{empleadoMes.foto}}" alt="Imagen del empleado del mes">
+            <p>Nombre: {{empleadoMes.nombre}}</p>
           </div>
         </div>
       </div>

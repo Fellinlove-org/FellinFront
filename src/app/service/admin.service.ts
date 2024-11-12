@@ -31,6 +31,10 @@ export class AdminService {
       responseType: 'text'
     });
   }
+
+  adminHome(): Observable<Admin> {
+    return this.http.get<Admin>('http://localhost:8090/admin/details');
+  }
   
 
 }
