@@ -38,8 +38,8 @@ export class ClienteService {
     return this.http.put<Cliente>(`http://localhost:8090/cliente/update`, cliente);
   }
 
-  deleteCliente(cliente: Cliente){
-     return this.http.delete<Cliente>(`http://localhost:8090/cliente/delete/${cliente.id}`);
+  deleteCliente(id: string){
+     return this.http.delete<String>(`http://localhost:8090/cliente/delete/${id}`);
   }
 
   login(user : User): Observable<string> {

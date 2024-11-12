@@ -40,8 +40,8 @@ export class MascotaService {
     return this.http.get<Cliente>(`http://localhost:8090/mascota/find/cliente/${id}`);
   }
   
-  deleteMascota(mascota: Mascota) {
-    return this.http.delete<string>(`http://localhost:8090/mascota/delete/${mascota.id}`);
+  deleteMascota(id: string) {
+    return this.http.delete<string>(`http://localhost:8090/mascota/delete/${id}`);
 
   }
 

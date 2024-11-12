@@ -102,7 +102,7 @@ export class MascotasTableComponent {
   eliminarMascota(mascota: Mascota) {
     this.selectedMascota = mascota;
     console.log(this.selectedMascota.nombre);
-    this.mascotaService.deleteMascota(this.selectedMascota).subscribe()
+    this.mascotaService.deleteMascota(this.selectedMascota.id.toString()).subscribe()
     this.listaFiltrada = this.listaFiltrada.filter(m => m.id !== this.selectedMascota.id);
   }
 
