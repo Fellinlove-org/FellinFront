@@ -44,4 +44,8 @@ export class VeterinarioService {
     });
   }
 
+  getEmpleadoMes(): Observable<Veterinario> {
+    return this.http.get<Veterinario>(`http://localhost:8090/veterinario/best`);
+  }
+
 }

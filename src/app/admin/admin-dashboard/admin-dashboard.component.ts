@@ -10,6 +10,7 @@ import { AdminService } from 'src/app/service/admin.service';
 import { DrogaDTO } from 'src/app/model/droga-dto';
 import { TratamientoDTO } from 'src/app/model/tratamiento-dto';
 import { Droga } from 'src/app/model/droga';
+import { Veterinario } from 'src/app/model/veterinario';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -37,6 +38,16 @@ export class AdminDashboardComponent implements OnInit {
   chartInstance: Chart | null = null;
 
   drogas_escasas : DrogaDTO[] = []
+
+  empleadoMes : Veterinario = {
+    id : 0,
+    cedula: "",
+    nombre: "",
+    correo: "",
+    password: "",
+    especialidad: "",
+    foto: ""
+  };
 
   constructor(
     private veterinarioService: VeterinarioService,
@@ -106,6 +117,13 @@ export class AdminDashboardComponent implements OnInit {
             }),
             mergeMap((drogas_escasas) => {
               this.drogas_escasas = drogas_escasas;
+              return this.veterinarioService.getEmpleadoMes();
+              
+            }),
+            mergeMap((vet) => {
+              console.log(vet)
+              this.empleadoMes.nombre = vet.nombre
+              this.empleadoMes.foto = vet.foto
               return this.mascotaService.getMascotasEnTratamiento();
             })
           );

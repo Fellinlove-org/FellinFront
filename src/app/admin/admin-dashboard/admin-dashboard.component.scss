@@ -86,5 +86,15 @@ html, body {
         font-weight: bold;
         color: #155274;
       }
+      .card {
+        margin-left: 25%;
+        width: 50%;
+        align-items: center;
+        img {
+          padding: 20px;
+          width: 300px;
+          justify-content: center;
+        }
+      }
     }
   }
