@@ -1,0 +1,29 @@
+<app-header [nombre_usuario]="nombre_usuario" [userType]="userType" [cedula]="cedula"></app-header>
+<br><br><br><br><br>
+
+<div class="container">
+    <div class="form-container">
+        <h2 class="form-title">Información del Veterinario</h2>
+        <div class="datos-veterinario">
+            <img src="{{veterinario.foto}}" alt="veterinario" class="imagen-veterinario">
+
+            <div class="tabla-veterinario">
+                <span class="titulo-atributo">✜ Nombre</span>
+                <span class="atributo">{{veterinario.nombre}}</span>
+
+                <span class="titulo-atributo">✜ Cédula</span>
+                <span class="atributo">{{veterinario.cedula}}</span>
+
+                <span class="titulo-atributo">✜ Correo</span>
+                <span class="atributo">{{veterinario.correo}}</span>
+
+                <span class="titulo-atributo">✜ Especialidad</span>
+                <span class="atributo">{{veterinario.especialidad}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="button-container-bottom">
+    <button [routerLink]="['/veterinarios/' + cedula]" class="btn btn-primary">Volver</button>
+</div>

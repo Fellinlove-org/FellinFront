@@ -1,0 +1,76 @@
+<app-header [nombre_usuario]="nombre_usuario" [userType]="userType" [cedula]="cedula"></app-header> 
+
+  <div class="container">
+    <div class="form-container" id="cuadro">
+      <h1 class="form-title mb-3">Registrar Tratamiento</h1>
+      <form class="forma-mascota" (ngSubmit)="modificarTratamiento()">
+        
+        <!-- Nombre de la Mascota -->
+        <div class="row mb-3">
+          <label for="mascota" class="form-label">Mascota</label>
+          <input
+            type="text"
+            class="form-control"
+            id="mascota"
+            [value]="formConsulta.nombreMascota"
+            readonly
+          />
+        </div>
+
+        <!-- Nombre de la Droga -->
+        <div class="row mb-3">
+          <label for="droga" class="form-label">Droga</label>
+          <input
+            type="text"
+            class="form-control"
+            id="droga"
+            [value]="formConsulta.nombreDroga"
+            readonly
+          />
+        </div>
+
+        <!-- Nombre del Veterinario -->
+        <div class="row mb-3">
+          <label for="veterinario" class="form-label">Veterinario</label>
+          <input
+            type="text"
+            class="form-control"
+            id="veterinario"
+            [value]="formConsulta.nombreVeterinario"
+            readonly
+          />
+        </div>
+
+        <!-- Cantidad -->
+        <div class="row mb-3 ultimo">
+          <label for="cantidad" class="form-label">Cantidad</label>
+          <select
+            id="cantidad"
+            class="form-control"
+            name="cantidad"
+            [(ngModel)]="formConsulta.cantidad"
+            [disabled]="unidadesDisponibles.length === 0"
+          >
+            <option *ngFor="let cantidad of unidadesDisponibles" [value]="cantidad">
+              {{ cantidad }}
+            </option>
+          </select>
+          <p *ngIf="unidadesDisponibles.length === 0" class="text-danger">
+            No hay unidades disponibles para esta droga.
+          </p>
+        </div>
+
+        <button
+        type="submit"
+        class="btn-submit"
+      >
+        Agregar
+      </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="button-container-bottom">
+    <button [routerLink]="['/tratamientos/' + cedula]" class="btn btn-primary">Volver</button>
+  </div>
+

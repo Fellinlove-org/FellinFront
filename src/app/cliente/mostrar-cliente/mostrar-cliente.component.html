@@ -1,0 +1,55 @@
+<app-header [nombre_usuario]="nombre_usuario" [userType]="userType" [cedula]="cedula"></app-header>
+
+<div class="container">
+    <div class="form-container">
+        <h2 class="form-title">Información del cliente</h2>
+        <div class="datos-cliente">
+            <img src="{{cliente.foto}}" alt="cliente" class="imagen-cliente">
+
+            <div class="tabla-cliente">
+                <span class="titulo-atributo">✜ Nombre</span><br>
+                <span class="atributo">{{cliente.nombre}}</span><br><br>
+        
+                <span class="titulo-atributo">✜ Cédula</span><br>
+                <span class="atributo">{{cliente.cedula}}</span><br><br>
+
+                <span class="titulo-atributo">✜ Correo</span><br>
+                <span class="atributo">{{cliente.correo}}</span><br><br>
+
+                <span class="titulo-atributo">✜ Celular</span><br>
+                <span class="atributo">{{cliente.celular}}</span><br><br>
+            </div>
+        </div>
+        
+        <!-- Nueva sección para mostrar las mascotas en tarjetas -->
+        <h3 class="form-title">Mascotas del Cliente</h3>
+        <div *ngIf="MascotasList && MascotasList.length > 0; else noMascotas" class="mascotas-container">
+            <div *ngFor="let mascota of MascotasList" class="tarjeta-mascota">
+                <img [src]="mascota.foto" alt="mascota" class="imagen-mascota">
+                
+                <div class="tabla-mascota">
+                    <span class="titulo-atributo">✜ Nombre</span>
+                    <span class="atributo">{{mascota.nombre}}</span><br><br>
+
+                    <span class="titulo-atributo">✜ Raza</span>
+                    <span class="atributo">{{mascota.raza}}</span><br><br>
+
+                    <span class="titulo-atributo">✜ Edad</span>
+                    <span class="atributo">{{mascota.edad}} años</span><br><br>
+
+                    <span class="titulo-atributo">✜ Peso</span>
+                    <span class="atributo">{{mascota.peso}} kg</span><br><br>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mensaje cuando no hay mascotas -->
+        <ng-template #noMascotas>
+            <p class="atributo">No se encontraron mascotas para este cliente.</p>
+        </ng-template>
+    </div>
+</div>
+
+<div class="button-container-bottom">
+    <button [routerLink]="['/clientes/' + cedula]" class="btn btn-primary">Volver</button>
+</div>

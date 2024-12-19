@@ -1,0 +1,168 @@
+.button-container {
+    display: flex; /* Alinea los botones a la derecha; usa 'center' o 'flex-start' para centrar o alinear a la izquierda */
+    margin-left: 80%;
+    gap: 10px;
+    margin-bottom: 15px;
+
+    .ButtonVA {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #80C4F9;
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        border: none;
+        border-radius: 25px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        &:hover {
+            background-color: #68B0E9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        &:active {
+            background-color: #5DA8E0;
+            transform: translateY(0);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    }
+}
+.options-link {
+    .option-icon {
+        border: 3px solid transparent; /* Borde inicial transparente */
+        border-radius: 6px; /* Bordes redondeados */
+        transition: border-color 0.3s ease, filter 0.3s ease; /* Transiciones suaves */
+
+        &:hover {
+            border-color: #007bff; /* Color del borde al pasar el ratón */
+            filter: brightness(100%); /* Cambio de color al pasar el ratón (opcional) */
+        }
+    }
+}
+
+.search-container{
+    margin-left: 150px;
+}
+
+.TableMscota {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+
+    thead {
+        background-color: #64b8f3;
+        color: #fff;
+
+        th:first-child {
+            border-top-left-radius: 8px;
+        }
+        
+        th:last-child {
+            border-top-right-radius: 8px;
+        }
+
+        th {
+            padding: 15px;
+            font-size: 20px; // Aumenta el tamaño del texto en los encabezados
+            font-weight: bold;
+            border-right: 1px solid #ddd;
+        }
+
+        th:last-child {
+            border-right: none;
+        }
+    }
+
+    tbody {
+        tr {
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #f8eddc;
+            }
+        }
+
+        
+
+        td {
+            padding: 12px; // Ajusta el padding para mantener el espaciado
+            font-size: 20px; // Aumenta el tamaño del texto en las celdas de la tabla
+            border-top: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+
+            &:last-child {
+                border-right: none;
+            }
+        }
+
+        .mascota-foto {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .options-cell {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+
+            .option-icon {
+                width: 30px;
+                height: 30px;
+                transition: transform 0.3s ease;
+                cursor: pointer;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px auto;
+    width: 50%; // Controla el ancho de la barra de búsqueda en relación con el contenedor
+
+    .search-input {
+        flex: 1;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 25px;
+        transition: border-color 0.3s ease;
+
+        &:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+    }
+
+    .search-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff; // Mismo color que el encabezado de la tabla
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #0056b3;
+        }
+    }
+}

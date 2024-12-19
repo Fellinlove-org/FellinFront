@@ -1,0 +1,41 @@
+<app-header [nombre_usuario]="nombre_usuario" [userType]="userType" [cedula]="cedula"></app-header>
+
+<div class="container">
+    <div class="form-container">
+        <h2 class="form-title">Agregar Cliente</h2>
+
+        <form id="form-cliente" class="forma-cliente" (ngSubmit)="addCliente()">
+            <div>
+                <label for="nombre">✜ Nombre</label>
+                <input type="text" id="nombre" class="form-control" name="nombre" [(ngModel)]="formCliente.nombre">
+            </div>
+
+            <div>
+                <label for="cedula">✜ Cédula</label>
+                <input type="text" id="cedula" class="form-control" name="cedula" [(ngModel)]="formCliente.cedula">
+            </div>
+
+            <div>
+                <label for="correo">✜ Correo</label>
+                <input type="text" id="correo" class="form-control" name="correo" [(ngModel)]="formCliente.correo">
+            </div>
+
+            <div>
+                <label for="celular">✜ Celular</label>
+                <input type="text" id="celular" class="form-control" name="celular" [(ngModel)]="formCliente.celular">
+            </div>
+
+            <div>
+                <label for="foto">✜ Foto</label>
+                <input type="text" id="foto" class="form-control" name="foto" [(ngModel)]="formCliente.foto">
+            </div>
+
+                <button id="btn-submit" type="submit" class="btn btn-submit">Enviar</button>
+            
+        </form>
+    </div>
+</div>
+
+<div class="button-container-bottom">
+    <button [routerLink]="['/clientes/' + cedula]" class="btn btn-primary">Volver</button>
+</div>

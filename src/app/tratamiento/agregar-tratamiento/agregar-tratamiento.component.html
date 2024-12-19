@@ -1,0 +1,43 @@
+<app-header [nombre_usuario]="nombre_usuario" [userType]="userType" [cedula]="cedula"></app-header> 
+
+<div class="container">
+  <div class="form-container">
+    <h2 class="form-title">Registrar Tratamiento</h2>
+
+    <form id="form-tratamiento" class="forma-mascota" #tratamientoForm="ngForm" (ngSubmit)="addTratamiento()">
+      <!-- Veterinario -->
+      <div>
+        <label for="veterinario">✜ Veterinario</label>
+        <input type="text" class="form-control" id="veterinario" [value]="VeterinarioSeleccionado.nombre" readonly />
+      </div>
+
+      <!-- Mascota -->
+      <div>
+        <label for="mascota">✜ Mascota</label>
+        <input type="text" class="form-control" id="mascota" [value]="mascotaSeleccionada.nombre" readonly />
+      </div>
+
+      <!-- Droga -->
+      <div>
+        <label for="droga">✜ Droga</label>
+        <select id="droga" class="form-control" name="droga" (change)="onDrogaSeleccionada($event)" required>
+          <option *ngFor="let droga of drogas" [value]="droga.id">{{ droga.nombre }}</option>
+        </select>
+      </div>
+
+      <!-- Cantidad -->
+      <div class="ultimo">
+        <label for="cantidad">✜ Cantidad</label>
+        <select id="cantidad" class="form-control" name="cantidad" [(ngModel)]="formConsulta.cantidad" [disabled]="unidadesDisponibles.length === 0">
+          <option *ngFor="let cantidad of unidadesDisponibles" [value]="cantidad">{{ cantidad }}</option>
+        </select>
+        <p *ngIf="unidadesDisponibles.length === 0" class="text-danger">No hay unidades disponibles para esta droga.</p>
+        <button id="btn-submit-tratamiento" type="submit" class="btn btn-submit" [disabled]="!tratamientoForm.form.valid">Agregar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="button-container-bottom">
+  <button [routerLink]="['/tratamientos']" class="btn btn-primary">Volver</button>
+</div>

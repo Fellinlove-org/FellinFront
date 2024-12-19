@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  @Input()
+  nombre_usuario : string | undefined;
+
+  @Input()
+  cedula : string | undefined;
+
+  @Input()
+  userType : string | undefined;
 }

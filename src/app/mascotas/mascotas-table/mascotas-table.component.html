@@ -1,0 +1,93 @@
+<app-header [nombre_usuario] = "nombre_usuario" [userType]="userType" [cedula]="cedula"></app-header>
+<br><br><br><br><br>
+
+<div class="search-container">
+  <input
+    type="text"
+    class="search-input"
+    id="search-mascota"
+    placeholder="Buscar mascota por nombre o raza"
+    [(ngModel)]="searchTerm"
+    (keyup.enter)="buscarMascota()"
+  />
+  <button id="btn-search-mascota" type="button" class="search-btn" (click)="buscarMascota()">
+    Buscar
+  </button>
+
+  <ng-container *ngIf=" this.userType == 'veterinario'">
+      <a id="add-mascota" class="search-btn" [routerLink]="['/mascota/'+ cedula +'/add']">Agregar</a>
+  </ng-container>
+
+  <ng-container *ngIf=" this.userType == 'administrador'">
+    <a id="add-mascota" class="search-btn" [routerLink]="['/mascota/'+ cedula +'/add']">Agregar</a>
+</ng-container>
+</div>
+
+
+<br><br>
+
+<table id="mascotas" class="TableMscota">
+
+    <thead>
+        <tr>
+            <th>foto</th>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Raza</th>
+            <th>Edad</th>
+            <th>Peso</th>
+            <th>Enfermedad</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr id="mascota" *ngFor="let mascota of listaFiltrada">
+            <td> 
+              <img src="{{mascota.foto}}" 
+              style="width: 100px; height: 100px;" 
+              alt="mascota"
+              />
+            </td>
+            <td id="mascota-id"> {{mascota.id}}</td>
+            <td id="mascota-nombre"> {{mascota.nombre}}</td>
+            <td id="mascota-raza"> {{mascota.raza}}</td>
+            <td id="mascota-edad"> {{mascota.edad}}</td>
+            <td id="mascota-peso"> {{mascota.peso}}</td>
+            <td id="mascota-enfermedad"> {{mascota.enfermedad}}</td>
+
+            <ng-container *ngIf="this.userType === 'cliente'">
+              <td><a (click)="MostrarMascota(mascota)" class="options-link" >
+                <img src="https://static.vecteezy.com/system/resources/previews/009/356/887/non_2x/eye-icon-sign-symbol-design-free-png.png" width="40px" class="option-icon" alt="Ver">
+              </a>
+              </td>
+            </ng-container>
+
+            <ng-container *ngIf=" this.userType == 'veterinario'">
+              <td><a id="mostar-mascota" (click)="MostrarMascota(mascota)" class="options-link" >
+                <img src="https://static.vecteezy.com/system/resources/previews/009/356/887/non_2x/eye-icon-sign-symbol-design-free-png.png" width="40px" class="option-icon" alt="Ver">
+              </a>
+              <a (click)="modificarMascota(mascota)" class="options-link" >
+                <img src="https://cdn-icons-png.flaticon.com/128/45/45406.png" width="40px" class="option-icon" alt="Editar">
+              </a>
+              <a  class="options-link" (click)="eliminarMascota(mascota)">
+                <img src="https://cdn-icons-png.flaticon.com/512/1017/1017479.png" width="40px" class="option-icon" alt="Eliminar">
+              </a>
+              </td>
+            </ng-container>
+            <ng-container *ngIf=" this.userType == 'administrador'">
+              <td><a (click)="MostrarMascota(mascota)" class="options-link" >
+                <img src="https://static.vecteezy.com/system/resources/previews/009/356/887/non_2x/eye-icon-sign-symbol-design-free-png.png" width="40px" class="option-icon" alt="Ver">
+              </a>
+              <a (click)="modificarMascota(mascota)" class="options-link" >
+                <img src="https://cdn-icons-png.flaticon.com/128/45/45406.png" width="40px" class="option-icon" alt="Editar">
+              </a>
+              <a  class="options-link" (click)="eliminarMascota(mascota)">
+                <img src="https://cdn-icons-png.flaticon.com/512/1017/1017479.png" width="40px" class="option-icon" alt="Eliminar">
+              </a>
+              </td>
+            </ng-container>
+        </tr>
+    </tbody>
+</table>
+
+

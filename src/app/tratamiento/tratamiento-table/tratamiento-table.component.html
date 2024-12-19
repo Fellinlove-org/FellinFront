@@ -1,0 +1,61 @@
+<app-header [nombre_usuario] = "nombre_usuario" [userType]="userType" [cedula]="cedula"></app-header>
+<br><br><br><br><br>
+
+  
+<div class="search-container">
+  <input
+    type="text"
+    class="search-input"
+    id="search-tratamiento"
+    placeholder="Buscar tratamiento por nombre de la mascota"
+    [(ngModel)]="searchTerm"
+    (keyup.enter)="buscarTratamiento()"
+  />
+  <button id="btn-search-tratamiento" type="button" class="search-btn" (click)="buscarTratamiento()">
+    Buscar
+  </button>
+</div>
+<br><br>
+
+<table id="tratamiento" class="TableMscota">
+  
+      <thead class="table-dark">
+          <tr>
+              <th>Id</th>
+              <th>Veterinario</th>
+              <th>Mascota</th>
+              <th>Droga</th>
+              <th>Cantidad</th>
+              <th>Fecha del Tratamiento</th>
+              <th>Unidades Disponibles</th>
+              <th>Options</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr [attr.id]="'tratamiento' + tratamientoDTO.id" *ngFor="let tratamientoDTO of listaFiltrada">
+              <td> {{tratamientoDTO.id}}</td>
+              <td [attr.id]="'nombre-veterinario' + tratamientoDTO.id"> {{tratamientoDTO.nombreVeterinario}}</td>
+              <td [attr.id]="'nombre-mascota' + tratamientoDTO.id"> {{tratamientoDTO.nombreMascota}}</td>
+              <td [attr.id]="'nombre-droga' + tratamientoDTO.id"> {{tratamientoDTO.nombreDroga}}</td>
+              <td [attr.id]="'cantidad' + tratamientoDTO.id"> {{tratamientoDTO.cantidad}}</td>
+              <td> {{tratamientoDTO.fechaConsulta}}</td>
+              <td> {{tratamientoDTO.unidadesDisponibles}}</td>
+  
+              <ng-container *ngIf=" this.userType== 'veterinario'">
+              <td>
+              <a (click)=" modificarTratamiento(tratamientoDTO)" class="options-link">
+                <img src="https://cdn-icons-png.flaticon.com/128/45/45406.png" width="40px" class="option-icon" alt="Editar">
+              </a>
+            
+            </ng-container>
+  
+            <ng-container *ngIf=" this.userType== 'administrador'">
+              <td>
+              <a (click)=" modificarTratamiento(tratamientoDTO)" class="options-link">
+                <img src="https://cdn-icons-png.flaticon.com/128/45/45406.png" width="40px" class="option-icon" alt="Editar">
+              </a>
+             </td>
+            </ng-container>
+          </tr>
+      </tbody>
+  </table>

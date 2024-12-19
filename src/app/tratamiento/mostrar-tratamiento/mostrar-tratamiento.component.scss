@@ -1,0 +1,64 @@
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: white;
+  }
+  
+  main {
+    flex: 1;
+    padding: 20px;
+    background: white;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  
+  #cuadro {
+    background: white;
+    padding: 3em;
+    height: auto;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 20px;
+    border: 1px solid black;
+    backdrop-filter: blur(10px);
+    box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+    color: white;
+  }
+  
+  #cuadro h1 {
+    margin: 0 10px;
+    text-align: center;
+    color: #add8e6; /* Azul claro */
+  }
+  
+  form {
+    margin: 0 20px 10px;
+  }
+  
+  .col {
+    margin-top: 10px;
+  }
+  
+  .col label {
+    font-size: 20px;
+  }
+  
+  .mb-3 {
+    font-size: 20px;
+  }
+  

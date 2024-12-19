@@ -1,0 +1,100 @@
+/* General Styles */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    box-sizing: border-box;
+}
+  
+  .contenedor {
+    background-color: rgb(237, 249, 255);
+    padding: 2%;
+    border-radius: 20px;
+  }
+  
+  .card-hover:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+  }
+  
+  .cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .graficos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  
+  #title {
+    color: #cce1ff;
+    font-size: 90px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+  }
+  
+  /* Styles for the Table Section */
+  .tabla-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  .top-tratamientos {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .top-tratamientos th, .top-tratamientos td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .top-tratamientos th {
+    background-color: #155274;
+    color: white;
+  }
+  
+  .top-tratamientos tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  .col-lg-4{
+    text-align: center;
+    p {
+      font-size: 50px;
+    }
+  }
+
+  .cantidades {
+    background-color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 30px;
+    .cantidad-tratamientos {
+      text-align: center;
+      p {
+        font-size: 20px;
+        font-weight: bold;
+        color: #155274;
+      }
+      .card {
+        margin-left: 25%;
+        width: 50%;
+        align-items: center;
+        img {
+          padding: 20px;
+          width: 300px;
+          justify-content: center;
+        }
+      }
+    }
+  }

@@ -1,0 +1,78 @@
+<app-header [nombre_usuario] = "nombre_usuario" [userType]="userType" [cedula]="cedula"></app-header>
+<br><br><br><br><br><br>
+
+<div class="search-container">
+  <input
+    type="text"
+    id="search-cliente"
+    class="search-input"
+    placeholder="Buscar cliente por nombre"
+    [(ngModel)]="searchTerm"
+    (keyup.enter)="buscarCliente()"
+  />
+  <button type="button" class="search-btn" id="btn-search" (click)="buscarCliente()">
+    Buscar
+  </button>
+  <div>
+    <a id="add-cliente" class="search-btn" [routerLink]="['/cliente/'+ cedula +'/add']">Agregar</a>
+  </div>
+</div>
+
+<br><br>
+
+<table id = "clientes" class="TableMscota">
+
+    <thead>
+        <tr>
+            <th>foto</th>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Cedula</th>
+            <th>Correo</th>
+            <th>Celular</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr id="cliente" *ngFor="let cliente of listaFiltrada">
+            <td> 
+              <img src="{{cliente.foto}}" 
+              style="width: 100px; height: 100px;" 
+              alt="cliente"
+              />
+            </td>
+            <td> {{cliente.id}}</td>
+            <td id="nombre-cliente"> {{cliente.nombre}}</td>
+            <td> {{cliente.cedula}}</td>
+            <td> {{cliente.correo}}</td>
+            <td> {{cliente.celular}}</td>
+
+            <ng-container *ngIf=" this.userType== 'veterinario'">
+            <td><a (click)="mostrarCliente(cliente)" class="options-link" >
+              <img src="https://static.vecteezy.com/system/resources/previews/009/356/887/non_2x/eye-icon-sign-symbol-design-free-png.png" width="40px" class="option-icon" alt="Ver">
+            </a>
+            <a id="edit-cliente" (click)=" modificarCliente(cliente)" class="options-link">
+              <img src="https://cdn-icons-png.flaticon.com/128/45/45406.png" width="40px" class="option-icon" alt="Editar">
+            </a>
+            <a  class="options-link" (click)="eliminarCliente(cliente)">
+              <img src="https://cdn-icons-png.flaticon.com/512/1017/1017479.png" width="40px" class="option-icon" alt="Eliminar">
+            </a>
+          </ng-container>
+
+          <ng-container *ngIf=" this.userType== 'administrador'">
+            <td><a (click)="mostrarCliente(cliente)" class="options-link" >
+              <img src="https://static.vecteezy.com/system/resources/previews/009/356/887/non_2x/eye-icon-sign-symbol-design-free-png.png" width="40px" class="option-icon" alt="Ver">
+            </a>
+            <a (click)=" modificarCliente(cliente)" class="options-link">
+              <img src="https://cdn-icons-png.flaticon.com/128/45/45406.png" width="40px" class="option-icon" alt="Editar">
+            </a>
+            <a  class="options-link" (click)="eliminarCliente(cliente)">
+              <img src="https://cdn-icons-png.flaticon.com/512/1017/1017479.png" width="40px" class="option-icon" alt="Eliminar">
+            </a>
+            </td>
+          </ng-container>
+        </tr>
+    </tbody>
+</table>
+
+
